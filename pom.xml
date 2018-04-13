@@ -1,0 +1,47 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.kshyk</groupId>
+    <artifactId>selenium-kshyk</artifactId>
+    <packaging>jar</packaging>
+    <version>${project.version}</version>
+    <name>selenium-kshyk</name>
+
+    <properties>
+        <project.version>0.1.0</project.version>
+        <testng.version>6.14.3</testng.version>
+        <selenium-java.version>3.11.0</selenium-java.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <java-base.version>1.9</java-base.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium-java.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java-base.version}</source>
+                    <target>${java-base.version}</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
