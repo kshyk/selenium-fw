@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
+import java.io.File;
+import java.util.Objects;
+
 public class BaseTest {
 
     public WebDriver driver;
@@ -16,11 +19,7 @@ public class BaseTest {
 
     @BeforeClass
     public void setup() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Kshyk\\IdeaProjects\\selenium-kshyk\\src\\test\\resources\\chromedriver.exe");
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("test-type");
-        chromeOptions.addArguments("--disable-extensions");
-        driver = new ChromeDriver();
+        driver = this.getChromeDriver();
         wait = new WebDriverWait(driver, 15);
         driver.manage().window().maximize();
         page = new PageGenerator(driver);
@@ -31,5 +30,15 @@ public class BaseTest {
         if (driver != null) {
             driver.quit();
         }
+    }
+
+    private ChromeDriver getChromeDriver() {
+        final File chrome = new File(Objects.requireNonNull(BaseTest.class.getClassLoader().getResource("chromedriver.exe")).getFile());
+        System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("test-type");
+        chromeOptions.addArguments("--disable-extensions");
+        chromeOptions.addArguments("--disable-infobars");
+        return new ChromeDriver(chromeOptions);
     }
 }
