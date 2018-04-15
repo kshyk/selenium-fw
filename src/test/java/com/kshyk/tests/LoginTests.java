@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 
 public class LoginTests extends BaseTest {
 
-    @Test()
+    @Test
     public void invalidLoginTest_InvalidUserNameInvalidPassword() {
         page.getInstance(HomePage.class).goToN11();
         page.getInstance(HomePage.class).goToLoginPage().loginToN11("onur@swtestacademy.com", "11223344");
@@ -17,7 +17,7 @@ public class LoginTests extends BaseTest {
         page.getInstance(LoginPage.class).verifyLoginPassword(("E-posta adresiniz veya şifreniz hatalı"));
     }
 
-    @Test(priority = 1)
+    @Test
     public void invalidLoginTest_EmptyUserEmptyPassword() {
         page.getInstance(HomePage.class).goToN11();
         page.getInstance(HomePage.class).goToLoginPage().loginToN11("", "");
