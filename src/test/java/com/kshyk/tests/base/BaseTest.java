@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class BaseTest {
 
-    protected WebDriverWait wait;
+    protected WebDriverWait wait, waitMid, waitLong;
     protected PageGenerator page;
     private WebDriver driver;
 
@@ -21,6 +21,8 @@ public class BaseTest {
     public void setup() {
         driver = this.getChromeDriver();
         wait = new WebDriverWait(driver, 15);
+        waitMid = new WebDriverWait(driver, 30);
+        waitLong = new WebDriverWait(driver, 90);
         driver.manage().window().maximize();
         page = new PageGenerator(driver);
     }

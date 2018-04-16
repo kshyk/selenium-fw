@@ -1,11 +1,12 @@
 package com.kshyk.tests.neobux_com;
 
-import com.kshyk.po.neobux.LoginPage;
-import com.kshyk.po.neobux.SummaryPage;
-import com.kshyk.po.neobux.Toolbar;
+import com.kshyk.po.neobux.*;
 import com.kshyk.tests.base.BaseTest;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertTrue;
 
 public class EarnMoneyTests extends BaseTest {
 
@@ -23,7 +24,13 @@ public class EarnMoneyTests extends BaseTest {
 
     @Test(dependsOnMethods = "earnMoney_SuccessfulLogonProcess")
     public void earnMoney_ClickOnEveryActiveAdvertisement() {
-        page.getInstance(Toolbar.class).goToViewAdvertisements();
+        AdvertisementsPage advertisementsPage = page.getInstance(Toolbar.class).goToViewAdvertisements();
+        assertTrue(advertisementsPage.isOpened(), advertisementsPage.getClass().getSimpleName() + " is not visible.");
+        advertisementsPage.getActiveAds().forEach(ad -> {
+            advertisementsPage.clickOnActiveAdvertisement(ad);
+            advertisementsPage.clickOnRedDot(By.className("redDTA"));
+            page.getInstance(AdvertWindow.class).close();
+        });
     }
 
     @Test(dependsOnMethods = "earnMoney_ClickOnEveryActiveAdvertisement")

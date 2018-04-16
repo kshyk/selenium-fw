@@ -58,6 +58,14 @@ public class BasePage extends PageGenerator {
         this.getMouse().click(locatable.getCoordinates());
     }
 
+    protected void clickFirstVisibleElement(final By elementAttr) {
+        driver.findElements(elementAttr).forEach(element -> {
+            if (element.isDisplayed()) {
+                click(element);
+            }
+        });
+    }
+
     private <T> Locatable getLocatable(T elementAttr) {
         return elementAttr.getClass().getName().contains("By") ?
                 ((Locatable) driver.findElement((By) elementAttr)) : ((Locatable) elementAttr);
@@ -67,4 +75,11 @@ public class BasePage extends PageGenerator {
         return ((HasInputDevices) driver).getMouse();
     }
 
+    protected void sleep(final int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (final InterruptedException ex) {
+            logger.error("Unable to execute sleep thread.", ex);
+        }
+    }
 }
