@@ -1,7 +1,8 @@
-package com.kshyk.tests;
+package com.kshyk.tests.n11_com;
 
-import com.kshyk.core.HomePage;
-import com.kshyk.core.LoginPage;
+import com.kshyk.po.n11.HomePage;
+import com.kshyk.po.n11.LoginPage;
+import com.kshyk.tests.base.BaseTest;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;

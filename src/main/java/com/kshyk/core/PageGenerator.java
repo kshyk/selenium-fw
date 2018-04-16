@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 
 public class PageGenerator {
 
-    public final WebDriver driver;
-    protected final Logger logger = LoggerFactory.getLogger(PageGenerator.class);
+    protected final WebDriver driver;
+    private final Logger logger = LoggerFactory.getLogger(PageGenerator.class);
 
     public PageGenerator(WebDriver driver) {
         this.driver = driver;

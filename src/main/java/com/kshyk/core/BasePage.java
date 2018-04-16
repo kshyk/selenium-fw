@@ -3,16 +3,19 @@ package com.kshyk.core;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.HasInputDevices;
+import org.openqa.selenium.interactions.Mouse;
+import org.openqa.selenium.interactions.internal.Locatable;
 
 import java.util.List;
 
 public class BasePage extends PageGenerator {
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver) {
         super(driver);
     }
 
-    public <T> void click(T elementAttr) {
+    protected <T> void click(T elementAttr) {
         if (elementAttr.getClass().getName().contains("By")) {
             driver.findElement((By) elementAttr).click();
         } else {
@@ -20,7 +23,7 @@ public class BasePage extends PageGenerator {
         }
     }
 
-    public <T> void writeText(T elementAttr, String text) {
+    protected <T> void writeText(T elementAttr, String text) {
         if (elementAttr.getClass().getName().contains("By")) {
             driver.findElement((By) elementAttr).sendKeys(text);
         } else {
@@ -28,7 +31,7 @@ public class BasePage extends PageGenerator {
         }
     }
 
-    public <T> String readText(T elementAttr) {
+    protected <T> String readText(T elementAttr) {
         if (elementAttr.getClass().getName().contains("By")) {
             return driver.findElement((By) elementAttr).getText();
         } else {
@@ -42,6 +45,13 @@ public class BasePage extends PageGenerator {
             popup.get(0).click();
             Thread.sleep(200);
         }
+    }
+
+    protected <T> void mouseOver(T elementAttr) {
+        Locatable locatable = elementAttr.getClass().getName().contains("By") ?
+                ((Locatable) driver.findElement((By) elementAttr)) : ((Locatable) elementAttr);
+        Mouse mouse = ((HasInputDevices) driver).getMouse();
+        mouse.mouseMove(locatable.getCoordinates());
     }
 
 }

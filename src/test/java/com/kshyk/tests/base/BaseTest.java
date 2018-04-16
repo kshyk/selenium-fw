@@ -1,4 +1,4 @@
-package com.kshyk.tests;
+package com.kshyk.tests.base;
 
 import com.kshyk.core.PageGenerator;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +13,9 @@ import java.util.Objects;
 
 public class BaseTest {
 
-    public WebDriver driver;
-    public WebDriverWait wait;
-    public PageGenerator page;
+    protected WebDriverWait wait;
+    protected PageGenerator page;
+    private WebDriver driver;
 
     @BeforeClass
     public void setup() {
