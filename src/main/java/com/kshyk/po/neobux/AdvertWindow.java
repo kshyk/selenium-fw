@@ -14,7 +14,7 @@ public class AdvertWindow extends BasePage {
     private WebElement close;
     @FindBy(id = "nxt_bt_a")
     private WebElement next;
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     public AdvertWindow(WebDriver driver) {
         super(driver);
