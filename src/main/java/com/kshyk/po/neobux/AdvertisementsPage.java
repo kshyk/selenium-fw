@@ -14,6 +14,10 @@ public class AdvertisementsPage extends BasePage {
     private WebElement resetInfoBar;
     @FindBy(css = ".adfu,.adf")
     private List<WebElement> activeAds;
+    @FindBy(id = "ap_h")
+    private WebElement adChances;
+    @FindBy(id = "ap_hct0")
+    private WebElement nullChances;
 
     public AdvertisementsPage(WebDriver driver) {
         super(driver);
@@ -35,6 +39,20 @@ public class AdvertisementsPage extends BasePage {
     public void clickOnRedDot(By dotElem) {
         sleep(1000);
         clickFirstVisibleElement(dotElem);
+        driver.getWindowHandles().forEach(handle -> driver.switchTo().window(handle));
+    }
+
+    public int getChances() {
+        return Integer.parseInt(adChances.getAttribute("textContent"));
+    }
+
+    public boolean isNullChancesVisible() {
+        return nullChances.isDisplayed();
+    }
+
+    public void clickOnChances() {
+        sleep(1500);
+        mouseOverAndClick(adChances);
         driver.getWindowHandles().forEach(handle -> driver.switchTo().window(handle));
     }
 }

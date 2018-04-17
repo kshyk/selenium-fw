@@ -12,15 +12,27 @@ public class AdvertWindow extends BasePage {
 
     @FindBy(css = "[onclick='wClose()']")
     private WebElement close;
+    @FindBy(id = "nxt_bt_a")
+    private WebElement next;
+    private WebDriverWait wait;
 
     public AdvertWindow(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+        wait = new WebDriverWait(driver, 90);
     }
 
     public void close() {
-        new WebDriverWait(driver, 90).until(ExpectedConditions.visibilityOf(close)).click();
+        wait.until(ExpectedConditions.visibilityOf(close)).click();
         String firstTab = driver.getWindowHandles().stream().findFirst().get();
         driver.switchTo().window(firstTab);
+    }
+
+    public void next() {
+        wait.until(ExpectedConditions.visibilityOf(next)).click();
+    }
+
+    public WebElement getNext() {
+        return next;
     }
 }
