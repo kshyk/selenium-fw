@@ -15,7 +15,7 @@ public class BaseTest {
 
     protected WebDriverWait wait;
     protected PageGenerator page;
-    private WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeClass
     public void setup() {

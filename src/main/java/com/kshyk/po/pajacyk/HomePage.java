@@ -12,7 +12,7 @@ public class HomePage extends BasePage {
     @FindBy(className = "paj-click2")
     private WebElement yellowBellyHover;
 
-    public HomePage(WebDriver driver) {
+    public HomePage(final WebDriver driver) {
         super(driver);
     }
 
