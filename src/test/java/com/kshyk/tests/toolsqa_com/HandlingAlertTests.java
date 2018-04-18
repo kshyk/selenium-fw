@@ -22,12 +22,6 @@ public class HandlingAlertTests extends BaseTest {
     }
 
     @Test
-    public void handleAlert_ConfirmAlertBoxTest() {
-        page.getInstance(DemoAlertsPage.class).pressConfirmAlertButton();
-        driver.switchTo().alert().accept();
-    }
-
-    @Test
     public void handleAlert_DismissPromptAlertBoxTest() {
         page.getInstance(DemoAlertsPage.class).pressPromptAlertButton();
         driver.switchTo().alert().dismiss();

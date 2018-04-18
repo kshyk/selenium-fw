@@ -12,8 +12,10 @@ public class AdvertisementsPage extends BasePage {
 
     @FindBy(id = "sInf0")
     private WebElement resetInfoBar;
+
     @FindBy(css = ".adfu,.adf")
     private List<WebElement> activeAds;
+
     @FindBy(id = "ap_h")
     private WebElement adChances;
 
@@ -45,7 +47,7 @@ public class AdvertisementsPage extends BasePage {
     }
 
     public boolean isNullChancesVisible() {
-        return driver.findElements(By.id("ap_hct0")).size() != 0;
+        return isElementPresent(By.id("ap_hct0"));
     }
 
     public void clickOnChances() {

@@ -9,40 +9,31 @@ import org.openqa.selenium.interactions.internal.Locatable;
 
 public class BasePage extends PageGenerator {
 
-    protected BasePage(WebDriver driver) {
+    protected BasePage(final WebDriver driver) {
         super(driver);
     }
 
-    protected <T> void click(T elementAttr) {
-        if (elementAttr.getClass().getName().contains("By")) {
-            driver.findElement((By) elementAttr).click();
-        } else {
-            ((WebElement) elementAttr).click();
-        }
+    protected <T> void click(final T elementAttr) {
+        final boolean isItByElement = elementAttr.getClass().getName().contains("By");
+        (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).click();
     }
 
-    protected <T> void writeText(T elementAttr, String text) {
-        if (elementAttr.getClass().getName().contains("By")) {
-            driver.findElement((By) elementAttr).sendKeys(text);
-        } else {
-            ((WebElement) elementAttr).sendKeys(text);
-        }
+    protected <T> void writeText(final T elementAttr, final String text) {
+        final boolean isItByElement = elementAttr.getClass().getName().contains("By");
+        (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).sendKeys(text);
     }
 
-    protected <T> String readText(T elementAttr) {
-        if (elementAttr.getClass().getName().contains("By")) {
-            return driver.findElement((By) elementAttr).getText();
-        } else {
-            return ((WebElement) elementAttr).getText();
-        }
+    protected <T> String readText(final T elementAttr) {
+        final boolean isItByElement = elementAttr.getClass().getName().contains("By");
+        return (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).getText();
     }
 
-    protected <T> void mouseOver(T elementAttr) {
+    protected <T> void mouseOver(final T elementAttr) {
         Locatable locatable = this.getLocatable(elementAttr);
         this.getMouse().mouseMove(locatable.getCoordinates());
     }
 
-    protected <T> void mouseOverAndClick(T elementAttr) {
+    protected <T> void mouseOverAndClick(final T elementAttr) {
         Locatable locatable = this.getLocatable(elementAttr);
         this.getMouse().mouseMove(locatable.getCoordinates());
         this.getMouse().click(locatable.getCoordinates());
@@ -56,7 +47,7 @@ public class BasePage extends PageGenerator {
         });
     }
 
-    private <T> Locatable getLocatable(T elementAttr) {
+    private <T> Locatable getLocatable(final T elementAttr) {
         return elementAttr.getClass().getName().contains("By") ?
                 ((Locatable) driver.findElement((By) elementAttr)) : ((Locatable) elementAttr);
     }
@@ -71,5 +62,9 @@ public class BasePage extends PageGenerator {
         } catch (final InterruptedException ex) {
             logger.error("Unable to execute sleep thread.", ex);
         }
+    }
+
+    protected boolean isElementPresent(final By by) {
+        return driver.findElements(by).size() != 0;
     }
 }

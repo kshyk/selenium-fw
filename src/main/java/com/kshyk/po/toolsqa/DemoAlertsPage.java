@@ -10,11 +10,12 @@ public class DemoAlertsPage extends BasePage {
 
     @FindBy(css = "button[onclick='pushAlert()']")
     private WebElement simpleAlertButton;
+
     @FindBy(css = "button[onclick='pushConfirm()']")
     private WebElement confirmAlertButton;
+
     @FindBy(css = "button[onclick='promptConfirm()']")
     private WebElement promptAlertButton;
-
 
     public DemoAlertsPage(final WebDriver driver) {
         super(driver);
