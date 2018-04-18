@@ -33,7 +33,7 @@ public class BaseTest {
     }
 
     private ChromeDriver getChromeDriver() {
-        final File chrome = new File(Objects.requireNonNull(BaseTest.class.getClassLoader().getResource("chromedriver")).getFile());
+        final File chrome = new File(Objects.requireNonNull(BaseTest.class.getClassLoader().getResource("drivers/chromedriver")).getFile());
         System.setProperty("webdriver.chrome.driver", chrome.getAbsolutePath());
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("test-type");
