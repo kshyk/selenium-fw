@@ -10,11 +10,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdvertWindow extends BasePage {
 
+    private final WebDriverWait wait;
     @FindBy(css = "[onclick='wClose()']")
     private WebElement close;
     @FindBy(id = "nxt_bt_a")
     private WebElement next;
-    private final WebDriverWait wait;
 
     public AdvertWindow(WebDriver driver) {
         super(driver);
@@ -32,7 +32,4 @@ public class AdvertWindow extends BasePage {
         wait.until(ExpectedConditions.visibilityOf(next)).click();
     }
 
-    public WebElement getNext() {
-        return next;
-    }
 }

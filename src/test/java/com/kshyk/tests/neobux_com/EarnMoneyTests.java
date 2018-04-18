@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import java.util.stream.IntStream;
-
 import static org.testng.Assert.assertTrue;
 
 public class EarnMoneyTests extends BaseTest {
@@ -42,10 +40,12 @@ public class EarnMoneyTests extends BaseTest {
             final int repeats = advertisementsPO.getChances();
             advertisementsPO.clickOnChances();
             final AdvertWindow advertPO = page.getInstance(AdvertWindow.class);
-            IntStream.range(0, repeats).forEach(x -> {
+            int counter = 1;
+            while (counter != repeats) {
                 advertPO.next();
-                wait.until(ExpectedConditions.invisibilityOf(advertPO.getNext()));
-            });
+                advertPO.sleep(5000);
+                counter++;
+            }
             advertPO.close();
         }
     }

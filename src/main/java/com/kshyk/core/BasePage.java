@@ -7,8 +7,6 @@ import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.interactions.internal.Locatable;
 
-import java.util.List;
-
 public class BasePage extends PageGenerator {
 
     protected BasePage(WebDriver driver) {
@@ -36,14 +34,6 @@ public class BasePage extends PageGenerator {
             return driver.findElement((By) elementAttr).getText();
         } else {
             return ((WebElement) elementAttr).getText();
-        }
-    }
-
-    public void handlePopup(By by) throws InterruptedException {
-        List<WebElement> popup = driver.findElements(by);
-        if (!popup.isEmpty()) {
-            popup.get(0).click();
-            Thread.sleep(200);
         }
     }
 
@@ -75,7 +65,7 @@ public class BasePage extends PageGenerator {
         return ((HasInputDevices) driver).getMouse();
     }
 
-    protected void sleep(final int millis) {
+    public void sleep(final int millis) {
         try {
             Thread.sleep(millis);
         } catch (final InterruptedException ex) {

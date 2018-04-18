@@ -16,8 +16,6 @@ public class AdvertisementsPage extends BasePage {
     private List<WebElement> activeAds;
     @FindBy(id = "ap_h")
     private WebElement adChances;
-    @FindBy(id = "ap_hct0")
-    private WebElement nullChances;
 
     public AdvertisementsPage(WebDriver driver) {
         super(driver);
@@ -47,7 +45,7 @@ public class AdvertisementsPage extends BasePage {
     }
 
     public boolean isNullChancesVisible() {
-        return nullChances.isDisplayed();
+        return driver.findElements(By.id("ap_hct0")).size() != 0;
     }
 
     public void clickOnChances() {
