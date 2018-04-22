@@ -21,7 +21,6 @@ public class HomePage extends BasePage {
 
     public LoginPage goToLoginPage() {
         click(signInButton);
-        //I want to chain LoginPage's methods so I return LoginPage by initializing its elements
         return PageFactory.initElements(driver, LoginPage.class);
     }
 

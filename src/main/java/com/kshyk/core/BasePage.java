@@ -1,9 +1,11 @@
 package com.kshyk.core;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.HasInputDevices;
+import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.interactions.internal.Locatable;
 
@@ -21,6 +23,10 @@ public class BasePage extends PageGenerator {
     protected <T> void writeText(final T elementAttr, final String text) {
         final boolean isItByElement = elementAttr.getClass().getName().contains("By");
         (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).sendKeys(text);
+    }
+
+    protected void pressKey(final Keys key) {
+        this.getKeyboard().pressKey(key);
     }
 
     protected <T> String readText(final T elementAttr) {
@@ -54,6 +60,10 @@ public class BasePage extends PageGenerator {
 
     private Mouse getMouse() {
         return ((HasInputDevices) driver).getMouse();
+    }
+
+    private Keyboard getKeyboard() {
+        return ((HasInputDevices) driver).getKeyboard();
     }
 
     public void sleep(final int millis) {
