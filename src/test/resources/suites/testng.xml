@@ -3,7 +3,9 @@
 <suite name="Full Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="4">
     <test name="All Tests">
         <packages>
-            <package name="com.kshyk.tests.*"/>
+            <package name="com.kshyk.tests.n11_com.*"/>
+            <package name="com.kshyk.tests.pajacyk_pl.*"/>
+            <package name="com.kshyk.tests.toolsqa_com.*"/>
         </packages>
     </test>
 </suite>
