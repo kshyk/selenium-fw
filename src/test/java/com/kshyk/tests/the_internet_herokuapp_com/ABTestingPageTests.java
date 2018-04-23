@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertTrue;
 
-public class ABTestingTests extends BaseTest {
+public class ABTestingPageTests extends BaseTest {
 
     @Test
     public void checkPage_IsABTestPageLoaded() {

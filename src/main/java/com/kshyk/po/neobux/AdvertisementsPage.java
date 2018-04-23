@@ -13,7 +13,7 @@ public class AdvertisementsPage extends BasePage {
     @FindBy(id = "sInf0")
     private WebElement resetInfoBar;
 
-    @FindBy(css = ".adfu,.adf")
+    @FindBy(css = ".adfu,.adf,.ad5,.ad15,.ad30")
     private List<WebElement> activeAds;
 
     @FindBy(id = "ap_h")

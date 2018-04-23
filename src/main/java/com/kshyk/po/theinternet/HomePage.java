@@ -16,6 +16,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/key_presses']")
     private WebElement keyPressesLink;
 
+    @FindBy(css = "a[href='/upload']")
+    private WebElement fileUploadLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -30,6 +33,10 @@ public class HomePage extends BasePage {
 
     public void goToKeyPresses() {
         click(keyPressesLink);
+    }
+
+    public void goToFileUpload() {
+        click(fileUploadLink);
     }
 
     public boolean isOpen() {
