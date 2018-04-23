@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Full Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="4">
+<suite name="Full Suite" verbose="1" configfailurepolicy="continue" parallel="classes" thread-count="2">
 
     <!--<test name="All Tests">-->
     <!--<packages>-->

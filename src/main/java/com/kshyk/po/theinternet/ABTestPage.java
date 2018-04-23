@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ABTestPage extends BasePage {
 
-    @FindBy(xpath = "//*[text()='A/B Test Control']")
+    @FindBy(xpath = "//*[contains(text(),'A/B Test')]")
     private WebElement title;
 
     public ABTestPage(final WebDriver driver) {
