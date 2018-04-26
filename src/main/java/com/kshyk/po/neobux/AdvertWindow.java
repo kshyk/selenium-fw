@@ -24,7 +24,7 @@ public class AdvertWindow extends BasePage {
 
     public void close() {
         wait.until(ExpectedConditions.visibilityOf(close)).click();
-        String firstTab = driver.getWindowHandles().stream().findFirst().get();
+        String firstTab = driver.getWindowHandles().stream().findFirst().orElse(null);
         driver.switchTo().window(firstTab);
     }
 

@@ -19,6 +19,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/upload']")
     private WebElement fileUploadLink;
 
+    @FindBy(css = "a[href='/hovers']")
+    private WebElement hoversLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -37,6 +40,10 @@ public class HomePage extends BasePage {
 
     public void goToFileUpload() {
         click(fileUploadLink);
+    }
+
+    public void goToHovers() {
+        click(hoversLink);
     }
 
     public boolean isOpen() {
