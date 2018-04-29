@@ -22,6 +22,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/hovers']")
     private WebElement hoversLink;
 
+    @FindBy(css = "a[href='/forgot_password']")
+    private WebElement forgotPasswordLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -44,6 +47,10 @@ public class HomePage extends BasePage {
 
     public void goToHovers() {
         click(hoversLink);
+    }
+
+    public void goToForgotPassword() {
+        click(forgotPasswordLink);
     }
 
     public boolean isOpen() {

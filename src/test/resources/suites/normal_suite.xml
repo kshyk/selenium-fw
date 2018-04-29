@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Normal Test Suite" verbose="1" configfailurepolicy="continue">
+
+    <test name="All Tests">
+
+        <packages>
+            <package name="com.kshyk.tests.n11_com.*"/>
+            <package name="com.kshyk.tests.pajacyk_pl.*"/>
+            <package name="com.kshyk.tests.the_internet_herokuapp_com.*"/>
+            <package name="com.kshyk.tests.toolsqa_com.*"/>
+        </packages>
+
+    </test>
+
+</suite>
