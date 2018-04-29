@@ -51,20 +51,20 @@ public class LoginPage extends BasePage {
 
     private void initCredentials() {
         Properties prop = new Properties();
-        InputStream input = null;
+        InputStream inStream = null;
         try {
-            input = this.getClass().getClassLoader().getResourceAsStream("creds.properties");
+            inStream = this.getClass().getClassLoader().getResourceAsStream("creds.properties");
             // load a properties file
-            prop.load(input);
+            prop.load(inStream);
             // set credential fields
             this.login = prop.getProperty("username");
             this.passwd = prop.getProperty("password");
         } catch (final IOException ex) {
             logger.error("Cannot read creds.properties file.", ex);
         } finally {
-            if (input != null) {
+            if (inStream != null) {
                 try {
-                    input.close();
+                    inStream.close();
                 } catch (final IOException ex) {
                     logger.error("Cannot close input file stream of creds.properties file.", ex);
                 }
