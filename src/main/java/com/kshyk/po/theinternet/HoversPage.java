@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+import java.util.Optional;
 
 public class HoversPage extends BasePage {
 
@@ -31,7 +32,8 @@ public class HoversPage extends BasePage {
     }
 
     public String getVisibleName() {
-        return names.stream().filter(WebElement::isDisplayed).findFirst().get().getText();
+        Optional<WebElement> element = names.stream().filter(WebElement::isDisplayed).findFirst();
+        return element.map(WebElement::getText).orElse(null);
     }
 
     public boolean isOpen() {
