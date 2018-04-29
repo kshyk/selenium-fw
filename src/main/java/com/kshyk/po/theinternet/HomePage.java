@@ -25,6 +25,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/forgot_password']")
     private WebElement forgotPasswordLink;
 
+    @FindBy(css = "a[href='/javascript_alerts']")
+    private WebElement jsAlertsLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -51,6 +54,10 @@ public class HomePage extends BasePage {
 
     public void goToForgotPassword() {
         click(forgotPasswordLink);
+    }
+
+    public void goToJSAlerts() {
+        click(jsAlertsLink);
     }
 
     public boolean isOpen() {

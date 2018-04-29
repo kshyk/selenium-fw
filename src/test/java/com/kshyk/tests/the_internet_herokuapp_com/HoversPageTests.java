@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
@@ -23,18 +24,13 @@ public class HoversPageTests extends BaseTest {
 
     @Test(dependsOnMethods = "checkPage_IsHoversPageLoaded")
     public void checkPage_IsAdditionalInfoPresentAfterHoverOverImage() {
-        final List<String> users = List.of("user1", "user2", "user3");
+        final Map<Integer, String> map = Map.of(0, "user1", 2, "user3", 1, "user2");
         final HoversPage hoversPO = page.getInstance(HoversPage.class);
         final List<WebElement> avatars = hoversPO.getAvatars();
-
-        hoversPO.mouseOverAvatar(avatars.get(0));
-        assertEquals(hoversPO.getVisibleName(), "name: " + users.get(0));
-
-        hoversPO.mouseOverAvatar(avatars.get(2));
-        assertEquals(hoversPO.getVisibleName(), "name: " + users.get(2));
-
-        hoversPO.mouseOverAvatar(avatars.get(1));
-        assertEquals(hoversPO.getVisibleName(), "name: " + users.get(1));
+        map.forEach((index, name) -> {
+            hoversPO.mouseOverAvatar(avatars.get(index));
+            assertEquals(hoversPO.getVisibleName(), "name: " + name);
+        });
     }
 
 }
