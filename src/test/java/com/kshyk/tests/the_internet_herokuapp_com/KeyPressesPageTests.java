@@ -12,15 +12,15 @@ import static org.testng.Assert.assertTrue;
 public class KeyPressesPageTests extends BaseTest {
 
     @Test
-    public void checkPage_IsKeyPressesPageLoaded() {
+    public void isKeyPressesPageLoaded() {
         page.getInstance(HomePage.class).goToHerokuapp();
         page.getInstance(HomePage.class).goToKeyPresses();
         assertTrue(page.getInstance(KeyPressesPage.class).isOpen(),
                 KeyPressesPage.class.getSimpleName() + " is not loaded.");
     }
 
-    @Test(dependsOnMethods = "checkPage_IsKeyPressesPageLoaded")
-    public void checkPage_IsKeyProperlyEntered() {
+    @Test(dependsOnMethods = "isKeyPressesPageLoaded")
+    public void isKeyProperlyEntered() {
         final Keys control = Keys.CONTROL;
         final String expected = "You entered: " + control.name();
         final String actual = page.getInstance(KeyPressesPage.class).pressKeyAndGetResult(control);

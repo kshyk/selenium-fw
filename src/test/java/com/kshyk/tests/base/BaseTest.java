@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
@@ -18,7 +16,6 @@ public class BaseTest {
     protected WebDriverWait wait;
     protected PageGenerator page;
     protected WebDriver driver;
-    protected Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
     @BeforeClass
     public void setup() {

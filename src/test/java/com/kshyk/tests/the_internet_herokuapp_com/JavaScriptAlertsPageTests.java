@@ -14,31 +14,31 @@ public class JavaScriptAlertsPageTests extends BaseTest {
     private JavaScriptAlertsPage jsAlertsPO;
 
     @Test
-    public void checkPage_IsJavaScriptAlertsPageLoaded() {
+    public void isJavaScriptAlertsPageLoaded() {
         page.getInstance(HomePage.class).goToHerokuapp();
         page.getInstance(HomePage.class).goToJSAlerts();
         this.jsAlertsPO = page.getInstance(JavaScriptAlertsPage.class);
         assertTrue(this.jsAlertsPO.isOpen(), JavaScriptAlertsPage.class.getSimpleName() + " is not loaded.");
     }
 
-    @Test(dependsOnMethods = "checkPage_IsJavaScriptAlertsPageLoaded")
-    public void checkPage_IsSimpleAlertAppeared() {
+    @Test(dependsOnMethods = "isJavaScriptAlertsPageLoaded")
+    public void isSimpleAlertAppeared() {
         this.jsAlertsPO.alert();
         this.driver.switchTo().alert().accept();
         final String expected = "You successfuly clicked an alert";
         assertEquals(this.jsAlertsPO.getResult(), expected);
     }
 
-    @Test(dependsOnMethods = "checkPage_IsSimpleAlertAppeared")
-    public void checkPage_IsConfirmAlertCancelled() {
+    @Test(dependsOnMethods = "isSimpleAlertAppeared")
+    public void isConfirmAlertCancelled() {
         this.jsAlertsPO.confirm();
         this.driver.switchTo().alert().dismiss();
         final String expected = "You clicked: Cancel";
         assertEquals(this.jsAlertsPO.getResult(), expected);
     }
 
-    @Test(dependsOnMethods = "checkPage_IsConfirmAlertCancelled")
-    public void checkPage_IsPromptAlertSaveText() {
+    @Test(dependsOnMethods = "isConfirmAlertCancelled")
+    public void isPromptAlertSaveText() {
         this.jsAlertsPO.prompt();
         final String value = "I'm typing in here!";
         final Alert alert = driver.switchTo().alert();

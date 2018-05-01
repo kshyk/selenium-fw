@@ -28,6 +28,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/javascript_alerts']")
     private WebElement jsAlertsLink;
 
+    @FindBy(css = "a[href='/windows']")
+    private WebElement multipleWindowsLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -58,6 +61,10 @@ public class HomePage extends BasePage {
 
     public final void goToJSAlerts() {
         click(jsAlertsLink);
+    }
+
+    public final void goToMultipleWindows() {
+        click(multipleWindowsLink);
     }
 
     public final boolean isOpen() {

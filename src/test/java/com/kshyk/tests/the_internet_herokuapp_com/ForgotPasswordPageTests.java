@@ -14,15 +14,15 @@ import static org.testng.Assert.assertTrue;
 public class ForgotPasswordPageTests extends BaseTest {
 
     @Test
-    public void checkPage_IsForgotPasswordPageLoaded() {
+    public void isForgotPasswordPageLoaded() {
         page.getInstance(HomePage.class).goToHerokuapp();
         page.getInstance(HomePage.class).goToForgotPassword();
         assertTrue(page.getInstance(ForgotPasswordPage.class).isOpen(),
                 ForgotPasswordPage.class.getSimpleName() + " is not loaded.");
     }
 
-    @Test(dependsOnMethods = "checkPage_IsForgotPasswordPageLoaded")
-    public void checkPage_IsPasswordReset() {
+    @Test(dependsOnMethods = "isForgotPasswordPageLoaded")
+    public void isPasswordReset() {
         final String email = "test@example.com";
         final Pattern successMessage = Pattern.compile("Your e-mail's been sent!");
         page.getInstance(ForgotPasswordPage.class).resetPassword(email);

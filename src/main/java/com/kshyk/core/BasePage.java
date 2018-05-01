@@ -9,6 +9,9 @@ import org.openqa.selenium.interactions.Keyboard;
 import org.openqa.selenium.interactions.Mouse;
 import org.openqa.selenium.interactions.internal.Locatable;
 
+import java.util.Optional;
+import java.util.stream.Stream;
+
 public class BasePage extends PageGenerator {
 
     protected BasePage(final WebDriver driver) {
@@ -46,11 +49,9 @@ public class BasePage extends PageGenerator {
     }
 
     protected void clickFirstVisibleElement(final By elementAttr) {
-        getDriver().findElements(elementAttr).forEach(element -> {
-            if (element.isDisplayed()) {
-                click(element);
-            }
-        });
+        final Stream<WebElement> stream = getDriver().findElements(elementAttr).stream();
+        final Optional<WebElement> optionalElement = stream.filter(WebElement::isDisplayed).findFirst();
+        optionalElement.ifPresent(WebElement::click);
     }
 
     private <T> Locatable getLocatable(final T elementAttr) {
@@ -76,5 +77,11 @@ public class BasePage extends PageGenerator {
 
     protected boolean isElementPresent(final By by) {
         return getDriver().findElements(by).size() != 0;
+    }
+
+    public void switchToLastTab() {
+        final Stream<String> stream = getDriver().getWindowHandles().stream();
+        final Optional<String> optional = stream.reduce((first, second) -> second);
+        optional.ifPresent(tab -> getDriver().switchTo().window(tab));
     }
 }
