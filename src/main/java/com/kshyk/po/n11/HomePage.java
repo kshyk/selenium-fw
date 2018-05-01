@@ -15,13 +15,13 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void goToN11() {
-        driver.get("http://www.n11.com/");
+    public final void goToN11() {
+        getDriver().get("http://www.n11.com/");
     }
 
-    public LoginPage goToLoginPage() {
+    public final LoginPage goToLoginPage() {
         click(signInButton);
-        return PageFactory.initElements(driver, LoginPage.class);
+        return PageFactory.initElements(getDriver(), LoginPage.class);
     }
 
 }

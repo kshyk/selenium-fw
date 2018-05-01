@@ -25,15 +25,15 @@ public class FileUploadPage extends BasePage {
         super(driver);
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 
-    public String getUploadedFileName() {
+    public final String getUploadedFileName() {
         return this.uploadedFiles.getText();
     }
 
-    public void uploadFile(final File file) {
+    public final void uploadFile(final File file) {
         this.browseFileButton.sendKeys(file.getAbsolutePath());
         click(uploadButton);
     }

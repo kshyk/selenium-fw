@@ -17,12 +17,12 @@ public class BasePage extends PageGenerator {
 
     protected <T> void click(final T elementAttr) {
         final boolean isItByElement = elementAttr.getClass().getName().contains("By");
-        (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).click();
+        (isItByElement ? getDriver().findElement((By) elementAttr) : ((WebElement) elementAttr)).click();
     }
 
     protected <T> void writeText(final T elementAttr, final String text) {
         final boolean isItByElement = elementAttr.getClass().getName().contains("By");
-        (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).sendKeys(text);
+        (isItByElement ? getDriver().findElement((By) elementAttr) : ((WebElement) elementAttr)).sendKeys(text);
     }
 
     protected void pressKey(final Keys key) {
@@ -31,7 +31,7 @@ public class BasePage extends PageGenerator {
 
     protected <T> String readText(final T elementAttr) {
         final boolean isItByElement = elementAttr.getClass().getName().contains("By");
-        return (isItByElement ? driver.findElement((By) elementAttr) : ((WebElement) elementAttr)).getText();
+        return (isItByElement ? getDriver().findElement((By) elementAttr) : ((WebElement) elementAttr)).getText();
     }
 
     protected <T> void mouseOver(final T elementAttr) {
@@ -46,7 +46,7 @@ public class BasePage extends PageGenerator {
     }
 
     protected void clickFirstVisibleElement(final By elementAttr) {
-        driver.findElements(elementAttr).forEach(element -> {
+        getDriver().findElements(elementAttr).forEach(element -> {
             if (element.isDisplayed()) {
                 click(element);
             }
@@ -55,26 +55,26 @@ public class BasePage extends PageGenerator {
 
     private <T> Locatable getLocatable(final T elementAttr) {
         return elementAttr.getClass().getName().contains("By") ?
-                ((Locatable) driver.findElement((By) elementAttr)) : ((Locatable) elementAttr);
+                ((Locatable) getDriver().findElement((By) elementAttr)) : ((Locatable) elementAttr);
     }
 
     private Mouse getMouse() {
-        return ((HasInputDevices) driver).getMouse();
+        return ((HasInputDevices) getDriver()).getMouse();
     }
 
     private Keyboard getKeyboard() {
-        return ((HasInputDevices) driver).getKeyboard();
+        return ((HasInputDevices) getDriver()).getKeyboard();
     }
 
     public void sleep(final int millis) {
         try {
             Thread.sleep(millis);
         } catch (final InterruptedException ex) {
-            logger.error("Unable to execute sleep thread.", ex);
+            getLogger().error("Unable to execute sleep thread.", ex);
         }
     }
 
     protected boolean isElementPresent(final By by) {
-        return driver.findElements(by).size() != 0;
+        return getDriver().findElements(by).size() != 0;
     }
 }

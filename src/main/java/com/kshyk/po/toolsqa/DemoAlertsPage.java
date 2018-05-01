@@ -22,19 +22,19 @@ public class DemoAlertsPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void goToDemoAlerts() {
-        driver.get("http://toolsqa.com/handling-alerts-using-selenium-webdriver/");
+    public final void goToDemoAlerts() {
+        getDriver().get("http://toolsqa.com/handling-alerts-using-selenium-webdriver/");
     }
 
-    public void pressSimpleAlertButton() {
+    public final void pressSimpleAlertButton() {
         mouseOverAndClick(simpleAlertButton);
     }
 
-    public void pressConfirmAlertButton() {
+    public final void pressConfirmAlertButton() {
         mouseOverAndClick(confirmAlertButton);
     }
 
-    public void pressPromptAlertButton() {
+    public final void pressPromptAlertButton() {
         mouseOverAndClick(promptAlertButton);
     }
 

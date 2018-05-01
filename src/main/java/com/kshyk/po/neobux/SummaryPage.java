@@ -16,7 +16,7 @@ public class SummaryPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getClicksChart() {
+    public final WebElement getClicksChart() {
         return clicksChart;
     }
 }

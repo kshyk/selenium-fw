@@ -36,7 +36,7 @@ public class HoversPage extends BasePage {
         return element.map(WebElement::getText).orElse(null);
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 }

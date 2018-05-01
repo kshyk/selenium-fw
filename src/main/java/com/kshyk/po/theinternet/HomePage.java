@@ -32,35 +32,35 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void goToHerokuapp() {
-        this.driver.get("http://the-internet.herokuapp.com/");
+    public final void goToHerokuapp() {
+        getDriver().get("http://the-internet.herokuapp.com/");
     }
 
-    public void goToABTest() {
+    public final void goToABTest() {
         click(abTestingLink);
     }
 
-    public void goToKeyPresses() {
+    public final void goToKeyPresses() {
         click(keyPressesLink);
     }
 
-    public void goToFileUpload() {
+    public final void goToFileUpload() {
         click(fileUploadLink);
     }
 
-    public void goToHovers() {
+    public final void goToHovers() {
         click(hoversLink);
     }
 
-    public void goToForgotPassword() {
+    public final void goToForgotPassword() {
         click(forgotPasswordLink);
     }
 
-    public void goToJSAlerts() {
+    public final void goToJSAlerts() {
         click(jsAlertsLink);
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 

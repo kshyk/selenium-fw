@@ -29,12 +29,12 @@ public class ForgotPasswordPage extends BasePage {
         this.emailInput.sendKeys(email);
     }
 
-    public void resetPassword(final String email) {
+    public final void resetPassword(final String email) {
         this.typeEmail(email);
         this.pressRetrieveButton();
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 }

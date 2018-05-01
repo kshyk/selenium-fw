@@ -23,17 +23,17 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void loginToN11(final String username, final String password) {
+    public final void loginToN11(final String username, final String password) {
         writeText(this.username, username);
         writeText(this.password, password);
         click(this.loginButton);
     }
 
-    public void verifyLoginUserName(final String expectedText) {
+    public final void verifyLoginUserName(final String expectedText) {
         Assert.assertEquals(readText(this.errorMessageUsername), expectedText);
     }
 
-    public void verifyLoginPassword(final String expectedText) {
+    public final void verifyLoginPassword(final String expectedText) {
         Assert.assertEquals(readText(this.errorMessagePassword), expectedText);
     }
 }

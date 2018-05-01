@@ -26,23 +26,23 @@ public class JavaScriptAlertsPage extends BasePage {
         super(driver);
     }
 
-    public void alert() {
+    public final void alert() {
         this.alertButton.click();
     }
 
-    public void confirm() {
+    public final void confirm() {
         this.confirmButton.click();
     }
 
-    public void prompt() {
+    public final void prompt() {
         this.promptButton.click();
     }
 
-    public String getResult() {
+    public final String getResult() {
         return this.result.getText();
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 }

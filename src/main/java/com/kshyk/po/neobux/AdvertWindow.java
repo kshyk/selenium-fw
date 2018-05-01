@@ -22,13 +22,13 @@ public class AdvertWindow extends BasePage {
         wait = new WebDriverWait(driver, 90);
     }
 
-    public void close() {
+    public final void close() {
         wait.until(ExpectedConditions.visibilityOf(close)).click();
-        String firstTab = driver.getWindowHandles().stream().findFirst().orElse(null);
-        driver.switchTo().window(firstTab);
+        String firstTab = getDriver().getWindowHandles().stream().findFirst().orElse(null);
+        getDriver().switchTo().window(firstTab);
     }
 
-    public void next() {
+    public final void next() {
         wait.until(ExpectedConditions.visibilityOf(next)).click();
     }
 

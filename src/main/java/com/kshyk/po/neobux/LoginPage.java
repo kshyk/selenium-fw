@@ -25,11 +25,11 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void goToMemberLogin() {
-        driver.get("https://www.neobux.com/m/l/");
+    public final void goToMemberLogin() {
+        getDriver().get("https://www.neobux.com/m/l/");
     }
 
-    public void fillCredentials() {
+    public final void fillCredentials() {
         if ((this.login == null) && this.passwd == null) {
             this.initCredentials();
         }
@@ -37,15 +37,15 @@ public class LoginPage extends BasePage {
         writeText(this.password, this.passwd);
     }
 
-    public void send() {
+    public final void send() {
         click(this.send);
     }
 
-    public boolean isCaptchaVisible() {
+    public final boolean isCaptchaVisible() {
         return captcha.isDisplayed();
     }
 
-    public WebElement getCaptcha() {
+    public final WebElement getCaptcha() {
         return captcha;
     }
 
@@ -60,13 +60,13 @@ public class LoginPage extends BasePage {
             this.login = prop.getProperty("username");
             this.passwd = prop.getProperty("password");
         } catch (final IOException ex) {
-            logger.error("Cannot read creds.properties file.", ex);
+            getLogger().error("Cannot read creds.properties file.", ex);
         } finally {
             if (inStream != null) {
                 try {
                     inStream.close();
                 } catch (final IOException ex) {
-                    logger.error("Cannot close input file stream of creds.properties file.", ex);
+                    getLogger().error("Cannot close input file stream of creds.properties file.", ex);
                 }
             }
         }

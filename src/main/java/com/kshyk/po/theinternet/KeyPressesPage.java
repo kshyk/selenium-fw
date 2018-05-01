@@ -18,11 +18,11 @@ public class KeyPressesPage extends BasePage {
         super(driver);
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return this.title.isDisplayed();
     }
 
-    public String pressKeyAndGetResult(final Keys key) {
+    public final String pressKeyAndGetResult(final Keys key) {
         this.pressKey(key);
         return this.getResult();
     }

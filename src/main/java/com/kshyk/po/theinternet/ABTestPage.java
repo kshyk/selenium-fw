@@ -14,7 +14,7 @@ public class ABTestPage extends BasePage {
         super(driver);
     }
 
-    public boolean isOpen() {
+    public final boolean isOpen() {
         return title.isDisplayed();
     }
 }

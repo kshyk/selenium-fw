@@ -23,7 +23,7 @@ public class AdvertisementsPage extends BasePage {
         super(driver);
     }
 
-    public boolean isOpened() {
+    public final boolean isOpened() {
         return resetInfoBar.isDisplayed();
     }
 
@@ -39,7 +39,7 @@ public class AdvertisementsPage extends BasePage {
     public void clickOnRedDot(By dotElem) {
         sleep(1000);
         clickFirstVisibleElement(dotElem);
-        driver.getWindowHandles().forEach(handle -> driver.switchTo().window(handle));
+        getDriver().getWindowHandles().forEach(handle -> getDriver().switchTo().window(handle));
     }
 
     public int getChances() {
@@ -53,6 +53,6 @@ public class AdvertisementsPage extends BasePage {
     public void clickOnChances() {
         sleep(1500);
         mouseOverAndClick(adChances);
-        driver.getWindowHandles().forEach(handle -> driver.switchTo().window(handle));
+        getDriver().getWindowHandles().forEach(handle -> getDriver().switchTo().window(handle));
     }
 }

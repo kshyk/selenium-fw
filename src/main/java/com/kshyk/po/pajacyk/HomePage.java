@@ -16,11 +16,11 @@ public class HomePage extends BasePage {
         super(driver);
     }
 
-    public void goToPajacyk() {
-        driver.get("https://www.pajacyk.pl/#index");
+    public final void goToPajacyk() {
+        getDriver().get("https://www.pajacyk.pl/#index");
     }
 
-    public void clickOnBelly() {
+    public final void clickOnBelly() {
         mouseOver(greenBellyBefore);
         click(yellowBellyHover);
     }

@@ -16,8 +16,8 @@ public class Toolbar extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public AdvertisementsPage goToViewAdvertisements() {
+    public final AdvertisementsPage goToViewAdvertisements() {
         mouseOverAndClick(this.viewAdvertisements);
-        return PageFactory.initElements(driver, AdvertisementsPage.class);
+        return PageFactory.initElements(getDriver(), AdvertisementsPage.class);
     }
 }
