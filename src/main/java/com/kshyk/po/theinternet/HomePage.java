@@ -31,6 +31,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/windows']")
     private WebElement multipleWindowsLink;
 
+    @FindBy(css = "a[href='/tinymce']")
+    private WebElement tinyMCELink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -65,6 +68,10 @@ public class HomePage extends BasePage {
 
     public final void goToMultipleWindows() {
         click(multipleWindowsLink);
+    }
+
+    public final void goToTinyMCE() {
+        click(tinyMCELink);
     }
 
     public final boolean isOpen() {
