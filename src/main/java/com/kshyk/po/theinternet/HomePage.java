@@ -34,6 +34,9 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/tinymce']")
     private WebElement tinyMCELink;
 
+    @FindBy(css = "a[href='/nested_frames']")
+    private WebElement nestedFramesLink;
+
     public HomePage(final WebDriver driver) {
         super(driver);
     }
@@ -72,6 +75,10 @@ public class HomePage extends BasePage {
 
     public final void goToTinyMCE() {
         click(tinyMCELink);
+    }
+
+    public final void goToNestedFrames() {
+        click(nestedFramesLink);
     }
 
     public final boolean isOpen() {
