@@ -10,8 +10,8 @@ public class PageGenerator {
     private final WebDriver driver;
     private final Logger logger = LoggerFactory.getLogger(PageGenerator.class);
 
-    public PageGenerator(WebDriver driver) {
-        this.driver = driver;
+    public PageGenerator(final WebDriver wd) {
+        this.driver = wd;
     }
 
     public final <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
@@ -27,7 +27,7 @@ public class PageGenerator {
         return driver;
     }
 
-    public final Logger getLogger() {
+    protected final Logger getLogger() {
         return logger;
     }
 }

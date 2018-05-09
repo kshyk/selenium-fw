@@ -10,23 +10,21 @@ import org.testng.annotations.Test;
 public class LoginTests extends BaseTest {
 
     @Test
-    public void invalidLoginTest_InvalidUserNameInvalidPassword() {
-        page.getInstance(HomePage.class).goToN11();
-        page.getInstance(HomePage.class).goToLoginPage().loginToN11("onur@swtestacademy.com", "11223344");
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='E-posta adresiniz veya şifreniz hatalı']")));
-        page.getInstance(LoginPage.class).verifyLoginPassword(("E-posta adresiniz veya şifreniz hatalı"));
+    public final void invalidUserNameInvalidPassword() {
+        getPage().getInstance(HomePage.class).goToN11();
+        getPage().getInstance(HomePage.class).goToLoginPage().loginToN11("onur@swtestacademy.com", "11223344");
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='E-posta adresiniz veya şifreniz hatalı']")));
+        getPage().getInstance(LoginPage.class).verifyLoginPassword(("E-posta adresiniz veya şifreniz hatalı"));
     }
 
     @Test
-    public void invalidLoginTest_EmptyUserEmptyPassword() {
-        page.getInstance(HomePage.class).goToN11();
-        page.getInstance(HomePage.class).goToLoginPage().loginToN11("", "");
-
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Lütfen e-posta adresinizi girin.']")));
-        page.getInstance(LoginPage.class).verifyLoginUserName("Lütfen e-posta adresinizi girin.");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Bu alanın doldurulması zorunludur.']")));
-        page.getInstance(LoginPage.class).verifyLoginPassword("Bu alanın doldurulması zorunludur.");
+    public final void emptyUserEmptyPassword() {
+        getPage().getInstance(HomePage.class).goToN11();
+        getPage().getInstance(HomePage.class).goToLoginPage().loginToN11("", "");
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Lütfen e-posta adresinizi girin.']")));
+        getPage().getInstance(LoginPage.class).verifyLoginUserName("Lütfen e-posta adresinizi girin.");
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='Bu alanın doldurulması zorunludur.']")));
+        getPage().getInstance(LoginPage.class).verifyLoginPassword("Bu alanın doldurulması zorunludur.");
     }
 
 }

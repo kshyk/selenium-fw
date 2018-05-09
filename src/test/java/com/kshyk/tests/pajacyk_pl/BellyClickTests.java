@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 public class BellyClickTests extends BaseTest {
 
     @Test
-    public void clickOnBellyTest() {
-        page.getInstance(HomePage.class).goToPajacyk();
-        page.getInstance(HomePage.class).clickOnBelly();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='dziękujemy :)']")));
+    public final void clickOnBellyTest() {
+        getPage().getInstance(HomePage.class).goToPajacyk();
+        getPage().getInstance(HomePage.class).clickOnBelly();
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='dziękujemy :)']")));
     }
 
 }

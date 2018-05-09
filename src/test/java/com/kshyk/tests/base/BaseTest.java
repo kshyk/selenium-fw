@@ -11,22 +11,23 @@ import org.testng.annotations.BeforeClass;
 import java.io.File;
 import java.util.Objects;
 
-public class BaseTest {
+public abstract class BaseTest {
 
-    protected WebDriverWait wait;
-    protected PageGenerator page;
-    protected WebDriver driver;
+    private static final int NORMAL_TIMEOUT = 15;
+    private WebDriverWait wait;
+    private PageGenerator page;
+    private WebDriver driver;
 
     @BeforeClass
-    public void setup() {
+    public final void setup() {
         driver = this.getChromeDriver();
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, NORMAL_TIMEOUT);
         driver.manage().window().maximize();
         page = new PageGenerator(driver);
     }
 
     @AfterClass
-    public void teardown() {
+    public final void teardown() {
         if (driver != null) {
             driver.quit();
         }
@@ -40,5 +41,17 @@ public class BaseTest {
         chromeOptions.addArguments("--disable-extensions");
         chromeOptions.addArguments("--disable-infobars");
         return new ChromeDriver(chromeOptions);
+    }
+
+    protected final WebDriverWait getWait() {
+        return wait;
+    }
+
+    protected final PageGenerator getPage() {
+        return page;
+    }
+
+    protected final WebDriver getDriver() {
+        return driver;
     }
 }

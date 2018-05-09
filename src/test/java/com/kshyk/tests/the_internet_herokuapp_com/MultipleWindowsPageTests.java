@@ -19,27 +19,27 @@ public class MultipleWindowsPageTests extends BaseTest {
 
     @Test
     public void isMultipleWindowsPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToMultipleWindows();
-        multipleWindowsPO = page.getInstance(MultipleWindowsPage.class);
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToMultipleWindows();
+        multipleWindowsPO = getPage().getInstance(MultipleWindowsPage.class);
         assertTrue(multipleWindowsPO.isOpen(), MultipleWindowsPage.class.getSimpleName() + " is not loaded.");
     }
 
     @Test(dependsOnMethods = "isMultipleWindowsPageLoaded")
     public void isNewWindowOpened() {
         multipleWindowsPO.openNewWindow();
-        wait.until(ExpectedConditions.numberOfWindowsToBe(2));
+        getWait().until(ExpectedConditions.numberOfWindowsToBe(2));
         multipleWindowsPO.switchToLastTab();
         final Pattern resultText = Pattern.compile("New Window");
-        wait.until(ExpectedConditions.textMatches(By.tagName("body"), resultText));
+        getWait().until(ExpectedConditions.textMatches(By.tagName("body"), resultText));
     }
 
     @Test(dependsOnMethods = "isNewWindowOpened")
     public void isDefaultContentPresentAfterNewWindowClose() {
-        final Stream<String> stream = page.getDriver().getWindowHandles().stream();
+        final Stream<String> stream = getPage().getDriver().getWindowHandles().stream();
         final Optional<String> rootTab = stream.findFirst();
-        page.getDriver().close();
-        rootTab.ifPresent(tab -> page.getDriver().switchTo().window(tab));
+        getPage().getDriver().close();
+        rootTab.ifPresent(tab -> getPage().getDriver().switchTo().window(tab));
         assertTrue(multipleWindowsPO.isOpen(), MultipleWindowsPage.class.getSimpleName() + " is not loaded.");
     }
 

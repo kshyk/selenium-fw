@@ -16,35 +16,35 @@ public class NestedFramesPageTests extends BaseTest {
     private NestedFramesPage nestedFramesPO;
 
     @Test
-    public void isNestedFramesPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToNestedFrames();
-        nestedFramesPO = page.getInstance(NestedFramesPage.class);
+    public final void isNestedFramesPageLoaded() {
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToNestedFrames();
+        nestedFramesPO = getPage().getInstance(NestedFramesPage.class);
         assertTrue(nestedFramesPO.isOpen(), NestedFramesPage.class.getSimpleName() + " is not loaded.");
     }
 
     @Test(dependsOnMethods = "isNestedFramesPageLoaded")
-    public void isBottomFrameLocatedProperly() {
+    public final void isBottomFrameLocatedProperly() {
         nestedFramesPO.switchToBottom();
-        wait.until(ExpectedConditions.textToBe(body, "BOTTOM"));
+        getWait().until(ExpectedConditions.textToBe(body, "BOTTOM"));
     }
 
     @Test(dependsOnMethods = "isNestedFramesPageLoaded")
-    public void isLeftFrameLocatedProperly() {
+    public final void isLeftFrameLocatedProperly() {
         nestedFramesPO.switchToLeft();
-        wait.until(ExpectedConditions.textToBe(body, "LEFT"));
+        getWait().until(ExpectedConditions.textToBe(body, "LEFT"));
     }
 
     @Test(dependsOnMethods = "isNestedFramesPageLoaded")
-    public void isMiddleFrameLocatedProperly() {
+    public final void isMiddleFrameLocatedProperly() {
         nestedFramesPO.switchToMiddle();
-        wait.until(ExpectedConditions.textToBe(body, "MIDDLE"));
+        getWait().until(ExpectedConditions.textToBe(body, "MIDDLE"));
     }
 
     @Test(dependsOnMethods = "isNestedFramesPageLoaded")
-    public void isRightFrameLocatedProperly() {
+    public final void isRightFrameLocatedProperly() {
         nestedFramesPO.switchToRight();
-        wait.until(ExpectedConditions.textToBe(body, "RIGHT"));
+        getWait().until(ExpectedConditions.textToBe(body, "RIGHT"));
     }
 
 }

@@ -23,9 +23,9 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public final void loginToN11(final String username, final String password) {
-        writeText(this.username, username);
-        writeText(this.password, password);
+    public final void loginToN11(final String uName, final String passwd) {
+        writeText(this.username, uName);
+        writeText(this.password, passwd);
         click(this.loginButton);
     }
 

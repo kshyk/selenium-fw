@@ -13,21 +13,21 @@ import static org.testng.Assert.assertTrue;
 public class TinyMCEPageTests extends BaseTest {
 
     @Test
-    public void isTinyMCEPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToTinyMCE();
-        assertTrue(page.getInstance(TinyMCEPage.class).isOpen(),
+    public final void isTinyMCEPageLoaded() {
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToTinyMCE();
+        assertTrue(getPage().getInstance(TinyMCEPage.class).isOpen(),
                 TinyMCEPage.class.getSimpleName() + " is not loaded.");
     }
 
     @Test(dependsOnMethods = "isTinyMCEPageLoaded")
-    public void clearAndSetNewContent() {
+    public final void clearAndSetNewContent() {
         this.setContent("");
         this.setContent(LocalDateTime.now().toString());
     }
 
     private void setContent(final String content) {
-        JavascriptExecutor jse = (JavascriptExecutor) driver;
+        JavascriptExecutor jse = (JavascriptExecutor) getDriver();
         jse.executeScript("tinymce.activeEditor.setContent(arguments[0]);", content);
     }
 }

@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AdvertWindow extends BasePage {
 
+    private static final int LONG_TIMEOUT = 90;
     private final WebDriverWait wait;
     @FindBy(css = "[onclick='wClose()']")
     private WebElement close;
@@ -19,7 +20,7 @@ public class AdvertWindow extends BasePage {
     public AdvertWindow(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
-        wait = new WebDriverWait(driver, 90);
+        wait = new WebDriverWait(driver, LONG_TIMEOUT);
     }
 
     public final void close() {

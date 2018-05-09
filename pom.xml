@@ -5,13 +5,13 @@
     <groupId>com.kshyk</groupId>
     <artifactId>selenium-kshyk</artifactId>
     <packaging>jar</packaging>
-    <version>${project.version}</version>
+    <version>0.3.0</version>
     <name>selenium-kshyk</name>
 
     <properties>
-        <project.version>0.1.0</project.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
-        <java-base.version>1.9</java-base.version>
+        <java-base.version>10</java-base.version>
     </properties>
 
     <dependencies>

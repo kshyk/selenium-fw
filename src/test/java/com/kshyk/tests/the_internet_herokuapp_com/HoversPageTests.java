@@ -16,16 +16,16 @@ public class HoversPageTests extends BaseTest {
 
     @Test
     public void isHoversPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToHovers();
-        assertTrue(page.getInstance(HoversPage.class).isOpen(),
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToHovers();
+        assertTrue(getPage().getInstance(HoversPage.class).isOpen(),
                 HoversPage.class.getSimpleName() + " is not loaded.");
     }
 
     @Test(dependsOnMethods = "isHoversPageLoaded")
     public void isAdditionalInfoPresentAfterHoverOverImage() {
         final Map<Integer, String> map = Map.of(0, "user1", 2, "user3", 1, "user2");
-        final HoversPage hoversPO = page.getInstance(HoversPage.class);
+        final HoversPage hoversPO = getPage().getInstance(HoversPage.class);
         final List<WebElement> avatars = hoversPO.getAvatars();
         map.forEach((index, name) -> {
             hoversPO.mouseOverAvatar(avatars.get(index));

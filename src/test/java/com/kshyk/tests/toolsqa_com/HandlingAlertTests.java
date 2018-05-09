@@ -8,29 +8,29 @@ import org.testng.annotations.Test;
 public class HandlingAlertTests extends BaseTest {
 
     @Test
-    public void handleAlert_ConfirmSimpleAlertTest() {
-        DemoAlertsPage demoAlertsPO = page.getInstance(DemoAlertsPage.class);
+    public final void confirmSimpleAlertTest() {
+        DemoAlertsPage demoAlertsPO = getPage().getInstance(DemoAlertsPage.class);
         demoAlertsPO.goToDemoAlerts();
         demoAlertsPO.pressSimpleAlertButton();
-        driver.switchTo().alert().accept();
+        getDriver().switchTo().alert().accept();
     }
 
     @Test
-    public void handleAlert_DismissAlertBoxTest() {
-        page.getInstance(DemoAlertsPage.class).pressConfirmAlertButton();
-        driver.switchTo().alert().dismiss();
+    public final void dismissAlertBoxTest() {
+        getPage().getInstance(DemoAlertsPage.class).pressConfirmAlertButton();
+        getDriver().switchTo().alert().dismiss();
     }
 
     @Test
-    public void handleAlert_DismissPromptAlertBoxTest() {
-        page.getInstance(DemoAlertsPage.class).pressPromptAlertButton();
-        driver.switchTo().alert().dismiss();
+    public final void dismissPromptAlertBoxTest() {
+        getPage().getInstance(DemoAlertsPage.class).pressPromptAlertButton();
+        getDriver().switchTo().alert().dismiss();
     }
 
     @Test
-    public void handleAlert_ConfirmWithTextPromptAlertBoxTest() {
-        page.getInstance(DemoAlertsPage.class).pressPromptAlertButton();
-        final Alert alert = driver.switchTo().alert();
+    public final void confirmWithTextPromptAlertBoxTest() {
+        getPage().getInstance(DemoAlertsPage.class).pressPromptAlertButton();
+        final Alert alert = getDriver().switchTo().alert();
         alert.sendKeys("lubię to!");
         alert.accept();
     }

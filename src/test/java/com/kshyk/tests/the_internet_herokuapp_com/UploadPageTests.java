@@ -19,23 +19,23 @@ import static org.testng.Assert.assertTrue;
 public class UploadPageTests extends BaseTest {
 
     @Test
-    public void checkPage_IsUploadPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToFileUpload();
-        assertTrue(page.getInstance(FileUploadPage.class).isOpen(),
+    public final void isUploadPageLoaded() {
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToFileUpload();
+        assertTrue(getPage().getInstance(FileUploadPage.class).isOpen(),
                 FileUploadPage.class.getSimpleName() + " is not loaded.");
     }
 
-    @Test(dependsOnMethods = "checkPage_IsUploadPageLoaded")
-    public void checkPage_IsFileProperlyUploaded() throws URISyntaxException {
+    @Test(dependsOnMethods = "isUploadPageLoaded")
+    public final void isFileProperlyUploaded() throws URISyntaxException {
         final ClassLoader classLoader = UploadPageTests.class.getClassLoader();
         final URL resource = classLoader.getResource("upload/not_empty.txt");
         final URI fileURI = Objects.requireNonNull(resource).toURI();
         final File emptyFile = new File(fileURI);
-        page.getInstance(FileUploadPage.class).uploadFile(emptyFile);
-        wait.until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h3"), "File Uploaded!"));
+        getPage().getInstance(FileUploadPage.class).uploadFile(emptyFile);
+        getWait().until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h3"), "File Uploaded!"));
         final String expected = emptyFile.getName();
-        final String actual = page.getInstance(FileUploadPage.class).getUploadedFileName();
+        final String actual = getPage().getInstance(FileUploadPage.class).getUploadedFileName();
         assertEquals(actual, expected);
     }
 

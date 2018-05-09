@@ -9,9 +9,9 @@ import static org.testng.Assert.assertTrue;
 public class HomePageTests extends BaseTest {
 
     @Test
-    public void isHomePageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        assertTrue(page.getInstance(HomePage.class).isOpen(),
+    public final void isHomePageLoaded() {
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        assertTrue(getPage().getInstance(HomePage.class).isOpen(),
                 HomePage.class.getSimpleName() + " is not loaded.");
     }
 

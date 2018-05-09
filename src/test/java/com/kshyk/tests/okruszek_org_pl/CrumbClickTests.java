@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 public class CrumbClickTests extends BaseTest {
 
     @Test
-    public void clickOnCrumbTest() {
-        page.getInstance(HomePage.class).goToOkruszek();
-        page.getInstance(HomePage.class).clickOnCrumb();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='DZIĘKUJEMY!']")));
+    public final void clickOnCrumbTest() {
+        getPage().getInstance(HomePage.class).goToOkruszek();
+        getPage().getInstance(HomePage.class).clickOnCrumb();
+        getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='DZIĘKUJEMY!']")));
     }
 
 }

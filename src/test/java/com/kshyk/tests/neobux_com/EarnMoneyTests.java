@@ -12,34 +12,34 @@ public class EarnMoneyTests extends BaseTest {
 
     @Test
     public void earnMoney_SuccessfulLogonProcess() {
-        final LoginPage loginPO = page.getInstance(LoginPage.class);
+        final LoginPage loginPO = getPage().getInstance(LoginPage.class);
         loginPO.goToMemberLogin();
         loginPO.fillCredentials();
         if (loginPO.isCaptchaVisible()) {
-            wait.until(bool -> loginPO.getCaptcha().getAttribute("value").length() == 5);
+            getWait().until(bool -> loginPO.getCaptcha().getAttribute("value").length() == 5);
         }
         loginPO.send();
-        wait.until(ExpectedConditions.visibilityOf(page.getInstance(SummaryPage.class).getClicksChart()));
+        getWait().until(ExpectedConditions.visibilityOf(getPage().getInstance(SummaryPage.class).getClicksChart()));
     }
 
     @Test(dependsOnMethods = "earnMoney_SuccessfulLogonProcess")
     public void earnMoney_ClickOnEveryActiveAdvertisement() {
-        final AdvertisementsPage advertisementsPO = page.getInstance(Toolbar.class).goToViewAdvertisements();
+        final AdvertisementsPage advertisementsPO = getPage().getInstance(Toolbar.class).goToViewAdvertisements();
         assertTrue(advertisementsPO.isOpened(), advertisementsPO.getClass().getSimpleName() + " is not visible.");
         advertisementsPO.getActiveAds().forEach(ad -> {
             advertisementsPO.clickOnActiveAdvertisement(ad);
             advertisementsPO.clickOnRedDot(By.className("redDTA"));
-            page.getInstance(AdvertWindow.class).close();
+            getPage().getInstance(AdvertWindow.class).close();
         });
     }
 
     @Test(dependsOnMethods = "earnMoney_ClickOnEveryActiveAdvertisement")
     public void earnMoney_RunLotteryAfterAds() {
-        final AdvertisementsPage advertisementsPO = page.getInstance(AdvertisementsPage.class);
+        final AdvertisementsPage advertisementsPO = getPage().getInstance(AdvertisementsPage.class);
         if (!advertisementsPO.isNullChancesVisible()) {
             final int repeats = advertisementsPO.getChances();
             advertisementsPO.clickOnChances();
-            final AdvertWindow advertPO = page.getInstance(AdvertWindow.class);
+            final AdvertWindow advertPO = getPage().getInstance(AdvertWindow.class);
             int counter = 1;
             while (counter != repeats) {
                 advertPO.next();

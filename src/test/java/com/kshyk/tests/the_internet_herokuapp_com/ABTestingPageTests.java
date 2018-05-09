@@ -10,10 +10,10 @@ import static org.testng.Assert.assertTrue;
 public class ABTestingPageTests extends BaseTest {
 
     @Test
-    public void isABTestPageLoaded() {
-        page.getInstance(HomePage.class).goToHerokuapp();
-        page.getInstance(HomePage.class).goToABTest();
-        assertTrue(page.getInstance(ABTestPage.class).isOpen(),
+    public final void isABTestPageLoaded() {
+        getPage().getInstance(HomePage.class).goToHerokuapp();
+        getPage().getInstance(HomePage.class).goToABTest();
+        assertTrue(getPage().getInstance(ABTestPage.class).isOpen(),
                 ABTestPage.class.getSimpleName() + " is not loaded.");
     }
 
