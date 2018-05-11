@@ -31,7 +31,7 @@ public class HandlingAlertTests extends BaseTest {
     public final void confirmWithTextPromptAlertBoxTest() {
         getPage().getInstance(DemoAlertsPage.class).pressPromptAlertButton();
         final Alert alert = getDriver().switchTo().alert();
-        alert.sendKeys("lubię to!");
+        alert.sendKeys("I like it!");
         alert.accept();
     }
 }

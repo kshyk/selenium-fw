@@ -40,6 +40,11 @@
             <artifactId>logback-core</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
