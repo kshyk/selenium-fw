@@ -23,25 +23,25 @@ public class NestedFramesPageTests extends BaseTest {
         assertTrue(nestedFramesPO.isOpen(), NestedFramesPage.class.getSimpleName() + " is not loaded.");
     }
 
-    @Test(dependsOnMethods = "isNestedFramesPageLoaded")
+    @Test(priority = 1)
     public final void isBottomFrameLocatedProperly() {
         nestedFramesPO.switchToBottom();
         getWait().until(ExpectedConditions.textToBe(body, "BOTTOM"));
     }
 
-    @Test(dependsOnMethods = "isNestedFramesPageLoaded")
+    @Test(priority = 1)
     public final void isLeftFrameLocatedProperly() {
         nestedFramesPO.switchToLeft();
         getWait().until(ExpectedConditions.textToBe(body, "LEFT"));
     }
 
-    @Test(dependsOnMethods = "isNestedFramesPageLoaded")
+    @Test(priority = 1)
     public final void isMiddleFrameLocatedProperly() {
         nestedFramesPO.switchToMiddle();
         getWait().until(ExpectedConditions.textToBe(body, "MIDDLE"));
     }
 
-    @Test(dependsOnMethods = "isNestedFramesPageLoaded")
+    @Test(priority = 1)
     public final void isRightFrameLocatedProperly() {
         nestedFramesPO.switchToRight();
         getWait().until(ExpectedConditions.textToBe(body, "RIGHT"));
