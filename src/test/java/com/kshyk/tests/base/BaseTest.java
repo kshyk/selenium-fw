@@ -5,6 +5,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterClass;
@@ -19,7 +20,6 @@ public abstract class BaseTest {
 
     @BeforeClass
     public final void setup() {
-        WebDriverManager.chromedriver().arch64().setup();
         driver = this.getChromeDriver();
         wait = new WebDriverWait(driver, NORMAL_TIMEOUT);
         driver.manage().window().maximize();
@@ -34,6 +34,7 @@ public abstract class BaseTest {
     }
 
     private ChromeDriver getChromeDriver() {
+        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("test-type");
         chromeOptions.addArguments("--disable-extensions");
@@ -42,7 +43,13 @@ public abstract class BaseTest {
     }
 
     private FirefoxDriver getFirefoxDriver() {
+        WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver();
+    }
+
+    private EdgeDriver getEdgeDriver() {
+        WebDriverManager.edgedriver().setup();
+        return new EdgeDriver();
     }
 
     protected final WebDriverWait getWait() {
