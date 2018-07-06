@@ -1,50 +1,51 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import com.kshyk.po.theinternet.HomePage;
-import com.kshyk.po.theinternet.NestedFramesPage;
-import com.kshyk.tests.base.BaseTest;
+import static org.testng.Assert.assertTrue;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import static org.testng.Assert.assertTrue;
+import com.kshyk.po.theinternet.HomePage;
+import com.kshyk.po.theinternet.NestedFramesPage;
+import com.kshyk.tests.base.BaseTest;
 
 public class NestedFramesPageTests extends BaseTest {
-
-    private final By body = By.tagName("body");
-
-    private NestedFramesPage nestedFramesPO;
-
-    @Test
-    public final void isNestedFramesPageLoaded() {
-        getPage().getInstance(HomePage.class).goToHerokuapp();
-        getPage().getInstance(HomePage.class).goToNestedFrames();
-        nestedFramesPO = getPage().getInstance(NestedFramesPage.class);
-        assertTrue(nestedFramesPO.isOpen(), NestedFramesPage.class.getSimpleName() + " is not loaded.");
-    }
-
-    @Test(priority = 1)
-    public final void isBottomFrameLocatedProperly() {
-        nestedFramesPO.switchToBottom();
-        getWait().until(ExpectedConditions.textToBe(body, "BOTTOM"));
-    }
-
-    @Test(priority = 1)
-    public final void isLeftFrameLocatedProperly() {
-        nestedFramesPO.switchToLeft();
-        getWait().until(ExpectedConditions.textToBe(body, "LEFT"));
-    }
-
-    @Test(priority = 1)
-    public final void isMiddleFrameLocatedProperly() {
-        nestedFramesPO.switchToMiddle();
-        getWait().until(ExpectedConditions.textToBe(body, "MIDDLE"));
-    }
-
-    @Test(priority = 1)
-    public final void isRightFrameLocatedProperly() {
-        nestedFramesPO.switchToRight();
-        getWait().until(ExpectedConditions.textToBe(body, "RIGHT"));
-    }
-
+	
+	private final By body = By.tagName("body");
+	
+	private NestedFramesPage nestedFramesPO;
+	
+	@Test
+	public final void isNestedFramesPageLoaded() {
+		this.getPage().getInstance(HomePage.class).goToHerokuapp();
+		this.getPage().getInstance(HomePage.class).goToNestedFrames();
+		this.nestedFramesPO = this.getPage().getInstance(NestedFramesPage.class);
+		assertTrue(this.nestedFramesPO.isOpen(), NestedFramesPage.class.getSimpleName() + " is not loaded.");
+	}
+	
+	@Test(priority = 1)
+	public final void isBottomFrameLocatedProperly() {
+		this.nestedFramesPO.switchToBottom();
+		this.getWait().until(ExpectedConditions.textToBe(this.body, "BOTTOM"));
+	}
+	
+	@Test(priority = 1)
+	public final void isLeftFrameLocatedProperly() {
+		this.nestedFramesPO.switchToLeft();
+		this.getWait().until(ExpectedConditions.textToBe(this.body, "LEFT"));
+	}
+	
+	@Test(priority = 1)
+	public final void isMiddleFrameLocatedProperly() {
+		this.nestedFramesPO.switchToMiddle();
+		this.getWait().until(ExpectedConditions.textToBe(this.body, "MIDDLE"));
+	}
+	
+	@Test(priority = 1)
+	public final void isRightFrameLocatedProperly() {
+		this.nestedFramesPO.switchToRight();
+		this.getWait().until(ExpectedConditions.textToBe(this.body, "RIGHT"));
+	}
+	
 }

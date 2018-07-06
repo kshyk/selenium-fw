@@ -1,40 +1,41 @@
 package com.kshyk.po.theinternet;
 
-import com.kshyk.core.BasePage;
+import java.io.File;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.io.File;
+import com.kshyk.core.BasePage;
 
 public class FileUploadPage extends BasePage {
 
-    @FindBy(xpath = "//*[text()='File Uploader']")
-    private WebElement title;
+	@FindBy(xpath = "//*[text()='File Uploader']")
+	private WebElement title;
 
-    @FindBy(id = "file-upload")
-    private WebElement browseFileButton;
+	@FindBy(id = "file-upload")
+	private WebElement browseFileButton;
 
-    @FindBy(id = "file-submit")
-    private WebElement uploadButton;
+	@FindBy(id = "file-submit")
+	private WebElement uploadButton;
 
-    @FindBy(id = "uploaded-files")
-    private WebElement uploadedFiles;
+	@FindBy(id = "uploaded-files")
+	private WebElement uploadedFiles;
 
-    public FileUploadPage(final WebDriver driver) {
-        super(driver);
-    }
+	public FileUploadPage(final WebDriver driver) {
+		super(driver);
+	}
 
-    public final boolean isOpen() {
-        return this.title.isDisplayed();
-    }
+	public final boolean isOpen() {
+		return this.title.isDisplayed();
+	}
 
-    public final String getUploadedFileName() {
-        return this.uploadedFiles.getText();
-    }
+	public final String getUploadedFileName() {
+		return this.uploadedFiles.getText();
+	}
 
-    public final void uploadFile(final File file) {
-        this.browseFileButton.sendKeys(file.getAbsolutePath());
-        click(uploadButton);
-    }
+	public final void uploadFile(final File file) {
+		this.browseFileButton.sendKeys(file.getAbsolutePath());
+		this.click(this.uploadButton);
+	}
 }
