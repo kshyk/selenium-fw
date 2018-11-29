@@ -7,18 +7,21 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.kshyk.core.BasePage;
 
-public class Toolbar extends BasePage {
-
+public class Toolbar {
+	
+	private final WebDriver driver;
+	private final BasePage basePage;
 	@FindBy(id = "navAds")
 	private WebElement viewAdvertisements;
-
+	
 	public Toolbar(final WebDriver driver) {
-		super(driver);
+		this.driver = driver;
+		this.basePage = new BasePage(driver);
 		PageFactory.initElements(driver, this);
 	}
-
+	
 	public final AdvertisementsPage goToViewAdvertisements() {
-		this.mouseOverAndClick(this.viewAdvertisements);
-		return PageFactory.initElements(this.getDriver(), AdvertisementsPage.class);
+		this.basePage.mouseOverAndClick(this.viewAdvertisements);
+		return PageFactory.initElements(this.driver, AdvertisementsPage.class);
 	}
 }

@@ -1,6 +1,6 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.testng.Assert.assertTrue;
+import static org.assertj.core.api.BDDAssertions.then;
 
 import java.time.LocalDateTime;
 
@@ -11,14 +11,16 @@ import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.po.theinternet.TinyMCEPage;
 import com.kshyk.tests.base.BaseTest;
 
-public class TinyMCEPageTests extends BaseTest {
+class TinyMCEPageTests extends BaseTest {
 	
 	@Test
 	public final void isTinyMCEPageLoaded() {
-		this.getPage().getInstance(HomePage.class).goToHerokuapp();
-		this.getPage().getInstance(HomePage.class).goToTinyMCE();
-		assertTrue(this.getPage().getInstance(TinyMCEPage.class).isOpen(),
-				TinyMCEPage.class.getSimpleName() + " is not loaded.");
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToHerokuapp().goToTinyMCE();
+		final TinyMCEPage tinyMCEPage = this.getPage().getInstance(TinyMCEPage.class);
+		then(tinyMCEPage.isOpen())
+				.as(TinyMCEPage.class.getSimpleName() + " is not loaded.")
+				.isTrue();
 	}
 	
 	@Test(dependsOnMethods = "isTinyMCEPageLoaded")

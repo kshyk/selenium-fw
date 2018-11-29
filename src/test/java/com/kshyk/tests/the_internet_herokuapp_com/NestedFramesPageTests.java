@@ -1,6 +1,6 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.testng.Assert.assertTrue;
+import static org.assertj.core.api.BDDAssertions.then;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,39 +10,41 @@ import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.po.theinternet.NestedFramesPage;
 import com.kshyk.tests.base.BaseTest;
 
-public class NestedFramesPageTests extends BaseTest {
+class NestedFramesPageTests extends BaseTest {
 	
 	private final By body = By.tagName("body");
 	
 	private NestedFramesPage nestedFramesPO;
 	
-	@Test
+	@Test(groups = "init test")
 	public final void isNestedFramesPageLoaded() {
-		this.getPage().getInstance(HomePage.class).goToHerokuapp();
-		this.getPage().getInstance(HomePage.class).goToNestedFrames();
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToHerokuapp().goToNestedFrames();
 		this.nestedFramesPO = this.getPage().getInstance(NestedFramesPage.class);
-		assertTrue(this.nestedFramesPO.isOpen(), NestedFramesPage.class.getSimpleName() + " is not loaded.");
+		then(this.nestedFramesPO.isOpen())
+				.as(NestedFramesPage.class.getSimpleName() + " is not loaded.")
+				.isTrue();
 	}
 	
-	@Test(priority = 1)
+	@Test(dependsOnGroups = "init test")
 	public final void isBottomFrameLocatedProperly() {
 		this.nestedFramesPO.switchToBottom();
 		this.getWait().until(ExpectedConditions.textToBe(this.body, "BOTTOM"));
 	}
 	
-	@Test(priority = 1)
+	@Test(dependsOnGroups = "init test")
 	public final void isLeftFrameLocatedProperly() {
 		this.nestedFramesPO.switchToLeft();
 		this.getWait().until(ExpectedConditions.textToBe(this.body, "LEFT"));
 	}
 	
-	@Test(priority = 1)
+	@Test(dependsOnGroups = "init test")
 	public final void isMiddleFrameLocatedProperly() {
 		this.nestedFramesPO.switchToMiddle();
 		this.getWait().until(ExpectedConditions.textToBe(this.body, "MIDDLE"));
 	}
 	
-	@Test(priority = 1)
+	@Test(dependsOnGroups = "init test")
 	public final void isRightFrameLocatedProperly() {
 		this.nestedFramesPO.switchToRight();
 		this.getWait().until(ExpectedConditions.textToBe(this.body, "RIGHT"));

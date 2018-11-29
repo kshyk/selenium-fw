@@ -6,17 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 import com.kshyk.core.BasePage;
 
-public class TinyMCEPage extends BasePage {
-
+public class TinyMCEPage {
+	
+	private final BasePage basePage;
 	@FindBy(xpath = "//*[text()='An iFrame containing the TinyMCE WYSIWYG Editor']")
 	private WebElement title;
-
+	
 	public TinyMCEPage(final WebDriver driver) {
-		super(driver);
+		this.basePage = new BasePage(driver);
 	}
-
+	
 	public final boolean isOpen() {
-		return this.title.isDisplayed();
+		return this.basePage.isElementDisplayed(this.title);
 	}
-
 }

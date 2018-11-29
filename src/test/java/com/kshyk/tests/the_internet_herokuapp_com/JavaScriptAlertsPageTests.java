@@ -1,6 +1,6 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.testng.Assert.assertEquals;
+import static org.assertj.core.api.BDDAssertions.then;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.Alert;
@@ -10,14 +10,14 @@ import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.po.theinternet.JavaScriptAlertsPage;
 import com.kshyk.tests.base.BaseTest;
 
-public class JavaScriptAlertsPageTests extends BaseTest {
+class JavaScriptAlertsPageTests extends BaseTest {
 	
 	private JavaScriptAlertsPage jsAlertsPO;
 	
 	@Test
 	public final void isJavaScriptAlertsPageLoaded() {
-		this.getPage().getInstance(HomePage.class).goToHerokuapp();
-		this.getPage().getInstance(HomePage.class).goToJSAlerts();
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToHerokuapp().goToJSAlerts();
 		this.jsAlertsPO = this.getPage().getInstance(JavaScriptAlertsPage.class);
 		assertTrue(this.jsAlertsPO.isOpen(), JavaScriptAlertsPage.class.getSimpleName() + " is not loaded.");
 	}
@@ -27,7 +27,7 @@ public class JavaScriptAlertsPageTests extends BaseTest {
 		this.jsAlertsPO.alert();
 		this.getDriver().switchTo().alert().accept();
 		final String expected = "You successfuly clicked an alert";
-		assertEquals(this.jsAlertsPO.getResult(), expected);
+		then(this.jsAlertsPO.getResult()).isEqualTo(expected);
 	}
 	
 	@Test(dependsOnMethods = "isSimpleAlertAppeared")
@@ -35,7 +35,7 @@ public class JavaScriptAlertsPageTests extends BaseTest {
 		this.jsAlertsPO.confirm();
 		this.getDriver().switchTo().alert().dismiss();
 		final String expected = "You clicked: Cancel";
-		assertEquals(this.jsAlertsPO.getResult(), expected);
+		then(this.jsAlertsPO.getResult()).isEqualTo(expected);
 	}
 	
 	@Test(dependsOnMethods = "isConfirmAlertCancelled")
@@ -46,7 +46,7 @@ public class JavaScriptAlertsPageTests extends BaseTest {
 		alert.sendKeys(value);
 		alert.accept();
 		final String expected = "You entered: " + value;
-		assertEquals(this.jsAlertsPO.getResult(), expected);
+		then(this.jsAlertsPO.getResult()).isEqualTo(expected);
 	}
 	
 }

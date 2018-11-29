@@ -1,7 +1,6 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+import static org.assertj.core.api.BDDAssertions.then;
 
 import java.util.List;
 import java.util.Map;
@@ -13,24 +12,28 @@ import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.po.theinternet.HoversPage;
 import com.kshyk.tests.base.BaseTest;
 
-public class HoversPageTests extends BaseTest {
+class HoversPageTests extends BaseTest {
+	
+	private HoversPage hoversPage;
 	
 	@Test
 	public void isHoversPageLoaded() {
-		this.getPage().getInstance(HomePage.class).goToHerokuapp();
-		this.getPage().getInstance(HomePage.class).goToHovers();
-		assertTrue(this.getPage().getInstance(HoversPage.class).isOpen(),
-				HoversPage.class.getSimpleName() + " is not loaded.");
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToHerokuapp().goToHovers();
+		this.hoversPage = this.getPage().getInstance(HoversPage.class);
+		then(this.hoversPage.isOpen())
+				.as(HoversPage.class.getSimpleName() + " is not loaded.")
+				.isTrue();
 	}
 	
 	@Test(dependsOnMethods = "isHoversPageLoaded")
 	public void isAdditionalInfoPresentAfterHoverOverImage() {
 		final Map<Integer, String> map = Map.of(0, "user1", 2, "user3", 1, "user2");
-		final HoversPage hoversPO = this.getPage().getInstance(HoversPage.class);
-		final List<WebElement> avatars = hoversPO.getAvatars();
+		this.hoversPage = this.getPage().getInstance(HoversPage.class);
+		final List<WebElement> avatars = this.hoversPage.getAvatars();
 		map.forEach((index, name) -> {
-			hoversPO.mouseOverAvatar(avatars.get(index));
-			assertEquals(hoversPO.getVisibleName(), "name: " + name);
+			this.hoversPage.mouseOverAvatar(avatars.get(index));
+			then(this.hoversPage.getVisibleName()).isEqualTo("name: " + name);
 		});
 	}
 	

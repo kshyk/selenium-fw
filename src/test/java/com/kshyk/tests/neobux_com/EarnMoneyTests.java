@@ -13,7 +13,7 @@ import com.kshyk.po.neobux.SummaryPage;
 import com.kshyk.po.neobux.Toolbar;
 import com.kshyk.tests.base.BaseTest;
 
-public class EarnMoneyTests extends BaseTest {
+class EarnMoneyTests extends BaseTest {
 	
 	@Test
 	public void successfulLogonProcess() {
@@ -33,7 +33,8 @@ public class EarnMoneyTests extends BaseTest {
 		assertTrue(advertisementsPO.isOpened(), advertisementsPO.getClass().getSimpleName() + " is not visible.");
 		advertisementsPO.getActiveAds().forEach(ad -> {
 			advertisementsPO.clickOnActiveAdvertisement(ad);
-			advertisementsPO.clickOnRedDot(By.className("redDTA"));
+			advertisementsPO.clickOnRedDot(By.cssSelector(".redDTA img"));
+			advertisementsPO.sleep(1000);
 			this.getPage().getInstance(AdvertWindow.class).close();
 		});
 	}
@@ -44,6 +45,7 @@ public class EarnMoneyTests extends BaseTest {
 		if (!advertisementsPO.isNullChancesVisible()) {
 			final int repeats = advertisementsPO.getChances();
 			advertisementsPO.clickOnChances();
+			advertisementsPO.sleep(1000);
 			final AdvertWindow advertPO = this.getPage().getInstance(AdvertWindow.class);
 			int counter = 1;
 			while (counter != repeats) {

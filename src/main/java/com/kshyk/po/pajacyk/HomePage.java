@@ -6,24 +6,27 @@ import org.openqa.selenium.support.FindBy;
 
 import com.kshyk.core.BasePage;
 
-public class HomePage extends BasePage {
-
+public class HomePage {
+	
+	private final BasePage basePage;
+	private final WebDriver driver;
 	@FindBy(className = "paj-click")
 	private WebElement greenBellyBefore;
 	@FindBy(className = "paj-click2")
 	private WebElement yellowBellyHover;
-
+	
 	public HomePage(final WebDriver driver) {
-		super(driver);
+		this.basePage = new BasePage(driver);
+		this.driver = driver;
 	}
-
-	public final void goToPajacyk() {
-		this.getDriver().get("https://www.pajacyk.pl/#index");
+	
+	public final HomePage goToPajacyk() {
+		this.driver.get("https://www.pajacyk.pl/#index");
+		return this;
 	}
-
+	
 	public final void clickOnBelly() {
-		this.mouseOver(this.greenBellyBefore);
-		this.click(this.yellowBellyHover);
+		this.basePage.mouseOver(this.greenBellyBefore);
+		this.basePage.click(this.yellowBellyHover);
 	}
-
 }

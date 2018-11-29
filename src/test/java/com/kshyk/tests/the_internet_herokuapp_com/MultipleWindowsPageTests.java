@@ -1,29 +1,32 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.testng.Assert.assertTrue;
+import static org.assertj.core.api.BDDAssertions.then;
 
-import java.util.Optional;
 import java.util.regex.Pattern;
-import java.util.stream.Stream;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
+import com.google.common.collect.Iterables;
 import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.po.theinternet.MultipleWindowsPage;
 import com.kshyk.tests.base.BaseTest;
 
-public class MultipleWindowsPageTests extends BaseTest {
+class MultipleWindowsPageTests extends BaseTest {
 	
+	private final String multipleWindowsName = MultipleWindowsPage.class.getSimpleName();
 	private MultipleWindowsPage multipleWindowsPO;
 	
 	@Test
 	public void isMultipleWindowsPageLoaded() {
-		this.getPage().getInstance(HomePage.class).goToHerokuapp();
-		this.getPage().getInstance(HomePage.class).goToMultipleWindows();
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToHerokuapp().goToMultipleWindows();
 		this.multipleWindowsPO = this.getPage().getInstance(MultipleWindowsPage.class);
-		assertTrue(this.multipleWindowsPO.isOpen(), MultipleWindowsPage.class.getSimpleName() + " is not loaded.");
+		then(this.multipleWindowsPO.isOpen())
+				.as(this.multipleWindowsName + " is not loaded.")
+				.isTrue();
 	}
 	
 	@Test(dependsOnMethods = "isMultipleWindowsPageLoaded")
@@ -37,11 +40,11 @@ public class MultipleWindowsPageTests extends BaseTest {
 	
 	@Test(dependsOnMethods = "isNewWindowOpened")
 	public void isDefaultContentPresentAfterNewWindowClose() {
-		final Stream<String> stream = this.getPage().getDriver().getWindowHandles().stream();
-		final Optional<String> rootTab = stream.findFirst();
-		this.getPage().getDriver().close();
-		rootTab.ifPresent(tab -> this.getPage().getDriver().switchTo().window(tab));
-		assertTrue(this.multipleWindowsPO.isOpen(), MultipleWindowsPage.class.getSimpleName() + " is not loaded.");
+		final WebDriver driver = this.getPage().getDriver();
+		driver.close();
+		driver.switchTo().window(Iterables.getFirst(driver.getWindowHandles(), ""));
+		then(this.multipleWindowsPO.isOpen())
+				.as(this.multipleWindowsName + " is not loaded.")
+				.isTrue();
 	}
-	
 }

@@ -1,14 +1,15 @@
 package com.kshyk.po.n11;
 
+import static org.assertj.core.api.BDDAssertions.then;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Assert;
 
 import com.kshyk.core.BasePage;
 
 public class LoginPage extends BasePage {
-
+	
 	@FindBy(id = "email")
 	private WebElement username;
 	@FindBy(id = "password")
@@ -19,22 +20,22 @@ public class LoginPage extends BasePage {
 	private WebElement errorMessageUsername;
 	@FindBy(css = "[data-errormessagefor='password'] .errorText")
 	private WebElement errorMessagePassword;
-
+	
 	public LoginPage(final WebDriver driver) {
 		super(driver);
 	}
-
+	
 	public final void loginToN11(final String uName, final String passwd) {
 		this.writeText(this.username, uName);
 		this.writeText(this.password, passwd);
 		this.click(this.loginButton);
 	}
-
+	
 	public final void verifyLoginUserName(final String expectedText) {
-		Assert.assertEquals(this.readText(this.errorMessageUsername), expectedText);
+		then(this.readText(this.errorMessageUsername)).isEqualTo(expectedText);
 	}
-
+	
 	public final void verifyLoginPassword(final String expectedText) {
-		Assert.assertEquals(this.readText(this.errorMessagePassword), expectedText);
+		then(this.readText(this.errorMessagePassword)).isEqualTo(expectedText);
 	}
 }

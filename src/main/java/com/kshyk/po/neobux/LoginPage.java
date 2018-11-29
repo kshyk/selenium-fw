@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 
 import com.kshyk.core.BasePage;
 
-public class LoginPage extends BasePage {
+public class LoginPage {
 
 	@FindBy(css = "input[placeholder='Username']")
 	private WebElement username;
@@ -21,25 +21,28 @@ public class LoginPage extends BasePage {
 	@FindBy(css = "input[id=Kf3]")
 	private WebElement captcha;
 	private String login, passwd = null;
+	private final WebDriver driver;
+	private final BasePage basePage;
 
 	public LoginPage(final WebDriver driver) {
-		super(driver);
+		this.basePage = new BasePage(driver);
+		this.driver = driver;
 	}
 
 	public final void goToMemberLogin() {
-		this.getDriver().get("https://www.neobux.com/m/l/");
+		this.driver.get("https://www.neobux.com/m/l/");
 	}
 
 	public final void fillCredentials() {
 		if ((this.login == null) && this.passwd == null) {
 			this.initCredentials();
 		}
-		this.writeText(this.username, this.login);
-		this.writeText(this.password, this.passwd);
+		this.basePage.writeText(this.username, this.login);
+		this.basePage.writeText(this.password, this.passwd);
 	}
 
 	public final void send() {
-		this.click(this.send);
+		this.basePage.click(this.send);
 	}
 
 	public final boolean isCaptchaVisible() {
@@ -62,7 +65,7 @@ public class LoginPage extends BasePage {
 			this.passwd = prop.getProperty("password");
 		}
 		catch (final IOException ex) {
-			this.getLogger().error("Cannot read creds.properties file.", ex);
+			this.basePage.getLogger().error("Cannot read creds.properties file.", ex);
 		}
 		finally {
 			if (inStream != null) {
@@ -70,7 +73,7 @@ public class LoginPage extends BasePage {
 					inStream.close();
 				}
 				catch (final IOException ex) {
-					this.getLogger().error("Cannot close input file stream of creds.properties file.", ex);
+					this.basePage.getLogger().error("Cannot close input file stream of creds.properties file.", ex);
 				}
 			}
 		}

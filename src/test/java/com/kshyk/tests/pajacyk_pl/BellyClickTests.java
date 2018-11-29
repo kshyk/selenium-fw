@@ -7,12 +7,12 @@ import org.testng.annotations.Test;
 import com.kshyk.po.pajacyk.HomePage;
 import com.kshyk.tests.base.BaseTest;
 
-public class BellyClickTests extends BaseTest {
+class BellyClickTests extends BaseTest {
 	
 	@Test
 	public final void clickOnBellyTest() {
-		this.getPage().getInstance(HomePage.class).goToPajacyk();
-		this.getPage().getInstance(HomePage.class).clickOnBelly();
+		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToPajacyk().clickOnBelly();
 		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='dziękujemy :)']")));
 	}
 	

@@ -57,7 +57,7 @@ public abstract class BaseTest {
 		return this.wait;
 	}
 	
-	protected final PageGenerator getPage() {
+	public final PageGenerator getPage() {
 		return this.page;
 	}
 	

@@ -2,12 +2,12 @@
 
 <suite name="Earning Test Suite" verbose="1" configfailurepolicy="continue">
 
-    <test name="All Tests">
+	<test name="Earning Tests">
 
-        <packages>
-            <package name="com.kshyk.tests.neobux_com.*"/>
-        </packages>
+		<packages>
+			<package name="com.kshyk.tests.neobux_com.*"/>
+		</packages>
 
-    </test>
+	</test>
 
 </suite>
