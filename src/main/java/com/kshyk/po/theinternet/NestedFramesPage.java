@@ -56,5 +56,4 @@ public class NestedFramesPage {
 		this.driver.switchTo().defaultContent();
 		return this;
 	}
-	
 }

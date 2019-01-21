@@ -6,16 +6,17 @@ import org.openqa.selenium.support.FindBy;
 
 import com.kshyk.core.BasePage;
 
-public class ABTestPage extends BasePage {
-
+public class AbTestPage {
+	
+	private final BasePage basePage;
 	@FindBy(xpath = "//*[contains(text(),'A/B Test')]")
 	private WebElement title;
-
-	public ABTestPage(final WebDriver driver) {
-		super(driver);
+	
+	public AbTestPage(final WebDriver driver) {
+		this.basePage = new BasePage(driver);
 	}
-
+	
 	public final boolean isOpen() {
-		return this.title.isDisplayed();
+		return this.basePage.isElementDisplayed(this.title);
 	}
 }

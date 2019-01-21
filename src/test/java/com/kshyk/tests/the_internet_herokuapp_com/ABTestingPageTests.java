@@ -4,7 +4,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 import org.testng.annotations.Test;
 
-import com.kshyk.po.theinternet.ABTestPage;
+import com.kshyk.po.theinternet.AbTestPage;
 import com.kshyk.po.theinternet.HomePage;
 import com.kshyk.tests.base.BaseTest;
 
@@ -14,9 +14,9 @@ class ABTestingPageTests extends BaseTest {
 	public final void isABTestPageLoaded() {
 		final HomePage homePage = this.getPage().getInstance(HomePage.class);
 		homePage.goToHerokuapp().goToABTest();
-		final ABTestPage abTestPage = this.getPage().getInstance(ABTestPage.class);
+		final AbTestPage abTestPage = this.getPage().getInstance(AbTestPage.class);
 		then(abTestPage.isOpen())
-				.as(ABTestPage.class.getSimpleName() + " is not loaded.")
+				.as(AbTestPage.class.getSimpleName() + " is not loaded.")
 				.isTrue();
 	}
 	

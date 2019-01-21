@@ -8,13 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.google.common.collect.Iterables;
 import com.kshyk.core.BasePage;
 
 public class AdvertisementsPage {
 	
 	private final BasePage basePage;
-	private final WebDriver driver;
 	@FindBy(id = "sInf0")
 	private WebElement resetInfoBar;
 	@FindBy(css = ".adfu,.adf,.ad5,.ad15,.ad30")
@@ -24,7 +22,6 @@ public class AdvertisementsPage {
 	
 	public AdvertisementsPage(final WebDriver driver) {
 		this.basePage = new BasePage(driver);
-		this.driver = driver;
 	}
 	
 	public final boolean isOpened() {
@@ -44,7 +41,7 @@ public class AdvertisementsPage {
 	public final void clickOnRedDot(final By dotElem) {
 		this.basePage.sleep(1000);
 		this.basePage.clickFirstVisibleElement(dotElem);
-		this.driver.switchTo().window(Iterables.getLast(this.driver.getWindowHandles()));
+		this.basePage.switchToLastTab();
 	}
 	
 	public final int getChances() {
@@ -58,7 +55,7 @@ public class AdvertisementsPage {
 	public final void clickOnChances() {
 		this.basePage.sleep(1500);
 		this.basePage.mouseOverAndClick(this.adChances);
-		this.driver.getWindowHandles().forEach(handle -> this.driver.switchTo().window(handle));
+		this.basePage.switchToLastTab();
 	}
 	
 	public final void sleep(final int millis) {

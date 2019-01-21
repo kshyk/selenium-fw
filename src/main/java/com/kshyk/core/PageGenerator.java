@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.TestException;
 
 public class PageGenerator {
 	
@@ -19,8 +20,7 @@ public class PageGenerator {
 			return PageFactory.initElements(this.driver, pageClass);
 		}
 		catch (final Exception ex) {
-			this.logger.error("Cannot initialize requested page with its elements.", ex);
-			throw ex;
+			throw new TestException("Cannot initialize requested page with its elements.", ex);
 		}
 	}
 	

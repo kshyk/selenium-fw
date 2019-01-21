@@ -1,5 +1,6 @@
 package com.kshyk.tests.base;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,10 +19,12 @@ public abstract class BaseTest {
 	private WebDriverWait wait;
 	private PageGenerator page;
 	private WebDriver driver;
+	private JavascriptExecutor js;
 	
 	@BeforeClass
 	public final void setup() {
 		this.driver = this.getChromeDriver();
+		this.js = ((JavascriptExecutor) this.driver);
 		this.wait = new WebDriverWait(this.driver, NORMAL_TIMEOUT);
 		this.driver.manage().window().maximize();
 		this.page = new PageGenerator(this.driver);
@@ -64,4 +67,6 @@ public abstract class BaseTest {
 	protected final WebDriver getDriver() {
 		return this.driver;
 	}
+	
+	protected final JavascriptExecutor getJS() { return this.js; }
 }

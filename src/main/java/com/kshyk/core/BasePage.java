@@ -11,6 +11,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
 import com.google.common.collect.Iterables;
@@ -20,15 +22,20 @@ public class BasePage {
 	private final PageGenerator generator;
 	private final Actions action;
 	private final WebDriver driver;
+	private final WebDriverWait wait5sec, wait15sec, wait30sec;
 	
 	public BasePage(final WebDriver driver) {
 		this.generator = new PageGenerator(driver);
 		this.action = new Actions(driver);
 		this.driver = driver;
+		this.wait5sec = new WebDriverWait(driver, 5);
+		this.wait15sec = new WebDriverWait(driver, 15);
+		this.wait30sec = new WebDriverWait(driver, 30);
 	}
 	
 	public final <T> void click(final T elementAttr) {
-		this.transformToWebElement(elementAttr).click();
+		final WebElement element = this.transformToWebElement(elementAttr);
+		this.wait5sec.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 	
 	public final <T> void writeText(final T elementAttr, final String text) {
@@ -42,7 +49,8 @@ public class BasePage {
 	}
 	
 	public final <T> String readText(final T elementAttr) {
-		return this.transformToWebElement(elementAttr).getText();
+		final WebElement element = this.transformToWebElement(elementAttr);
+		return this.wait5sec.until(ExpectedConditions.visibilityOf(element)).getText().trim();
 	}
 	
 	public final <T> void mouseOver(final T elementAttr) {

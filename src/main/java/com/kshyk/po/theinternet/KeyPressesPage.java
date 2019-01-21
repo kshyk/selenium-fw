@@ -32,5 +32,4 @@ public class KeyPressesPage extends BasePage {
 		return this.result.getText();
 	}
 
-
 }
