@@ -15,7 +15,7 @@ import com.kshyk.tests.base.BaseTest;
 
 class EarnMoneyTests extends BaseTest {
 	
-	@Test
+	@Test(groups = "log into neobux")
 	public void successfulLogonProcess() {
 		final LoginPage loginPO = this.getPage().getInstance(LoginPage.class);
 		loginPO.goToMemberLogin();
@@ -27,7 +27,7 @@ class EarnMoneyTests extends BaseTest {
 		this.getWait().until(ExpectedConditions.visibilityOf(this.getPage().getInstance(SummaryPage.class).getClicksChart()));
 	}
 	
-	@Test(dependsOnMethods = "successfulLogonProcess")
+	@Test(groups = "clicking on ads", dependsOnGroups = "log into neobux")
 	public void clickOnEveryActiveAdvertisement() {
 		final AdvertisementsPage advertisementsPO = this.getPage().getInstance(Toolbar.class).goToViewAdvertisements();
 		assertTrue(advertisementsPO.isOpened(), advertisementsPO.getClass().getSimpleName() + " is not visible.");
@@ -39,7 +39,7 @@ class EarnMoneyTests extends BaseTest {
 		});
 	}
 	
-	@Test(dependsOnMethods = "clickOnEveryActiveAdvertisement")
+	@Test(dependsOnGroups = {"log into neobux", "clicking on ads"})
 	public void runLotteryAfterAds() {
 		final AdvertisementsPage advertisementsPO = this.getPage().getInstance(AdvertisementsPage.class);
 		if (!advertisementsPO.isNullChancesVisible()) {

@@ -11,11 +11,12 @@ import com.kshyk.tests.base.BaseTest;
 
 public class NavigationBarTests extends BaseTest {
 	
+	private HomePage homePage;
 	private MainToolbar toolbar;
 	
 	@BeforeGroups(groups = "check navigation")
 	private void open() {
-		this.getPage().getInstance(HomePage.class).open();
+		this.homePage = this.getPage().getInstance(HomePage.class).open();
 		this.toolbar = this.getPage().getInstance(MainToolbar.class);
 	}
 	
@@ -36,4 +37,5 @@ public class NavigationBarTests extends BaseTest {
 		final String actual = this.toolbar.getMailLinkText();
 		then(actual).isEqualTo("biuro [at] teamandpersonal.pl");
 	}
+	
 }
