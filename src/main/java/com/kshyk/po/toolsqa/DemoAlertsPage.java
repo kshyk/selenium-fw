@@ -11,11 +11,11 @@ public class DemoAlertsPage {
 	
 	private final WebDriver driver;
 	private final BasePage basePage;
-	@FindBy(css = "button[onclick='pushAlert()']")
+	@FindBy(css = "button[onclick*='pushAlert()']")
 	private WebElement simpleAlertButton;
-	@FindBy(css = "button[onclick='pushConfirm()']")
+	@FindBy(css = "button[onclick*='pushConfirm()']")
 	private WebElement confirmAlertButton;
-	@FindBy(css = "button[onclick='promptConfirm()']")
+	@FindBy(css = "button[onclick*='promptConfirm()']")
 	private WebElement promptAlertButton;
 	
 	public DemoAlertsPage(final WebDriver driver) {
