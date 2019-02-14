@@ -54,11 +54,12 @@ public class LoginPage {
 	}
 
 	private void initCredentials() {
-		final Properties prop = new Properties();
+		final var prop = new Properties();
 		InputStream inStream = null;
 		try {
 			inStream = this.getClass().getClassLoader().getResourceAsStream("creds.properties");
 			// load a properties file
+			assert inStream != null;
 			prop.load(inStream);
 			// set credential fields
 			this.login = prop.getProperty("username");

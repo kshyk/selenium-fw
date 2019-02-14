@@ -1,7 +1,5 @@
 package com.kshyk.po.neobux;
 
-import java.util.Set;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -32,7 +30,7 @@ public class AdvertWindow {
 	
 	public final void close() {
 		this.wait.until(ExpectedConditions.visibilityOf(this.close)).click();
-		final Set<String> windowHandles = this.driver.getWindowHandles();
+		final var windowHandles = this.driver.getWindowHandles();
 		this.driver.switchTo().window(Iterables.getFirst(windowHandles, null));
 	}
 	

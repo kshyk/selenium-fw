@@ -11,12 +11,13 @@
 	<properties>
 		<java.version>11</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.version>3.5.4</maven.version>
 		<maven.compile.optimize>true</maven.compile.optimize>
 		<maven.compile.deprecation>true</maven.compile.deprecation>
 		<maven.compile.warnings>true</maven.compile.warnings>
-		<maven.compile.source>${java.version}</maven.compile.source>
-		<maven.compile.target>${java.version}</maven.compile.target>
 		<maven.compiler.version>3.8.0</maven.compiler.version>
+		<maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
+		<maven.surefire.version>3.0.0-M3</maven.surefire.version>
 		<assertj.version>3.11.1</assertj.version>
 		<webdrivermanager.version>3.2.0</webdrivermanager.version>
 		<logback.version>1.2.3</logback.version>
@@ -24,6 +25,11 @@
 		<selenium.version>3.141.59</selenium.version>
 		<testng.version>6.14.3</testng.version>
 		<apache.poi.version>4.0.1</apache.poi.version>
+		<versions.maven.version>2.7</versions.maven.version>
+		<javassist.version>3.24.1-GA</javassist.version>
+		<cglib.nodep.version>3.2.10</cglib.nodep.version>
+		<mockito.core.version>2.24.0</mockito.core.version>
+		<ow2.asm.version>6.2.1</ow2.asm.version>
 	</properties>
 
 	<dependencies>
@@ -72,6 +78,22 @@
 			<artifactId>poi-ooxml</artifactId>
 			<version>${apache.poi.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>${javassist.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>${cglib.nodep.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.core.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -81,11 +103,52 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>${maven.compiler.version}</version>
 				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
+					<release>${java.version}</release>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<optimize>${maven.compile.optimize}</optimize>
+					<showDeprecation>${maven.compile.deprecation}</showDeprecation>
+					<showWarnings>${maven.compile.warnings}</showWarnings>
+					<compilerArgument>-Xlint:all</compilerArgument>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+						<version>${ow2.asm.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.ow2.asm</groupId>
+						<artifactId>asm</artifactId>
+						<version>${ow2.asm.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions.maven.version}</version>
+				<configuration>
+					<generateBackupPoms>false</generateBackupPoms>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
+
+	<repositories>
+		<repository>
+			<id>jvnet-nexus-staging</id>
+			<url>http://maven.java.net/content/repositories/staging/</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 </project>

@@ -22,19 +22,19 @@ public class NavigationBarTests extends BaseTest {
 	
 	@Test(groups = "check navigation")
 	public void checkTelephone() {
-		final String actual = this.toolbar.getTelephoneText();
+		final var actual = this.toolbar.getTelephoneText();
 		then(actual).isEqualTo("+48 660 22 77 22");
 	}
 	
 	@Test(groups = "check navigation")
 	public void checkMailRefAttribute() {
-		final String actual = this.toolbar.getMailLinkElement().getAttribute("href");
+		final var actual = this.toolbar.getMailLinkElement().getAttribute("href");
 		then(actual).isEqualTo("mailto:biuro@teamandpersonal.pl");
 	}
 	
 	@Test(groups = "check navigation")
 	public void checkMail() {
-		final String actual = this.toolbar.getMailLinkText();
+		final var actual = this.toolbar.getMailLinkText();
 		then(actual).isEqualTo("biuro [at] teamandpersonal.pl");
 	}
 	

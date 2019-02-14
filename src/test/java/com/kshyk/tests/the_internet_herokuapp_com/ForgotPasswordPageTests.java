@@ -16,7 +16,7 @@ class ForgotPasswordPageTests extends BaseTest {
 	
 	private ForgotPasswordPage forgotPasswordPage;
 	
-	@Test
+	@Test(groups = "open forgot password")
 	public final void isForgotPasswordPageLoaded() {
 		final HomePage homePage = this.getPage().getInstance(HomePage.class);
 		homePage.goToHerokuapp().goToForgotPassword();
@@ -26,7 +26,7 @@ class ForgotPasswordPageTests extends BaseTest {
 				.isTrue();
 	}
 	
-	@Test(dependsOnMethods = "isForgotPasswordPageLoaded")
+	@Test(dependsOnGroups = "open forgot password")
 	public final void isPasswordReset() {
 		final String email = "test@example.com";
 		final Pattern successMessage = Pattern.compile("Your e-mail's been sent!");

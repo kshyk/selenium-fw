@@ -1,9 +1,5 @@
 package com.kshyk.core;
 
-import java.util.Optional;
-import java.util.Set;
-import java.util.stream.Stream;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
@@ -34,12 +30,12 @@ public class BasePage {
 	}
 	
 	public final <T> void click(final T elementAttr) {
-		final WebElement element = this.transformToWebElement(elementAttr);
+		final var element = this.transformToWebElement(elementAttr);
 		this.wait5sec.until(ExpectedConditions.elementToBeClickable(element)).click();
 	}
 	
 	public final <T> void writeText(final T elementAttr, final String text) {
-		final WebElement element = this.transformToWebElement(elementAttr);
+		final var element = this.transformToWebElement(elementAttr);
 		element.clear();
 		element.sendKeys(text);
 	}
@@ -49,7 +45,7 @@ public class BasePage {
 	}
 	
 	public final <T> String readText(final T elementAttr) {
-		final WebElement element = this.transformToWebElement(elementAttr);
+		final var element = this.transformToWebElement(elementAttr);
 		return this.wait5sec.until(ExpectedConditions.visibilityOf(element)).getText().trim();
 	}
 	
@@ -58,13 +54,13 @@ public class BasePage {
 	}
 	
 	public final <T> void mouseOverAndClick(final T elementAttr) {
-		final WebElement target = this.transformToWebElement(elementAttr);
+		final var target = this.transformToWebElement(elementAttr);
 		this.action.moveToElement(target).click(target).build().perform();
 	}
 	
 	public final void clickFirstVisibleElement(final By elementAttr) {
-		final Stream<WebElement> stream = this.driver.findElements(elementAttr).stream();
-		final Optional<WebElement> optionalElement = stream.filter(WebElement::isDisplayed).findFirst();
+		final var stream = this.driver.findElements(elementAttr).stream();
+		final var optionalElement = stream.filter(WebElement::isDisplayed).findFirst();
 		optionalElement.ifPresent(WebElement::click);
 	}
 	
@@ -91,12 +87,12 @@ public class BasePage {
 	}
 	
 	public final void switchToLastTab() {
-		final Set<String> windowHandles = this.driver.getWindowHandles();
+		final var windowHandles = this.driver.getWindowHandles();
 		this.driver.switchTo().window(Iterables.getLast(windowHandles));
 	}
 	
 	private <T> WebElement transformToWebElement(final T elementAttr) {
-		final boolean isItByElement = elementAttr.getClass().getName().contains("By");
+		final var isItByElement = elementAttr.getClass().getName().contains("By");
 		return isItByElement ? this.driver.findElement((By) elementAttr) : (WebElement) elementAttr;
 	}
 	
