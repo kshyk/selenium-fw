@@ -16,10 +16,10 @@ import com.kshyk.tests.base.BaseTest;
 class EarnMoneyTests extends BaseTest {
 	
 	@Test(groups = "log into neobux")
-	public void successfulLogonProcess() {
-		final LoginPage loginPO = this.getPage().getInstance(LoginPage.class);
-		loginPO.goToMemberLogin();
-		loginPO.fillCredentials();
+	public final void successfulLogonProcess() {
+		final var loginPO = this.getPage().getInstance(LoginPage.class)
+				.goToMemberLogin()
+				.fillCredentials();
 		if (loginPO.isCaptchaVisible()) {
 			this.getWait().until(bool -> loginPO.getCaptcha().getAttribute("value").length() == 5);
 		}
@@ -28,29 +28,30 @@ class EarnMoneyTests extends BaseTest {
 	}
 	
 	@Test(groups = "clicking on ads", dependsOnGroups = "log into neobux")
-	public void clickOnEveryActiveAdvertisement() {
-		final AdvertisementsPage advertisementsPO = this.getPage().getInstance(Toolbar.class).goToViewAdvertisements();
+	public final void clickOnEveryActiveAdvertisement() {
+		final var toolbar = this.getPage().getInstance(Toolbar.class);
+		final var advertisementsPO = toolbar
+				.goToViewAdvertisements();
 		assertTrue(advertisementsPO.isOpened(), advertisementsPO.getClass().getSimpleName() + " is not visible.");
 		advertisementsPO.getActiveAds().forEach(ad -> {
-			advertisementsPO.clickOnActiveAdvertisement(ad);
-			advertisementsPO.clickOnRedDot(By.cssSelector(".redDTA img"));
-			advertisementsPO.sleep(1000);
-			this.getPage().getInstance(AdvertWindow.class).close();
+			advertisementsPO
+					.clickOnActiveAdvertisement(ad)
+					.clickOnRedDot(By.cssSelector(".redDTA img"));
+			final var advertWindow = this.getPage().getInstance(AdvertWindow.class);
+			advertWindow.close();
 		});
 	}
 	
 	@Test(dependsOnGroups = {"log into neobux", "clicking on ads"})
-	public void runLotteryAfterAds() {
-		final AdvertisementsPage advertisementsPO = this.getPage().getInstance(AdvertisementsPage.class);
+	public final void runLotteryAfterAds() {
+		final var advertisementsPO = this.getPage().getInstance(AdvertisementsPage.class);
 		if (!advertisementsPO.isNullChancesVisible()) {
 			final int repeats = advertisementsPO.getChances();
 			advertisementsPO.clickOnChances();
-			advertisementsPO.sleep(1000);
-			final AdvertWindow advertPO = this.getPage().getInstance(AdvertWindow.class);
+			final var advertPO = this.getPage().getInstance(AdvertWindow.class);
 			int counter = 1;
 			while (counter != repeats) {
 				advertPO.next();
-				advertPO.sleep(3500);
 				counter++;
 			}
 			advertPO.close();

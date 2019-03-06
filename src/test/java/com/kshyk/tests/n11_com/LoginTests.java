@@ -15,7 +15,7 @@ class LoginTests extends BaseTest {
 	
 	@BeforeGroups(groups = "check logon variants")
 	private void goToLoginPage() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
+		final var homePage = this.getPage().getInstance(HomePage.class);
 		this.loginPage = homePage.goToN11().goToLoginPage();
 	}
 	

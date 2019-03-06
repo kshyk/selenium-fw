@@ -1,13 +1,14 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Earning Test Suite" verbose="1" configfailurepolicy="continue">
+<suite name="Earning Test Suite"
+	   verbose="1"
+	   configfailurepolicy="continue"
+	   allow-return-values="true">
 
 	<test name="Earning Tests">
-
-		<packages>
-			<package name="com.kshyk.tests.neobux_com.*"/>
-		</packages>
-
+		<classes>
+			<class name="com.kshyk.tests.neobux_com.EarnMoneyTests"/>
+		</classes>
 	</test>
 
 </suite>

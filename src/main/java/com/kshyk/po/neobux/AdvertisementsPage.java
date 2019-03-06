@@ -32,16 +32,18 @@ public class AdvertisementsPage {
 		return Collections.unmodifiableList(this.activeAds);
 	}
 	
-	public final <T> void clickOnActiveAdvertisement(final T activeAd) {
+	public final <T> AdvertisementsPage clickOnActiveAdvertisement(final T activeAd) {
 		this.basePage.sleep(1500);
 		this.basePage.mouseOverAndClick(activeAd);
 		this.basePage.sleep(1000);
+		return this;
 	}
 	
 	public final void clickOnRedDot(final By dotElem) {
 		this.basePage.sleep(1000);
 		this.basePage.clickFirstVisibleElement(dotElem);
 		this.basePage.switchToLastTab();
+		this.basePage.sleep(1000);
 	}
 	
 	public final int getChances() {
@@ -56,6 +58,7 @@ public class AdvertisementsPage {
 		this.basePage.sleep(1500);
 		this.basePage.mouseOverAndClick(this.adChances);
 		this.basePage.switchToLastTab();
+		this.basePage.sleep(1000);
 	}
 	
 	public final void sleep(final int millis) {

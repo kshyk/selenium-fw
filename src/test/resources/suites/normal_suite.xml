@@ -1,9 +1,13 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Normal Test Suite" parallel="classes" thread-count="3" verbose="1" configfailurepolicy="continue">
+<suite name="Normal Test Suite"
+	   parallel="classes"
+	   thread-count="3"
+	   verbose="1"
+	   configfailurepolicy="continue"
+	   allow-return-values="true">
 
 	<test name="Default Tests">
-
 		<packages>
 			<package name="com.kshyk.tests.n11_com.*"/>
 			<package name="com.kshyk.tests.pajacyk_pl.*"/>
@@ -11,7 +15,6 @@
 			<package name="com.kshyk.tests.the_internet_herokuapp_com.*"/>
 			<package name="com.kshyk.tests.toolsqa_com.*"/>
 		</packages>
-
 	</test>
 
 </suite>

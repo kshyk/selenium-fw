@@ -36,6 +36,7 @@ public class AdvertWindow {
 	
 	public final void next() {
 		this.wait.until(ExpectedConditions.visibilityOf(this.next)).click();
+		this.basePage.sleep(3500);
 	}
 	
 	public final void sleep(final int millis) {

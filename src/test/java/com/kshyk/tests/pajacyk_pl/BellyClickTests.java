@@ -11,9 +11,11 @@ class BellyClickTests extends BaseTest {
 	
 	@Test
 	public final void clickOnBellyTest() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToPajacyk().clickOnBelly();
-		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='dziękujemy :)']")));
+		final var homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToPajacyk()
+				.clickOnBelly();
+		final var expectedLocator = By.xpath("//*[text()='dziękujemy :)']");
+		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(expectedLocator));
 	}
 	
 }

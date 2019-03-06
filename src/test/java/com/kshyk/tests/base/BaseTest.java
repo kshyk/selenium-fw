@@ -36,7 +36,7 @@ public abstract class BaseTest {
 	
 	private ChromeDriver getChromeDriver() {
 		WebDriverManager.chromedriver().setup();
-		final ChromeOptions chromeOptions = new ChromeOptions();
+		final var chromeOptions = new ChromeOptions();
 		chromeOptions.addArguments("test-type");
 		chromeOptions.addArguments("--disable-extensions");
 		chromeOptions.addArguments("--disable-infobars");

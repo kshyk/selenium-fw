@@ -11,9 +11,11 @@ class CrumbClickTests extends BaseTest {
 	
 	@Test
 	public final void clickOnCrumbTest() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToOkruszek().clickOnCrumb();
-		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[text()='DZIĘKUJEMY!']")));
+		final var homePage = this.getPage().getInstance(HomePage.class);
+		homePage.goToOkruszek()
+				.clickOnCrumb();
+		final var expectedLocator = By.xpath("//*[text()='DZIĘKUJEMY!']");
+		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(expectedLocator));
 	}
 	
 }

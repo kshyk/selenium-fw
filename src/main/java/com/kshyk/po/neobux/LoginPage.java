@@ -29,16 +29,18 @@ public class LoginPage {
 		this.driver = driver;
 	}
 
-	public final void goToMemberLogin() {
+	public final LoginPage goToMemberLogin() {
 		this.driver.get("https://www.neobux.com/m/l/");
+		return this;
 	}
 
-	public final void fillCredentials() {
+	public final LoginPage fillCredentials() {
 		if ((this.login == null) && this.passwd == null) {
 			this.initCredentials();
 		}
 		this.basePage.writeText(this.username, this.login);
 		this.basePage.writeText(this.password, this.passwd);
+		return this;
 	}
 
 	public final void send() {
