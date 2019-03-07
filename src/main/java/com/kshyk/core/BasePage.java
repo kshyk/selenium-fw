@@ -1,5 +1,11 @@
 package com.kshyk.core;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotVisibleException;
 import org.openqa.selenium.Keys;
@@ -7,7 +13,6 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 
@@ -31,7 +36,7 @@ public class BasePage {
 	
 	public final <T> void click(final T elementAttr) {
 		final var element = this.transformToWebElement(elementAttr);
-		this.wait5sec.until(ExpectedConditions.elementToBeClickable(element)).click();
+		this.wait5sec.until(elementToBeClickable(element)).click();
 	}
 	
 	public final <T> void writeText(final T elementAttr, final String text) {
@@ -46,7 +51,7 @@ public class BasePage {
 	
 	public final <T> String readText(final T elementAttr) {
 		final var element = this.transformToWebElement(elementAttr);
-		return this.wait5sec.until(ExpectedConditions.visibilityOf(element)).getText().trim();
+		return this.wait5sec.until(visibilityOf(element)).getText().trim();
 	}
 	
 	public final <T> void mouseOver(final T elementAttr) {
@@ -87,8 +92,22 @@ public class BasePage {
 	}
 	
 	public final void switchToLastTab() {
-		final var windowHandles = this.driver.getWindowHandles();
-		this.driver.switchTo().window(Iterables.getLast(windowHandles));
+		final var windowHandles = this.getWindowHandles();
+		final var lastTab = Iterables.getLast(windowHandles);
+		this.driver.switchTo().window(lastTab);
+	}
+	
+	public final void switchToFirstTab() {
+		final var windowHandles = this.getWindowHandles();
+		final var firstTab = Iterables.getFirst(windowHandles, null);
+		this.driver.switchTo().window(firstTab);
+	}
+	
+	private List<String> getWindowHandles() {
+		final var windowsSet = this.driver.getWindowHandles();
+		final List<String> windowsHandles = new ArrayList<>(windowsSet.size());
+		windowsHandles.addAll(windowsSet);
+		return windowsHandles;
 	}
 	
 	private <T> WebElement transformToWebElement(final T elementAttr) {
@@ -98,5 +117,9 @@ public class BasePage {
 	
 	public final Logger getLogger() {
 		return this.generator.getLogger();
+	}
+	
+	public final WebDriverWait getWaitShort() {
+		return this.wait5sec;
 	}
 }

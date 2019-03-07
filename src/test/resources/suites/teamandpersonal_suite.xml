@@ -9,7 +9,9 @@
 
 	<test name="Navigation bar tests">
 		<classes>
-			<class name="com.kshyk.tests.teamandpersonal_pl.NavigationBarTests"/>
+			<class name="com.kshyk.tests.teamandpersonal_pl.navigationbar.ContactTests"/>
+			<class name="com.kshyk.tests.teamandpersonal_pl.navigationbar.SocialMediaTests"/>
+			<class name="com.kshyk.tests.teamandpersonal_pl.navigationbar.CookiesTests"/>
 		</classes>
 	</test>
 

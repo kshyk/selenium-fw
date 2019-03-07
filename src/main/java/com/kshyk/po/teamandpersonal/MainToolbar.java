@@ -11,18 +11,29 @@ public class MainToolbar {
 	private final BasePage basePage;
 	@FindBy(className = "home-link")
 	private WebElement logo;
+	
 	@FindBy(className = "topka-tel")
 	private WebElement telephoneLabel;
 	@FindBy(css = ".topka-mail a")
 	private WebElement mailLink;
+	
+	@FindBy(className = "topka-jezyki")
+	private WebElement languages;
 	@FindBy(className = "topka-facebook")
 	private WebElement facebookButton;
 	@FindBy(className = "topka-google")
 	private WebElement googlePlusButton;
 	@FindBy(className = "topka-youtube")
 	private WebElement youtubeButton;
-	@FindBy(className = "topka-tnp")
-	private WebElement pollingButton;
+	@FindBy(className = "topka-linkedin")
+	private WebElement linkedinButton;
+	@FindBy(className = "topka-instagram")
+	private WebElement instagramButton;
+	@FindBy(className = "topka-pinterest")
+	private WebElement pinterestButton;
+	@FindBy(className = "topka-twitter")
+	private WebElement twitterButton;
+	
 	@FindBy(linkText = "TEAM&PERSONAL")
 	private WebElement teamAndPersonalLink;
 	@FindBy(linkText = "O FIRMIE")
@@ -74,8 +85,20 @@ public class MainToolbar {
 		this.basePage.click(this.youtubeButton);
 	}
 	
-	public void clickOnPollingButton() {
-		this.basePage.click(this.pollingButton);
+	public void clickOnLinkedInButton() {
+		this.basePage.click(this.linkedinButton);
+	}
+	
+	public void clickOnInstagramButton() {
+		this.basePage.click(this.instagramButton);
+	}
+	
+	public void clickOnPinterestButton() {
+		this.basePage.click(this.pinterestButton);
+	}
+	
+	public void clickOnTwitterButton() {
+		this.basePage.click(this.twitterButton);
 	}
 	
 	public void clickOnTeamAndPersonalLink() {
