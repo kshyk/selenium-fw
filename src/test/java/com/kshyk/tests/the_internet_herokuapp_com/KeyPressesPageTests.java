@@ -16,8 +16,10 @@ class KeyPressesPageTests extends BaseTest {
 	
 	@Test
 	public final void isKeyPressesPageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToHerokuapp().goToKeyPresses();
+		this.getPage()
+				.getInstance(HomePage.class)
+				.goToHerokuapp()
+				.goToKeyPresses();
 		this.keyPressesPage = this.getPage().getInstance(KeyPressesPage.class);
 		then(this.keyPressesPage.isOpen())
 				.as(KeyPressesPage.class.getSimpleName() + " is not loaded.")
@@ -26,8 +28,8 @@ class KeyPressesPageTests extends BaseTest {
 	
 	@Test(dependsOnMethods = "isKeyPressesPageLoaded")
 	public final void isKeyProperlyEntered() {
-		final String expected = "You entered: " + this.control.name();
-		final String actual = this.keyPressesPage.pressKeyAndGetResult(this.control);
+		final var expected = "You entered: " + this.control.name();
+		final var actual = this.keyPressesPage.pressKeyAndGetResult(this.control);
 		then(actual).isEqualTo(expected);
 	}
 	

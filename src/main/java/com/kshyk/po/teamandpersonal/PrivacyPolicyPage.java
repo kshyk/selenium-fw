@@ -6,31 +6,20 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class PrivacyPolicyPage {
+public class PrivacyPolicyPage extends AbstractPage {
 	
-	private final String URL = "https://teamandpersonal.pl/polityka-prywatnosci/";
-	private final BasePage basePage;
-	private final WebDriver driver;
+	private static final String URL = "https://teamandpersonal.pl/polityka-prywatnosci/";
 	@FindBy(css = ".site-content")
 	private WebElement siteContent;
 	
 	public PrivacyPolicyPage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-		this.driver = driver;
-	}
-	
-	public final void open() {
-		this.driver.get(this.URL);
+		super(driver);
 	}
 	
 	public final String getURL() {
-		return this.URL;
-	}
-	
-	public WebElement getSiteContent() {
-		return this.siteContent;
+		return URL;
 	}
 	
 	public final PrivacyPolicyPage waitForPrivacyPolicyPage() {

@@ -8,10 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class LoginPage {
-
+public class LoginPage extends AbstractPage {
+	
 	@FindBy(css = "input[placeholder='Username']")
 	private WebElement username;
 	@FindBy(css = "input[placeholder='Password']")
@@ -21,19 +21,16 @@ public class LoginPage {
 	@FindBy(css = "input[id=Kf3]")
 	private WebElement captcha;
 	private String login, passwd = null;
-	private final WebDriver driver;
-	private final BasePage basePage;
-
+	
 	public LoginPage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-		this.driver = driver;
+		super(driver);
 	}
-
+	
 	public final LoginPage goToMemberLogin() {
 		this.driver.get("https://www.neobux.com/m/l/");
 		return this;
 	}
-
+	
 	public final LoginPage fillCredentials() {
 		if ((this.login == null) && this.passwd == null) {
 			this.initCredentials();
@@ -42,19 +39,19 @@ public class LoginPage {
 		this.basePage.writeText(this.password, this.passwd);
 		return this;
 	}
-
+	
 	public final void send() {
 		this.basePage.click(this.send);
 	}
-
+	
 	public final boolean isCaptchaVisible() {
 		return this.captcha.isDisplayed();
 	}
-
+	
 	public final WebElement getCaptcha() {
 		return this.captcha;
 	}
-
+	
 	private void initCredentials() {
 		final var prop = new Properties();
 		InputStream inStream = null;

@@ -2,17 +2,15 @@ package com.kshyk.po.theinternet;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class HoversPage {
+public class HoversPage extends AbstractPage {
 	
-	private final BasePage basePage;
 	@FindBy(xpath = "//*[text()='Hovers']")
 	private WebElement title;
 	@FindBy(css = ".figcaption h5")
@@ -21,7 +19,7 @@ public class HoversPage {
 	private List<WebElement> avatars;
 	
 	public HoversPage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
+		super(driver);
 	}
 	
 	public List<WebElement> getAvatars() {
@@ -33,7 +31,7 @@ public class HoversPage {
 	}
 	
 	public String getVisibleName() {
-		final Optional<WebElement> element = this.names.stream().filter(WebElement::isDisplayed).findFirst();
+		final var element = this.names.stream().filter(WebElement::isDisplayed).findFirst();
 		return element.map(WebElement::getText).orElse(null);
 	}
 	

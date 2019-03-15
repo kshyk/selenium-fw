@@ -4,19 +4,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class MainToolbar {
-	
-	private final BasePage basePage;
-	@FindBy(className = "home-link")
-	private WebElement logo;
+public class MainToolbar extends AbstractPage {
 	
 	@FindBy(className = "topka-tel")
 	private WebElement telephoneLabel;
 	@FindBy(css = ".topka-mail a")
 	private WebElement mailLink;
-	
 	@FindBy(className = "topka-jezyki")
 	private WebElement languages;
 	@FindBy(className = "topka-facebook")
@@ -34,27 +29,8 @@ public class MainToolbar {
 	@FindBy(className = "topka-twitter")
 	private WebElement twitterButton;
 	
-	@FindBy(linkText = "TEAM&PERSONAL")
-	private WebElement teamAndPersonalLink;
-	@FindBy(linkText = "O FIRMIE")
-	private WebElement aboutLink;
-	@FindBy(linkText = "WYJAZDY INTEGRACYJNE")
-	private WebElement integrationTripsLink;
-	@FindBy(linkText = "TEAM BUILDING")
-	private WebElement teamBuildingLink;
-	@FindBy(linkText = "SZKOLENIA")
-	private WebElement coursesLink;
-	@FindBy(linkText = "EVENTY")
-	private WebElement eventsLink;
-	@FindBy(linkText = "KONTAKT")
-	private WebElement contactLink;
-	
 	public MainToolbar(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-	}
-	
-	public void clickOnLogo() {
-		this.basePage.click(this.logo);
+		super(driver);
 	}
 	
 	public String getTelephoneText() {
@@ -67,10 +43,6 @@ public class MainToolbar {
 	
 	public String getMailLinkText() {
 		return this.basePage.readText(this.mailLink);
-	}
-	
-	public void clickOnMailLink() {
-		this.basePage.click(this.mailLink);
 	}
 	
 	public void clickOnFacebookButton() {
@@ -101,31 +73,4 @@ public class MainToolbar {
 		this.basePage.click(this.twitterButton);
 	}
 	
-	public void clickOnTeamAndPersonalLink() {
-		this.basePage.click(this.teamAndPersonalLink);
-	}
-	
-	public void clickOnAboutLink() {
-		this.basePage.click(this.aboutLink);
-	}
-	
-	public void clickOnIntegrationTripsLink() {
-		this.basePage.click(this.integrationTripsLink);
-	}
-	
-	public void clickOnTeamBuildingLink() {
-		this.basePage.click(this.teamBuildingLink);
-	}
-	
-	public void clickOnCoursesLink() {
-		this.basePage.click(this.coursesLink);
-	}
-	
-	public void clickOnEventsLink() {
-		this.basePage.click(this.eventsLink);
-	}
-	
-	public void clickOnContactLink() {
-		this.basePage.click(this.contactLink);
-	}
 }

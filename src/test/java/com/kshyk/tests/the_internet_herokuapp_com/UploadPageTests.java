@@ -1,15 +1,13 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
 import static org.assertj.core.api.BDDAssertions.then;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElementLocated;
 
 import java.io.File;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Objects;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.kshyk.po.theinternet.FileUploadPage;
@@ -23,8 +21,8 @@ class UploadPageTests extends BaseTest {
 	
 	@Test
 	public final void isUploadPageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage
+		this.getPage()
+				.getInstance(HomePage.class)
 				.goToHerokuapp()
 				.goToFileUpload();
 		this.fileUploadPage = this.getPage().getInstance(FileUploadPage.class);
@@ -35,13 +33,13 @@ class UploadPageTests extends BaseTest {
 	
 	@Test(dependsOnMethods = "isUploadPageLoaded")
 	public final void isFileProperlyUploaded() throws URISyntaxException {
-		final URL resource = this.classLoader.getResource("upload/not_empty.txt");
-		final URI fileURI = Objects.requireNonNull(resource).toURI();
-		final File emptyFile = new File(fileURI);
+		final var resource = this.classLoader.getResource("upload/not_empty.txt");
+		final var fileURI = Objects.requireNonNull(resource).toURI();
+		final var emptyFile = new File(fileURI);
 		this.fileUploadPage.uploadFile(emptyFile);
-		this.getWait().until(ExpectedConditions.textToBePresentInElementLocated(By.tagName("h3"), "File Uploaded!"));
-		final String expected = emptyFile.getName();
-		final String actual = this.fileUploadPage.getUploadedFileName();
+		this.getWait().until(textToBePresentInElementLocated(By.tagName("h3"), "File Uploaded!"));
+		final var expected = emptyFile.getName();
+		final var actual = this.fileUploadPage.getUploadedFileName();
 		then(actual).isEqualTo(expected);
 	}
 	

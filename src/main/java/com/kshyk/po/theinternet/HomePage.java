@@ -4,12 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class HomePage {
+public class HomePage extends AbstractPage {
 	
-	private final BasePage basePage;
-	private final WebDriver driver;
 	@FindBy(xpath = "//*[text()='Welcome to the-internet']")
 	private WebElement title;
 	@FindBy(css = "a[href='/abtest']")
@@ -32,8 +30,7 @@ public class HomePage {
 	private WebElement nestedFramesLink;
 	
 	public HomePage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public final HomePage goToHerokuapp() {

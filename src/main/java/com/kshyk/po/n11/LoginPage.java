@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class LoginPage extends BasePage {
+public class LoginPage extends AbstractPage {
 	
 	@FindBy(id = "email")
 	private WebElement username;
@@ -26,16 +26,16 @@ public class LoginPage extends BasePage {
 	}
 	
 	public final void loginToN11(final String uName, final String passwd) {
-		this.writeText(this.username, uName);
-		this.writeText(this.password, passwd);
-		this.click(this.loginButton);
+		this.basePage.writeText(this.username, uName);
+		this.basePage.writeText(this.password, passwd);
+		this.basePage.click(this.loginButton);
 	}
 	
 	public final void verifyLoginUserName(final String expectedText) {
-		then(this.readText(this.errorMessageUsername)).isEqualTo(expectedText);
+		then(this.basePage.readText(this.errorMessageUsername)).isEqualTo(expectedText);
 	}
 	
 	public final void verifyLoginPassword(final String expectedText) {
-		then(this.readText(this.errorMessagePassword)).isEqualTo(expectedText);
+		then(this.basePage.readText(this.errorMessagePassword)).isEqualTo(expectedText);
 	}
 }

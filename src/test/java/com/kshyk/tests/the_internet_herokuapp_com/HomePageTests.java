@@ -11,8 +11,10 @@ class HomePageTests extends BaseTest {
 	
 	@Test
 	public final void isHomePageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		then(homePage.goToHerokuapp().isOpen())
+		then(this.getPage()
+				.getInstance(HomePage.class)
+				.goToHerokuapp()
+				.isOpen())
 				.as(HomePage.class.getSimpleName() + " is not loaded.")
 				.isTrue();
 	}

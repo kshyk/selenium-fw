@@ -15,10 +15,13 @@ class TinyMCEPageTests extends BaseTest {
 	
 	@Test
 	public final void isTinyMCEPageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToHerokuapp().goToTinyMCE();
-		final TinyMCEPage tinyMCEPage = this.getPage().getInstance(TinyMCEPage.class);
-		then(tinyMCEPage.isOpen())
+		this.getPage()
+				.getInstance(HomePage.class)
+				.goToHerokuapp()
+				.goToTinyMCE();
+		then(this.getPage()
+				.getInstance(TinyMCEPage.class)
+				.isOpen())
 				.as(TinyMCEPage.class.getSimpleName() + " is not loaded.")
 				.isTrue();
 	}
@@ -30,7 +33,7 @@ class TinyMCEPageTests extends BaseTest {
 	}
 	
 	private void setContent(final String content) {
-		final JavascriptExecutor jse = (JavascriptExecutor) this.getDriver();
+		final var jse = (JavascriptExecutor) this.getDriver();
 		jse.executeScript("tinymce.activeEditor.setContent(arguments[0]);", content);
 	}
 }

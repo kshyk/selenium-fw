@@ -1,9 +1,9 @@
 package com.kshyk.tests.neobux_com;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import static org.testng.Assert.assertTrue;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.kshyk.po.neobux.AdvertWindow;
@@ -24,14 +24,15 @@ class EarnMoneyTests extends BaseTest {
 			this.getWait().until(bool -> loginPO.getCaptcha().getAttribute("value").length() == 5);
 		}
 		loginPO.send();
-		this.getWait().until(ExpectedConditions.visibilityOf(this.getPage().getInstance(SummaryPage.class).getClicksChart()));
+		this.getWait().until(visibilityOf(this.getPage().getInstance(SummaryPage.class).getClicksChart()));
 	}
 	
 	@Test(groups = "clicking on ads", dependsOnGroups = "log into neobux")
 	public final void clickOnEveryActiveAdvertisement() {
-		final var toolbar = this.getPage().getInstance(Toolbar.class);
-		final var advertisementsPO = toolbar
-				.goToViewAdvertisements();
+		this.getPage()
+				.getInstance(Toolbar.class)
+				.clickOnViewAdvertisementsLink();
+		final var advertisementsPO = this.getPage().getInstance(AdvertisementsPage.class);
 		assertTrue(advertisementsPO.isOpened(), advertisementsPO.getClass().getSimpleName() + " is not visible.");
 		advertisementsPO.getActiveAds().forEach(ad -> {
 			advertisementsPO

@@ -3,14 +3,11 @@ package com.kshyk.po.toolsqa;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class DemoAlertsPage {
+public class DemoAlertsPage extends AbstractPage {
 	
-	private final WebDriver driver;
-	private final BasePage basePage;
 	@FindBy(css = "button[onclick*='pushAlert()']")
 	private WebElement simpleAlertButton;
 	@FindBy(css = "button[onclick*='pushConfirm()']")
@@ -19,9 +16,7 @@ public class DemoAlertsPage {
 	private WebElement promptAlertButton;
 	
 	public DemoAlertsPage(final WebDriver driver) {
-		this.driver = driver;
-		this.basePage = new BasePage(driver);
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 	
 	public final void goToDemoAlerts() {

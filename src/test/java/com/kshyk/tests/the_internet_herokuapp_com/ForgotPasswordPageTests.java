@@ -1,11 +1,11 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
 import static org.assertj.core.api.BDDAssertions.then;
+import static org.openqa.selenium.By.tagName;
+import static org.openqa.selenium.support.ui.ExpectedConditions.textMatches;
 
 import java.util.regex.Pattern;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.kshyk.po.theinternet.ForgotPasswordPage;
@@ -18,8 +18,10 @@ class ForgotPasswordPageTests extends BaseTest {
 	
 	@Test(groups = "open forgot password")
 	public final void isForgotPasswordPageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToHerokuapp().goToForgotPassword();
+		this.getPage()
+				.getInstance(HomePage.class)
+				.goToHerokuapp()
+				.goToForgotPassword();
 		this.forgotPasswordPage = this.getPage().getInstance(ForgotPasswordPage.class);
 		then(this.forgotPasswordPage.isOpen())
 				.as(ForgotPasswordPage.class.getSimpleName() + " is not loaded.")
@@ -28,10 +30,10 @@ class ForgotPasswordPageTests extends BaseTest {
 	
 	@Test(dependsOnGroups = "open forgot password")
 	public final void isPasswordReset() {
-		final String email = "test@example.com";
-		final Pattern successMessage = Pattern.compile("Your e-mail's been sent!");
+		final var email = "test@example.com";
+		final var successMessage = Pattern.compile("Your e-mail's been sent!");
 		this.forgotPasswordPage.resetPassword(email);
-		this.getWait().until(ExpectedConditions.textMatches(By.tagName("body"), successMessage));
+		this.getWait().until(textMatches(tagName("body"), successMessage));
 	}
 	
 }

@@ -23,15 +23,13 @@ public class BasePage {
 	private final PageGenerator generator;
 	private final Actions action;
 	private final WebDriver driver;
-	private final WebDriverWait wait5sec, wait15sec, wait30sec;
+	private final WebDriverWait wait5sec;
 	
 	public BasePage(final WebDriver driver) {
 		this.generator = new PageGenerator(driver);
 		this.action = new Actions(driver);
 		this.driver = driver;
 		this.wait5sec = new WebDriverWait(driver, 5);
-		this.wait15sec = new WebDriverWait(driver, 15);
-		this.wait30sec = new WebDriverWait(driver, 30);
 	}
 	
 	public final <T> void click(final T elementAttr) {
@@ -95,12 +93,6 @@ public class BasePage {
 		final var windowHandles = this.getWindowHandles();
 		final var lastTab = Iterables.getLast(windowHandles);
 		this.driver.switchTo().window(lastTab);
-	}
-	
-	public final void switchToFirstTab() {
-		final var windowHandles = this.getWindowHandles();
-		final var firstTab = Iterables.getFirst(windowHandles, null);
-		this.driver.switchTo().window(firstTab);
 	}
 	
 	private List<String> getWindowHandles() {

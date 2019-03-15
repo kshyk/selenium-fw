@@ -12,10 +12,13 @@ class ABTestingPageTests extends BaseTest {
 	
 	@Test
 	public final void isABTestPageLoaded() {
-		final HomePage homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToHerokuapp().goToABTest();
-		final AbTestPage abTestPage = this.getPage().getInstance(AbTestPage.class);
-		then(abTestPage.isOpen())
+		this.getPage()
+				.getInstance(HomePage.class)
+				.goToHerokuapp()
+				.goToABTest();
+		then(this.getPage()
+				.getInstance(AbTestPage.class)
+				.isOpen())
 				.as(AbTestPage.class.getSimpleName() + " is not loaded.")
 				.isTrue();
 	}

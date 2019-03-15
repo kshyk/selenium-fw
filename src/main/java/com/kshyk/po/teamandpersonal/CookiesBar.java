@@ -8,19 +8,16 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class CookiesBar {
+public class CookiesBar extends AbstractPage {
 	
-	private final BasePage basePage;
-	private final WebDriver driver;
 	@CacheLookup
 	@FindBy(css = "div#catapult-cookie-bar")
 	private WebElement cookieBar;
 	
 	public CookiesBar(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public final String getCookieInfoText() {

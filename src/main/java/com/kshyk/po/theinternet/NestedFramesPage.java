@@ -4,9 +4,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NestedFramesPage {
+import com.kshyk.po.AbstractPage;
+
+public class NestedFramesPage extends AbstractPage {
 	
-	private final WebDriver driver;
 	@FindBy(tagName = "frameset")
 	private WebElement frameset;
 	@FindBy(name = "frame-top")
@@ -21,7 +22,7 @@ public class NestedFramesPage {
 	private WebElement bottomFrame;
 	
 	public NestedFramesPage(final WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public final boolean isOpen() {

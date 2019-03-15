@@ -1,7 +1,8 @@
 package com.kshyk.tests.pajacyk_pl;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import com.kshyk.po.pajacyk.HomePage;
@@ -15,7 +16,7 @@ class BellyClickTests extends BaseTest {
 		homePage.goToPajacyk()
 				.clickOnBelly();
 		final var expectedLocator = By.xpath("//*[text()='dziękujemy :)']");
-		this.getWait().until(ExpectedConditions.visibilityOfElementLocated(expectedLocator));
+		this.getWait().until(visibilityOfElementLocated(expectedLocator));
 	}
 	
 }

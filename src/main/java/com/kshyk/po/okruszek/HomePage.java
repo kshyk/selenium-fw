@@ -4,19 +4,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class HomePage {
+public class HomePage extends AbstractPage {
 	
-	private final WebDriver driver;
-	private final BasePage basePage;
 	@FindBy(css = ".click-crumb")
 	private WebElement crumb;
 	
-	
 	public HomePage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public final HomePage goToOkruszek() {

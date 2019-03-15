@@ -8,11 +8,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class AdvertisementsPage {
+public class AdvertisementsPage extends AbstractPage {
 	
-	private final BasePage basePage;
 	@FindBy(id = "sInf0")
 	private WebElement resetInfoBar;
 	@FindBy(css = ".adfu,.adf,.ad5,.ad15,.ad30")
@@ -21,7 +20,7 @@ public class AdvertisementsPage {
 	private WebElement adChances;
 	
 	public AdvertisementsPage(final WebDriver driver) {
-		this.basePage = new BasePage(driver);
+		super(driver);
 	}
 	
 	public final boolean isOpened() {
@@ -61,7 +60,4 @@ public class AdvertisementsPage {
 		this.basePage.sleep(1000);
 	}
 	
-	public final void sleep(final int millis) {
-		this.basePage.sleep(millis);
-	}
 }

@@ -3,25 +3,19 @@ package com.kshyk.po.neobux;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import com.kshyk.core.BasePage;
+import com.kshyk.po.AbstractPage;
 
-public class Toolbar {
+public class Toolbar extends AbstractPage {
 	
-	private final WebDriver driver;
-	private final BasePage basePage;
 	@FindBy(id = "navAds")
 	private WebElement viewAdvertisements;
 	
 	public Toolbar(final WebDriver driver) {
-		this.driver = driver;
-		this.basePage = new BasePage(driver);
-		PageFactory.initElements(driver, this);
+		super(driver);
 	}
 	
-	public final AdvertisementsPage goToViewAdvertisements() {
+	public final void clickOnViewAdvertisementsLink() {
 		this.basePage.mouseOverAndClick(this.viewAdvertisements);
-		return PageFactory.initElements(this.driver, AdvertisementsPage.class);
 	}
 }
