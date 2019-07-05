@@ -18,18 +18,19 @@
 		<maven.compiler.version>3.8.0</maven.compiler.version>
 		<maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
 		<maven.surefire.version>3.0.0-M3</maven.surefire.version>
-		<assertj.version>3.12.1</assertj.version>
-		<webdrivermanager.version>3.3.0</webdrivermanager.version>
+        <assertj.version>3.12.2</assertj.version>
+        <webdrivermanager.version>3.6.1</webdrivermanager.version>
 		<logback.version>1.2.3</logback.version>
-		<log4j.version>2.11.2</log4j.version>
+        <log4j.version>2.12.0</log4j.version>
 		<selenium.version>3.141.59</selenium.version>
 		<testng.version>6.14.3</testng.version>
-		<apache.poi.version>4.0.1</apache.poi.version>
+        <apache.poi.version>4.1.0</apache.poi.version>
 		<versions.maven.version>2.7</versions.maven.version>
-		<javassist.version>3.24.1-GA</javassist.version>
-		<cglib.nodep.version>3.2.10</cglib.nodep.version>
-		<mockito.core.version>2.25.0</mockito.core.version>
-		<ow2.asm.version>6.2.1</ow2.asm.version>
+        <javassist.version>3.25.0-GA</javassist.version>
+        <cglib.nodep.version>3.2.12</cglib.nodep.version>
+        <mockito.core.version>2.28.2</mockito.core.version>
+        <ow2.asm.version>7.1</ow2.asm.version>
+        <selenide.version>5.2.4</selenide.version>
 	</properties>
 
 	<dependencies>
@@ -93,7 +94,12 @@
 			<artifactId>mockito-core</artifactId>
 			<version>${mockito.core.version}</version>
 			<scope>test</scope>
-		</dependency>
+        </dependency>
+        <dependency>
+            <groupId>com.codeborne</groupId>
+            <artifactId>selenide</artifactId>
+            <version>${selenide.version}</version>
+        </dependency>
 	</dependencies>
 
 	<build>

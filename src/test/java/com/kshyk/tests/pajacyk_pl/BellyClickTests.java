@@ -1,22 +1,20 @@
 package com.kshyk.tests.pajacyk_pl;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
-
-import org.openqa.selenium.By;
+import com.kshyk.tests.base.TestCase;
 import org.testng.annotations.Test;
 
-import com.kshyk.po.pajacyk.HomePage;
-import com.kshyk.tests.base.BaseTest;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-class BellyClickTests extends BaseTest {
-	
-	@Test
-	public final void clickOnBellyTest() {
-		final var homePage = this.getPage().getInstance(HomePage.class);
-		homePage.goToPajacyk()
-				.clickOnBelly();
-		final var expectedLocator = By.xpath("//*[text()='dziękujemy :)']");
-		this.getWait().until(visibilityOfElementLocated(expectedLocator));
-	}
-	
+public class BellyClickTests extends TestCase
+{
+    @Test
+    public final void clickOnBellyTest()
+    {
+        open("https://www.pajacyk.pl/#index");
+        $(".paj-click").hover().click();
+        $(byText("dziękujemy :)")).should(appear);
+    }
 }
