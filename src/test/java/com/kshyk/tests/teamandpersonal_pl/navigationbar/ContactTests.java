@@ -1,53 +1,37 @@
 package com.kshyk.tests.teamandpersonal_pl.navigationbar;
 
-import static org.assertj.core.api.BDDAssertions.then;
-
+import com.kshyk.tests.base.TestCase;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.kshyk.po.teamandpersonal.HomePage;
-import com.kshyk.po.teamandpersonal.MainToolbar;
-import com.kshyk.tests.base.BaseTest;
+import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-public class ContactTests extends BaseTest {
-	
-	private MainToolbar toolbar;
-	
-	@BeforeClass
-	private void openHomePage() {
-		this.getPage().getInstance(HomePage.class).open();
-	}
-	
-	@Test
-	public final void checkTelephone() {
-		final var actual = this.whenToolbar()
-				.getTelephoneText();
-		
-		then(actual).isEqualTo("+48 660 22 77 22");
-	}
-	
-	@Test
-	public final void checkMailRefAttribute() {
-		final var actual = this.whenToolbar()
-				.getMailLinkElement()
-				.getAttribute("href");
-		
-		then(actual).isEqualTo("mailto:biuro@teamandpersonal.pl");
-	}
-	
-	@Test
-	public final void checkMail() {
-		final var actual = this.whenToolbar()
-				.getMailLinkText();
-		
-		then(actual).isEqualTo("biuro [at] teamandpersonal.pl");
-	}
-	
-	private MainToolbar whenToolbar() {
-		if (this.toolbar == null) {
-			this.toolbar = this.getPage().getInstance(MainToolbar.class);
-		}
-		return this.toolbar;
-	}
-	
+public class ContactTests extends TestCase
+{
+    @BeforeClass
+    private void openHomePage()
+    {
+        open("https://teamandpersonal.pl/");
+    }
+
+    @Test
+    public final void checkTelephone()
+    {
+        $(".topka-tel").shouldHave(text("+48 660 22 77 22"));
+    }
+
+    @Test
+    public final void checkMailRefAttribute()
+    {
+        $(".topka-mail a").shouldHave(attribute("href", "mailto:biuro@teamandpersonal.pl"));
+    }
+
+    @Test
+    public final void checkMail()
+    {
+        $(".topka-mail a").shouldHave(text("biuro [at] teamandpersonal.pl"));
+    }
 }

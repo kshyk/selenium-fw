@@ -1,12 +1,12 @@
 package com.kshyk.tests.toolsqa_com;
 
+import com.kshyk.po.toolsqa.DemoAlertsPage;
+import com.kshyk.tests.base.BaseTest;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 
-import com.kshyk.po.toolsqa.DemoAlertsPage;
-import com.kshyk.tests.base.BaseTest;
-
-class HandlingAlertTests extends BaseTest {
+public class HandlingAlertTests extends BaseTest
+{
 	
 	private DemoAlertsPage demoAlertsPO;
 	
