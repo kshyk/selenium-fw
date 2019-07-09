@@ -1,17 +1,14 @@
 package com.kshyk.po.theinternet;
 
+import com.kshyk.po.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import com.kshyk.po.AbstractPage;
 
 public class HomePage extends AbstractPage {
 	
 	@FindBy(xpath = "//*[text()='Welcome to the-internet']")
 	private WebElement title;
-	@FindBy(css = "a[href='/abtest']")
-	private WebElement abTestingLink;
 	@FindBy(css = "a[href='/key_presses']")
 	private WebElement keyPressesLink;
 	@FindBy(css = "a[href='/upload']")
@@ -37,12 +34,8 @@ public class HomePage extends AbstractPage {
 		this.driver.get("http://the-internet.herokuapp.com/");
 		return this;
 	}
-	
-	public final void goToABTest() {
-		this.basePage.click(this.abTestingLink);
-	}
-	
-	public final void goToKeyPresses() {
+
+    public final void goToKeyPresses() {
 		this.basePage.click(this.keyPressesLink);
 	}
 	

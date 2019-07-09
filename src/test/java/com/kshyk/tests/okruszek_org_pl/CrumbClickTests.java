@@ -8,11 +8,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class CrumbClickTests extends TestCase
-{
+public class CrumbClickTests extends TestCase {
     @Test
-    public final void clickOnCrumbTest()
-    {
+    public final void clickOnCrumbTest() {
         open("http://www.okruszek.org.pl/");
         $(".click-crumb").click();
         $(byText("DZIĘKUJEMY!")).should(appear);
