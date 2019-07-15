@@ -7,7 +7,7 @@
 
 	<test name="Earning Tests">
 		<classes>
-			<class name="com.kshyk.tests.neobux_com.EarnMoneyTests"/>
+			<class name="com.kshyk.tests.neobux_com.EarnMoneyTestsOld"/>
 		</classes>
 	</test>
 

@@ -1,55 +1,56 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
-import static org.assertj.core.api.BDDAssertions.then;
-import static org.openqa.selenium.support.ui.ExpectedConditions.textToBe;
-
+import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.WebDriverRunner;
+import com.kshyk.tests.base.TestCase;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.kshyk.po.theinternet.HomePage;
-import com.kshyk.po.theinternet.NestedFramesPage;
-import com.kshyk.tests.base.BaseTest;
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 
-class NestedFramesPageTests extends BaseTest {
-	
-	private final By body = By.tagName("body");
-	
-	private NestedFramesPage nestedFramesPO;
-	
-	@Test(groups = "init test")
-	public final void isNestedFramesPageLoaded() {
-		this.getPage()
-				.getInstance(HomePage.class)
-				.goToHerokuapp()
-				.goToNestedFrames();
-		this.nestedFramesPO = this.getPage().getInstance(NestedFramesPage.class);
-		then(this.nestedFramesPO.isOpen())
-				.as(NestedFramesPage.class.getSimpleName() + " is not loaded.")
-				.isTrue();
-	}
-	
-	@Test(dependsOnGroups = "init test")
-	public final void isBottomFrameLocatedProperly() {
-		this.nestedFramesPO.switchToBottom();
-		this.getWait().until(textToBe(this.body, "BOTTOM"));
-	}
-	
-	@Test(dependsOnGroups = "init test")
-	public final void isLeftFrameLocatedProperly() {
-		this.nestedFramesPO.switchToLeft();
-		this.getWait().until(textToBe(this.body, "LEFT"));
-	}
-	
-	@Test(dependsOnGroups = "init test")
-	public final void isMiddleFrameLocatedProperly() {
-		this.nestedFramesPO.switchToMiddle();
-		this.getWait().until(textToBe(this.body, "MIDDLE"));
-	}
-	
-	@Test(dependsOnGroups = "init test")
-	public final void isRightFrameLocatedProperly() {
-		this.nestedFramesPO.switchToRight();
-		this.getWait().until(textToBe(this.body, "RIGHT"));
-	}
-	
+public class NestedFramesPageTests extends TestCase {
+    private SelenideElement body = $(By.tagName("body"));
+
+    @BeforeClass
+    public final void isNestedFramesPageLoaded() {
+        open("http://the-internet.herokuapp.com/nested_frames");
+        $(By.tagName("frameset")).should(appear);
+    }
+
+    @AfterMethod
+    public final void switchToDefaultContent() {
+        WebDriverRunner.driver().switchTo().defaultContent();
+    }
+
+    @Test
+    public final void isBottomFrameLocatedProperly() {
+        WebDriverRunner.driver().switchTo().frame("frame-bottom");
+        body.shouldHave(text("BOTTOM"));
+    }
+
+    @Test
+    public final void isLeftFrameLocatedProperly() {
+        WebDriverRunner.driver().switchTo().frame("frame-top");
+        WebDriverRunner.driver().switchTo().frame("frame-left");
+        body.shouldHave(text("LEFT"));
+    }
+
+    @Test
+    public final void isMiddleFrameLocatedProperly() {
+        WebDriverRunner.driver().switchTo().frame("frame-top");
+        WebDriverRunner.driver().switchTo().frame("frame-middle");
+        body.shouldHave(text("MIDDLE"));
+    }
+
+    @Test
+    public final void isRightFrameLocatedProperly() {
+        WebDriverRunner.driver().switchTo().frame("frame-top");
+        WebDriverRunner.driver().switchTo().frame("frame-right");
+        body.shouldHave(text("RIGHT"));
+    }
 }
