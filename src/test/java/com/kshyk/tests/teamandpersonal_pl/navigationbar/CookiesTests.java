@@ -16,7 +16,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 public class CookiesTests extends TestCase
 {
     @BeforeClass
-    private void openHomePage()
+    public void openHomePage()
     {
         open("https://teamandpersonal.pl/");
     }
@@ -45,7 +45,7 @@ public class CookiesTests extends TestCase
     }
 
     @BeforeGroups(groups = "GDPR policy")
-    private void whenPrivacyPolicyPage()
+    public void whenPrivacyPolicyPage()
     {
         $(".ctcc-more-info-link").click();
         var driver = WebDriverRunner.getWebDriver();
@@ -53,7 +53,7 @@ public class CookiesTests extends TestCase
     }
 
     @AfterGroups(groups = "GDPR policy")
-    private void closePrivacyPolicyPage()
+    public void closePrivacyPolicyPage()
     {
         var driver = WebDriverRunner.getWebDriver();
         if (driver.getWindowHandles().size() > 1)

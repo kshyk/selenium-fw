@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.open;
 public class ContactTests extends TestCase
 {
     @BeforeClass
-    private void openHomePage()
+    public void openHomePage()
     {
         open("https://teamandpersonal.pl/");
     }
