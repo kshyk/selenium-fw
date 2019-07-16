@@ -8,12 +8,13 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class BellyClickTests extends TestCase {
+public class BellyClickTests extends TestCase
+{
     @Test
-    public final void clickOnBellyTest() {
+    public final void clickOnBellyTest()
+    {
         open("https://www.pajacyk.pl/#index");
-        $(".paj-click").hover();
-        $(".paj-click2").click();
+        $(".paj-click").hover().click();
         $(byText("dziękujemy :)")).should(appear);
     }
 }

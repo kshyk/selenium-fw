@@ -9,11 +9,9 @@
 
 	<test name="Default Tests">
 		<packages>
-			<package name="com.kshyk.tests.n11_com.*"/>
 			<package name="com.kshyk.tests.pajacyk_pl.*"/>
 			<package name="com.kshyk.tests.okruszek_org_pl.*"/>
 			<package name="com.kshyk.tests.the_internet_herokuapp_com.*"/>
-			<package name="com.kshyk.tests.toolsqa_com.*"/>
 		</packages>
 	</test>
 
