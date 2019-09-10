@@ -19,7 +19,7 @@
 		<maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
 		<maven.surefire.version>3.0.0-M3</maven.surefire.version>
 		<assertj.version>3.13.2</assertj.version>
-		<webdrivermanager.version>3.6.2</webdrivermanager.version>
+		<webdrivermanager.version>3.7.0</webdrivermanager.version>
 		<logback.version>1.2.3</logback.version>
 		<log4j.version>2.12.1</log4j.version>
 		<selenium.version>3.141.59</selenium.version>
@@ -30,7 +30,7 @@
 		<cglib.nodep.version>3.3.0</cglib.nodep.version>
 		<mockito.core.version>3.0.0</mockito.core.version>
         <ow2.asm.version>7.1</ow2.asm.version>
-		<selenide.version>5.2.8</selenide.version>
+		<selenide.version>5.3.1</selenide.version>
 	</properties>
 
 	<dependencies>
