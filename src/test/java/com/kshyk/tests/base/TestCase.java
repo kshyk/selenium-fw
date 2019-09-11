@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 public abstract class TestCase {
     @BeforeClass
-    public final void setup() {
+    public void setup() {
         Configuration.timeout = 5000;
         Configuration.headless = true;
         Configuration.startMaximized = true;

@@ -11,15 +11,9 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class HoversPageTests extends TestCase {
     @Test
-    public void isHoversPageLoaded() {
+    public void additionalInfoShouldAppearOnImageHover() {
         open("http://the-internet.herokuapp.com/hovers");
-        $(byText("Hovers")).should(appear);
-    }
-
-    @Test(dependsOnMethods = "isHoversPageLoaded")
-    public void isAdditionalInfoPresentAfterHoverOverImage() {
-        final var map = Map.of(0, "user1", 1, "user2", 2, "user3");
-        map.forEach((index, name) -> {
+        Map.of(0, "user1", 1, "user2", 2, "user3").forEach((index, name) -> {
             $$(".figure img").get(index).hover();
             $(byText("name: " + name)).should(appear);
         });

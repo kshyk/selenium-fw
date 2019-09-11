@@ -3,9 +3,12 @@ package com.kshyk.tests.the_internet_herokuapp_com;
 import com.kshyk.tests.base.TestCase;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.net.URISyntaxException;
-import java.util.Objects;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.function.BiPredicate;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Condition.text;
@@ -15,17 +18,11 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class UploadPageTests extends TestCase {
     @Test
-    public final void isUploadPageLoaded() {
+    public void isFileProperlyUploaded() throws IOException {
         open("http://the-internet.herokuapp.com/upload");
-        $(byText("File Uploader")).should(appear);
-    }
-
-    @Test(dependsOnMethods = "isUploadPageLoaded")
-    public final void isFileProperlyUploaded() throws URISyntaxException {
-        final var classLoader = UploadPageTests.class.getClassLoader();
-        final var resource = classLoader.getResource("upload/not_empty.txt");
-        final var fileURI = Objects.requireNonNull(resource).toURI();
-        final var file = new File(fileURI);
+        var dir = Paths.get(System.getProperty("user.dir"));
+        BiPredicate<Path, BasicFileAttributes> fileBiPredicate = (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith("not_empty.txt");
+        var file = Files.find(dir, Integer.MAX_VALUE, fileBiPredicate).findFirst().orElseThrow().toFile();
         $("#file-upload").uploadFile(file);
         $("#file-submit").submit();
         $(byText("File Uploaded!")).should(appear);

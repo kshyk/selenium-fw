@@ -1,6 +1,7 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
 import com.kshyk.tests.base.TestCase;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.appear;
@@ -8,32 +9,31 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class JavaScriptAlertsPageTests extends TestCase {
-    @Test
-    public final void isJavaScriptAlertsPageLoaded() {
+    @BeforeClass
+    public void openJavascriptAlertsPage() {
         open("http://the-internet.herokuapp.com/javascript_alerts");
-        $(byText("JavaScript Alerts")).should(appear);
     }
 
-    @Test(dependsOnMethods = "isJavaScriptAlertsPageLoaded")
-    public final void isSimpleAlertAppeared() {
+    @Test
+    public void isSimpleAlertAppeared() {
         $("[onclick='jsAlert()']").click();
         confirm();
         $(byText("You successfuly clicked an alert")).should(appear);
     }
 
-    @Test(dependsOnMethods = "isSimpleAlertAppeared")
-    public final void isConfirmAlertCancelled() {
+    @Test
+    public void isConfirmAlertCancelled() {
         $("[onclick='jsConfirm()']").click();
         dismiss();
         $(byText("You clicked: Cancel")).should(appear);
     }
 
-    @Test(dependsOnMethods = "isConfirmAlertCancelled")
-    public final void isPromptAlertSaveText() {
+    @Test
+    public void isPromptAlertSaveText() {
         $("[onclick='jsPrompt()']").click();
-        final var value = "I'm typing in here!";
+        var value = "I'm typing in here!";
         prompt(value);
-        final var expected = "You entered: " + value;
+        var expected = "You entered: " + value;
         $(byText(expected)).should(appear);
     }
 }

@@ -2,7 +2,7 @@
 
 <suite name="Normal Test Suite"
 	   parallel="classes"
-	   thread-count="3"
+	   thread-count="10"
 	   verbose="1"
 	   configfailurepolicy="continue"
 	   allow-return-values="true">

@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class HomePageTests extends TestCase {
     @Test
-    public final void isHomePageLoaded() {
+    public void isHomePageLoaded() {
         open("http://the-internet.herokuapp.com/");
         $(byText("Welcome to the-internet")).should(appear);
     }

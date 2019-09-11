@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class CrumbClickTests extends TestCase {
     @Test
-    public final void clickOnCrumbTest() {
+    public void clickOnCrumbTest() {
         open("http://www.okruszek.org.pl/");
         $(".click-crumb").click();
         $(byText("DZIĘKUJEMY!")).should(appear);

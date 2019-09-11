@@ -9,14 +9,9 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class ForgotPasswordPageTests extends TestCase {
-    @Test(groups = "open forgot password")
-    public final void isForgotPasswordPageLoaded() {
+    @Test
+    public void passwordShouldReset() {
         open("http://the-internet.herokuapp.com/forgot_password");
-        $(byText("Forgot Password")).should(appear);
-    }
-
-    @Test(dependsOnGroups = "open forgot password")
-    public final void isPasswordReset() {
         $("#email").val("test@example.com");
         $("#form_submit").submit();
         $(byText("Your e-mail's been sent!")).should(appear);
