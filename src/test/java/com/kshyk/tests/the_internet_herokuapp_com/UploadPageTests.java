@@ -1,7 +1,7 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
 import com.kshyk.tests.base.TestCase;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,9 +16,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class UploadPageTests extends TestCase {
+class UploadPageTests extends TestCase {
     @Test
-    public void isFileProperlyUploaded() throws IOException {
+    void isFileProperlyUploaded() throws IOException {
         open("http://the-internet.herokuapp.com/upload");
         var dir = Paths.get(System.getProperty("user.dir"));
         BiPredicate<Path, BasicFileAttributes> fileBiPredicate = (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith("not_empty.txt");
