@@ -9,7 +9,7 @@
 	<name>selenium-kshyk</name>
 
 	<properties>
-		<java.version>11</java.version>
+        <java.version>12</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.version>3.5.4</maven.version>
 		<maven.compile.optimize>true</maven.compile.optimize>
@@ -19,7 +19,7 @@
 		<maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
 		<maven.surefire.version>3.0.0-M3</maven.surefire.version>
 		<assertj.version>3.13.2</assertj.version>
-		<webdrivermanager.version>3.7.0</webdrivermanager.version>
+        <webdrivermanager.version>3.7.1</webdrivermanager.version>
 		<logback.version>1.2.3</logback.version>
 		<log4j.version>2.12.1</log4j.version>
 		<selenium.version>3.141.59</selenium.version>
