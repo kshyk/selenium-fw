@@ -10,7 +10,7 @@ public abstract class TestCase {
     public void setup() {
         Configuration.timeout = 5000;
         Configuration.remote = "http://localhost:4444/wd/hub";
-        Configuration.headless = false;
+        Configuration.headless = true;
         Configuration.startMaximized = true;
     }
 }

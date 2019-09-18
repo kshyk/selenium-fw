@@ -12,7 +12,7 @@ class BellyClickTests extends TestCase {
     @Test
     void clickOnBellyTest() {
         open("https://www.pajacyk.pl/#index");
-        $(".paj-click").hover().click();
+        $(".paj-click").click();
         $(byText("dziękujemy :)")).should(appear);
     }
 }
