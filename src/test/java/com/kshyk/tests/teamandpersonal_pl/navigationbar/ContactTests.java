@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class ContactTests extends TestCase {
+class ContactTests extends TestCase {
     @BeforeAll
     void openHomePage() {
         open("https://teamandpersonal.pl/");

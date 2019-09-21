@@ -11,7 +11,7 @@ import static com.codeborne.selenide.WebDriverRunner.*;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CookiesTests extends TestCase {
+class CookiesTests extends TestCase {
     @BeforeAll
     void openHomePage() {
         open("https://teamandpersonal.pl/");

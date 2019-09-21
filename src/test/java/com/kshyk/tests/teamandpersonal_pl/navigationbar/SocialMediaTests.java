@@ -11,7 +11,7 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.BDDAssertions.then;
 
-public class SocialMediaTests extends TestCase {
+class SocialMediaTests extends TestCase {
     @BeforeAll
     void openHomePage() {
         open("https://teamandpersonal.pl/");
