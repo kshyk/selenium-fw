@@ -27,9 +27,9 @@
         <versions.maven.version>2.7</versions.maven.version>
         <javassist.version>3.26.0-GA</javassist.version>
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
-        <mockito.core.version>3.1.0</mockito.core.version>
+        <mockito.core.version>3.2.0</mockito.core.version>
         <ow2.asm.version>7.2</ow2.asm.version>
-        <selenide.version>5.5.0</selenide.version>
+        <selenide.version>5.5.1</selenide.version>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
     </properties>
 
