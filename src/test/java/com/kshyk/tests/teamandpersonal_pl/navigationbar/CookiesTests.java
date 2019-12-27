@@ -1,13 +1,12 @@
 package com.kshyk.tests.teamandpersonal_pl.navigationbar;
 
-import com.google.common.collect.Iterables;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.*;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.*;
+import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.assertj.core.api.BDDAssertions.then;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
@@ -35,8 +34,7 @@ class CookiesTests extends TestCase {
     @Order(2)
     void clickGDPRLinkShouldOpenPolicyPage() {
         $(".ctcc-more-info-link").click();
-        var driver = driver().getWebDriver();
-        driver().switchTo().window(Iterables.getLast(driver.getWindowHandles()));
+        switchTo().window(1);
         $(".site-content").shouldBe(visible);
     }
 
@@ -51,7 +49,7 @@ class CookiesTests extends TestCase {
     @Order(4)
     void checkCookieBarInvisibilityAfterButtonClick() {
         getWebDriver().close();
-        driver().switchTo().window(0);
+        switchTo().window(0);
         $("#catapultCookie").click();
         $("div#catapult-cookie-bar").should(disappear);
     }
