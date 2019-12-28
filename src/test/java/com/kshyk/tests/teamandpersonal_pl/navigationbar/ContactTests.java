@@ -16,17 +16,17 @@ class ContactTests extends TestCase {
     }
 
     @Test
-    void checkTelephone() {
+    public void checkTelephone() {
         $(".topka-tel").shouldHave(text("+48 660 22 77 22"));
     }
 
     @Test
-    void checkMailRefAttribute() {
+    public void checkMailRefAttribute() {
         $(".topka-mail a").shouldHave(attribute("href", "mailto:biuro@teamandpersonal.pl"));
     }
 
     @Test
-    void checkMail() {
+    public void checkMail() {
         $(".topka-mail a").shouldHave(text("biuro [at] teamandpersonal.pl"));
     }
 }

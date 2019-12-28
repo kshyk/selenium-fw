@@ -18,13 +18,13 @@ class CookiesTests extends TestCase {
 
     @Test
     @Order(1)
-    void checkCookieBarVisibilityOnStart() {
+    public void checkCookieBarVisibilityOnStart() {
         $("div#catapult-cookie-bar").shouldBe(visible);
     }
 
     @Test
     @Order(1)
-    void checkCookieBarInfo() {
+    public void checkCookieBarInfo() {
         var expectedValue = "Serwis wykorzystuje pliki cookies. Korzystając ze strony wyrażasz zgodę na " +
                 "wykorzystywanie plików cookies. dowiedz się więcej.";
         $(".ctcc-left-side").shouldHave(exactText(expectedValue));
@@ -32,7 +32,7 @@ class CookiesTests extends TestCase {
 
     @Test
     @Order(2)
-    void clickGDPRLinkShouldOpenPolicyPage() {
+    public void clickGDPRLinkShouldOpenPolicyPage() {
         $(".ctcc-more-info-link").click();
         switchTo().window(1);
         $(".site-content").shouldBe(visible);
@@ -40,14 +40,14 @@ class CookiesTests extends TestCase {
 
     @Test
     @Order(3)
-    void checkPrivacyPolicyUrl() {
+    public void checkPrivacyPolicyUrl() {
         var privacyPolicyUrl = "https://teamandpersonal.pl/polityka-prywatnosci/";
         then(url()).isEqualTo(privacyPolicyUrl);
     }
 
     @Test
     @Order(4)
-    void checkCookieBarInvisibilityAfterButtonClick() {
+    public void checkCookieBarInvisibilityAfterButtonClick() {
         getWebDriver().close();
         switchTo().window(0);
         $("#catapultCookie").click();

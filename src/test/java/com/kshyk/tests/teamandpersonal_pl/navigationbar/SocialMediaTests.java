@@ -23,44 +23,44 @@ class SocialMediaTests extends TestCase {
     }
 
     @Test
-    void checkFacebook() {
+    public void checkFacebook() {
         $(".topka-facebook").click();
         then(url()).contains("https://www.facebook.com/TeamAndPersonal/?ref=bookmarks");
     }
 
     @Test
-    void checkGooglePlus() {
+    public void checkGooglePlus() {
         $(".topka-google").click();
         then(url()).contains("https://plus.google.com/+TeamandpersonalPl");
     }
 
     @Test
-    void checkYouTube() {
+    public void checkYouTube() {
         $(".topka-youtube").click();
         then(url()).contains("https://www.youtube.com/channel/UCealDsXd2QtuW_on0wjSqtw");
     }
 
     @Test
-    void checkLinkedIn() {
+    public void checkLinkedIn() {
         $(".topka-linkedin").click();
         then(url()).contains("https://www.linkedin.com/company/teamandpersonal/");
     }
 
     @Test
-    void checkInstagram() {
+    public void checkInstagram() {
         $(".topka-instagram").click();
         then(url()).contains("https://www.instagram.com/teamandpersonal/");
     }
 
     @Test
-    void checkPinterest() {
+    public void checkPinterest() {
         $(".topka-pinterest").click();
         then(url()).contains(
                 "https://www.pinterest.com/teampersonal/?sender=602708500040250336&invite_code=6877095e58a1439aa50df3831a86b83f");
     }
 
     @Test
-    void checkTwitter() {
+    public void checkTwitter() {
         $(".topka-twitter").click();
         then(url()).contains("https://twitter.com/TeamAndPersonal");
     }
