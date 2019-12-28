@@ -21,7 +21,7 @@ class MultipleWindowsPageTests extends TestCase {
 
     @Test
     @Order(1)
-    void isNewWindowOpened() {
+    public void isNewWindowOpened() {
         $(byLinkText("Click Here")).click();
         switchTo().window(getLast(getWebDriver().getWindowHandles()));
         $(By.tagName("h3")).shouldHave(text("New Window"));
@@ -29,7 +29,7 @@ class MultipleWindowsPageTests extends TestCase {
 
     @Test
     @Order(2)
-    void isDefaultContentPresentAfterNewWindowClose() {
+    public void isDefaultContentPresentAfterNewWindowClose() {
         getWebDriver().close();
         switchTo().window(0);
         $(byText("Opening a new window")).should(appear);

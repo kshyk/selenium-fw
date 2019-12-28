@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class TinyMCEPageTests extends TestCase {
     @Test
-    void clearAndSetNewContent() {
+    public void clearAndSetNewContent() {
         open("http://the-internet.herokuapp.com/tinymce");
         var jsCode = "tinymce.activeEditor.setContent(arguments[0]);";
         executeJavaScript(jsCode, "");

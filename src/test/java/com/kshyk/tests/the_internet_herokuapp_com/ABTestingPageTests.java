@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class ABTestingPageTests extends TestCase {
     @Test
-    void isABTestPageLoaded() {
+    public void isABTestPageLoaded() {
         open("http://the-internet.herokuapp.com/abtest");
         $(By.tagName("h3")).shouldHave(text("A/B Test"));
     }

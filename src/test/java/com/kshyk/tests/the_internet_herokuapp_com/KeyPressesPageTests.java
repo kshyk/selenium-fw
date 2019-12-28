@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class KeyPressesPageTests extends TestCase {
     @Test
-    void isKeyProperlyEntered() {
+    public void isKeyProperlyEntered() {
         open("http://the-internet.herokuapp.com/key_presses");
         $("body").pressTab();
         $("#result").shouldHave(text("You entered: " + Keys.TAB.name()));

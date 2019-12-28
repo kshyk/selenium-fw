@@ -18,7 +18,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 class UploadPageTests extends TestCase {
     @Test
-    void isFileProperlyUploaded() throws IOException {
+    public void isFileProperlyUploaded() throws IOException {
         open("http://the-internet.herokuapp.com/upload");
         var dir = Paths.get(System.getProperty("user.dir"));
         BiPredicate<Path, BasicFileAttributes> fileBiPredicate = (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith("not_empty.txt");

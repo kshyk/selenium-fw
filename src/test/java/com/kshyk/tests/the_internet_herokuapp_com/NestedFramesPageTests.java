@@ -17,27 +17,27 @@ class NestedFramesPageTests extends TestCase {
     }
 
     @Test
-    void isBottomFrameLocatedProperly() {
+    public void isBottomFrameLocatedProperly() {
         switchTo().frame("frame-bottom");
         $(By.tagName("body")).shouldHave(text("BOTTOM"));
     }
 
     @Test
-    void isLeftFrameLocatedProperly() {
+    public void isLeftFrameLocatedProperly() {
         switchTo().innerFrame("frame-top");
         switchTo().frame("frame-left");
         $(By.tagName("body")).shouldHave(text("LEFT"));
     }
 
     @Test
-    void isMiddleFrameLocatedProperly() {
+    public void isMiddleFrameLocatedProperly() {
         switchTo().innerFrame("frame-top");
         switchTo().frame("frame-middle");
         $(By.tagName("body")).shouldHave(text("MIDDLE"));
     }
 
     @Test
-    void isRightFrameLocatedProperly() {
+    public void isRightFrameLocatedProperly() {
         switchTo().innerFrame("frame-top");
         switchTo().frame("frame-right");
         $(By.tagName("body")).shouldHave(text("RIGHT"));

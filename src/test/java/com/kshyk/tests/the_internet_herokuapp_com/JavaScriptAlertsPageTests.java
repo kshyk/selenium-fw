@@ -15,21 +15,21 @@ class JavaScriptAlertsPageTests extends TestCase {
     }
 
     @Test
-    void isSimpleAlertAppeared() {
+    public void isSimpleAlertAppeared() {
         $("[onclick='jsAlert()']").click();
         confirm();
         $(byText("You successfuly clicked an alert")).should(appear);
     }
 
     @Test
-    void isConfirmAlertCancelled() {
+    public void isConfirmAlertCancelled() {
         $("[onclick='jsConfirm()']").click();
         dismiss();
         $(byText("You clicked: Cancel")).should(appear);
     }
 
     @Test
-    void isPromptAlertSaveText() {
+    public void isPromptAlertSaveText() {
         $("[onclick='jsPrompt()']").click();
         var value = "I'm typing in here!";
         prompt(value);
