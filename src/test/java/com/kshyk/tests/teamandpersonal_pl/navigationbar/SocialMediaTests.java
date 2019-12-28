@@ -13,12 +13,12 @@ import static org.assertj.core.api.BDDAssertions.then;
 
 class SocialMediaTests extends TestCase {
     @BeforeAll
-    void openHomePage() {
+    public void openHomePage() {
         open("https://teamandpersonal.pl/");
     }
 
     @AfterEach
-    void goBack() {
+    public void goBack() {
         Selenide.back();
     }
 

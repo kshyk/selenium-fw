@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 class JavaScriptAlertsPageTests extends TestCase {
     @BeforeAll
-    void openJavascriptAlertsPage() {
+    public void openJavascriptAlertsPage() {
         open("http://the-internet.herokuapp.com/javascript_alerts");
     }
 

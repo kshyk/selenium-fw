@@ -12,7 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.driver;
 
 class NestedFramesPageTests extends TestCase {
     @BeforeAll
-    void openNestedFramesPage() {
+    public void openNestedFramesPage() {
         open("http://the-internet.herokuapp.com/nested_frames");
     }
 
@@ -44,7 +44,7 @@ class NestedFramesPageTests extends TestCase {
     }
 
     @BeforeEach
-    void switchToDefaultContent() {
+    public void switchToDefaultContent() {
         driver().switchTo().defaultContent();
     }
 }

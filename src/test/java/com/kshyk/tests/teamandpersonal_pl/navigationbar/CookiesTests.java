@@ -12,7 +12,7 @@ import static org.assertj.core.api.BDDAssertions.then;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CookiesTests extends TestCase {
     @BeforeAll
-    void openHomePage() {
+    public void openHomePage() {
         open("https://teamandpersonal.pl/");
     }
 

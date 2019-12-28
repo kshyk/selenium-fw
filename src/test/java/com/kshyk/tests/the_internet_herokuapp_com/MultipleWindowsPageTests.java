@@ -15,7 +15,7 @@ import static com.google.common.collect.Iterables.getLast;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MultipleWindowsPageTests extends TestCase {
     @BeforeAll
-    void openMultipleWindowsPage() {
+    public void openMultipleWindowsPage() {
         open("http://the-internet.herokuapp.com/windows");
     }
 
