@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BellyClickTests extends TestCase {
     @Test
-    void puppetShouldBeHappy() {
+    public void puppetShouldBeHappy() {
         var pajacykUrl = "https://www.pajacyk.pl/#index";
         var homePage = open(pajacykUrl, PajacykHomePage.class);
-        var thanksPage = homePage.clickOnBelly();
-        thanksPage.thanks().should(appear);
+        var thanks = homePage.clickOnBelly().thanks();
+        assertTrue(thanks.should(appear).isDisplayed());
     }
 }

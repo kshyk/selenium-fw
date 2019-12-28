@@ -6,12 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class CrumbClickTests extends TestCase {
     @Test
-    void clickShouldGiveBreadcrumb() {
+    public void clickShouldGiveBreadcrumb() {
         var okruszekUrl = "http://www.okruszek.org.pl/";
         var homePage = open(okruszekUrl, OkruszekHomePage.class);
-        homePage.clickOnBread().thanks().should(appear);
+        var thanks = homePage.clickOnBread().thanks();
+        assertTrue(thanks.should(appear).isDisplayed());
     }
 }
