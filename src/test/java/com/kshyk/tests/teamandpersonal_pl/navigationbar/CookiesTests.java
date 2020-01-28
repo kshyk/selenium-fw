@@ -1,48 +1,47 @@
 package com.kshyk.tests.teamandpersonal_pl.navigationbar;
 
+import com.kshyk.po.teamandpersonal.bars.CookiesBar;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.assertj.core.api.BDDAssertions.then;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CookiesTests extends TestCase {
+    private CookiesBar cookiesBar;
+
     @BeforeAll
     public void openHomePage() {
-        open("https://teamandpersonal.pl/");
+        cookiesBar = open("https://teamandpersonal.pl/", CookiesBar.class);
     }
 
     @Test
     @Order(1)
     public void checkCookieBarVisibilityOnStart() {
-        $("div#catapult-cookie-bar").shouldBe(visible);
+        assertTrue(cookiesBar.isOpen());
     }
 
     @Test
     @Order(1)
     public void checkCookieBarInfo() {
-        var expectedValue = "Serwis wykorzystuje pliki cookies. Korzystając ze strony wyrażasz zgodę na " +
-                "wykorzystywanie plików cookies. dowiedz się więcej.";
-        $(".ctcc-left-side").shouldHave(exactText(expectedValue));
+        assertEquals("Serwis wykorzystuje pliki cookies. Korzystając ze strony wyrażasz zgodę na wykorzystywanie plików cookies. dowiedz się więcej.", cookiesBar.getText());
     }
 
     @Test
     @Order(2)
     public void clickGDPRLinkShouldOpenPolicyPage() {
-        $(".ctcc-more-info-link").click();
-        switchTo().window(1);
-        $(".site-content").shouldBe(visible);
+        assertTrue(cookiesBar.openPrivacyPolicyPage().isOpen());
     }
 
     @Test
     @Order(3)
     public void checkPrivacyPolicyUrl() {
-        var privacyPolicyUrl = "https://teamandpersonal.pl/polityka-prywatnosci/";
-        then(url()).isEqualTo(privacyPolicyUrl);
+        assertEquals("https://teamandpersonal.pl/polityka-prywatnosci/", url());
     }
 
     @Test
@@ -50,7 +49,6 @@ class CookiesTests extends TestCase {
     public void checkCookieBarInvisibilityAfterButtonClick() {
         getWebDriver().close();
         switchTo().window(0);
-        $("#catapultCookie").click();
-        $("div#catapult-cookie-bar").should(disappear);
+        assertTrue(cookiesBar.acceptCookies().isClosed());
     }
 }
