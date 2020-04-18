@@ -9,7 +9,7 @@
     <name>selenium-kshyk</name>
 
     <properties>
-        <java.version>13</java.version>
+        <java.version>14</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.version>3.5.4</maven.version>
         <maven.compile.optimize>true</maven.compile.optimize>
@@ -18,19 +18,19 @@
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
         <maven.surefire.version>3.0.0-M3</maven.surefire.version>
-        <assertj.version>3.14.0</assertj.version>
+        <assertj.version>3.15.0</assertj.version>
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
-        <log4j.version>2.13.0</log4j.version>
+        <log4j.version>2.13.1</log4j.version>
         <selenium.version>3.141.59</selenium.version>
-        <apache.poi.version>4.1.1</apache.poi.version>
+        <apache.poi.version>4.1.2</apache.poi.version>
         <versions.maven.version>2.7</versions.maven.version>
-        <javassist.version>3.26.0-GA</javassist.version>
+        <javassist.version>3.27.0-GA</javassist.version>
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
-        <mockito.core.version>3.2.4</mockito.core.version>
-        <ow2.asm.version>7.3.1</ow2.asm.version>
-        <selenide.version>5.6.1</selenide.version>
-        <junit.jupiter.version>5.6.0</junit.jupiter.version>
+        <mockito.core.version>3.3.3</mockito.core.version>
+        <ow2.asm.version>8.0.1</ow2.asm.version>
+        <selenide.version>5.10.0</selenide.version>
+        <junit.jupiter.version>5.6.2</junit.jupiter.version>
     </properties>
 
     <dependencies>
