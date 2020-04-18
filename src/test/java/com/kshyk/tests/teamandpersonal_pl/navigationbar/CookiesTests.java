@@ -4,9 +4,7 @@ import com.kshyk.po.teamandpersonal.bars.CookiesBar;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.*;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.switchTo;
-import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
+import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -35,7 +33,8 @@ class CookiesTests extends TestCase {
     @Test
     @Order(2)
     public void clickGDPRLinkShouldOpenPolicyPage() {
-        assertTrue(cookiesBar.openPrivacyPolicyPage().isOpen());
+        assertTrue(cookiesBar.openPrivacyPolicyPage()
+                .isOpen());
     }
 
     @Test
@@ -47,8 +46,9 @@ class CookiesTests extends TestCase {
     @Test
     @Order(4)
     public void checkCookieBarInvisibilityAfterButtonClick() {
-        getWebDriver().close();
+        closeWindow();
         switchTo().window(0);
-        assertTrue(cookiesBar.acceptCookies().isClosed());
+        assertTrue(cookiesBar.acceptCookies()
+                .isClosed());
     }
 }
