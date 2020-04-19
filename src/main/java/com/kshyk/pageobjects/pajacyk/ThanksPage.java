@@ -1,4 +1,4 @@
-package com.kshyk.po.pajacyk;
+package com.kshyk.pageobjects.pajacyk;
 
 import com.codeborne.selenide.SelenideElement;
 

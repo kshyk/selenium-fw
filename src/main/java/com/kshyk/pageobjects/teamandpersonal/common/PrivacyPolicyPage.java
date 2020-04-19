@@ -1,4 +1,4 @@
-package com.kshyk.po.teamandpersonal.common;
+package com.kshyk.pageobjects.teamandpersonal.common;
 
 import com.codeborne.selenide.SelenideElement;
 

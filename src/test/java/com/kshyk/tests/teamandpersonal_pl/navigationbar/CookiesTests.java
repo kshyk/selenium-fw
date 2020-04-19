@@ -1,6 +1,6 @@
 package com.kshyk.tests.teamandpersonal_pl.navigationbar;
 
-import com.kshyk.po.teamandpersonal.bars.CookiesBar;
+import com.kshyk.pageobjects.teamandpersonal.bars.CookiesBar;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.*;
 

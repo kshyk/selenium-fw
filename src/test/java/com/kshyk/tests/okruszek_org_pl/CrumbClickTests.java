@@ -1,6 +1,6 @@
 package com.kshyk.tests.okruszek_org_pl;
 
-import com.kshyk.po.okruszek.OkruszekHomePage;
+import com.kshyk.pageobjects.okruszek.OkruszekHomePage;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.kshyk.po.pajacyk;
+package com.kshyk.pageobjects.pajacyk;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.page;

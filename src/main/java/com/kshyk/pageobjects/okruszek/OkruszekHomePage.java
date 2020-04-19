@@ -1,4 +1,4 @@
-package com.kshyk.po.okruszek;
+package com.kshyk.pageobjects.okruszek;
 
 import com.codeborne.selenide.SelenideElement;
 

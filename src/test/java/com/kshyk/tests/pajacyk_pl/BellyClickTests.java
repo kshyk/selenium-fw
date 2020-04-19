@@ -1,6 +1,6 @@
 package com.kshyk.tests.pajacyk_pl;
 
-import com.kshyk.po.pajacyk.PajacykHomePage;
+import com.kshyk.pageobjects.pajacyk.PajacykHomePage;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
 
