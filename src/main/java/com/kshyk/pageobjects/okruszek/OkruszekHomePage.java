@@ -1,7 +1,7 @@
 package com.kshyk.pageobjects.okruszek;
 
-import com.codeborne.selenide.SelenideElement;
-
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
@@ -11,7 +11,8 @@ public class OkruszekHomePage {
         return this;
     }
 
-    public SelenideElement thanks() {
-        return $(byText("DZIĘKUJEMY!"));
+    public void thanksShouldAppear() {
+        $(byText("DZIĘKUJEMY!")).should(appear)
+                .shouldBe(visible);
     }
 }
