@@ -13,9 +13,11 @@ class HoversPageTests extends TestCase {
     @Test
     public void additionalInfoShouldAppearOnImageHover() {
         open("http://the-internet.herokuapp.com/hovers");
-        Map.of(0, "user1", 1, "user2", 2, "user3").forEach((index, name) -> {
-            $$(".figure img").get(index).hover();
-            $(byText("name: " + name)).should(appear);
-        });
+        Map.of(0, "user1", 1, "user2", 2, "user3")
+                .forEach((index, name) -> {
+                    $$(".figure img").get(index)
+                            .hover();
+                    $(byText("name: " + name)).should(appear);
+                });
     }
 }

@@ -21,8 +21,12 @@ class UploadPageTests extends TestCase {
     public void isFileProperlyUploaded() throws IOException {
         open("http://the-internet.herokuapp.com/upload");
         var dir = Paths.get(System.getProperty("user.dir"));
-        BiPredicate<Path, BasicFileAttributes> fileBiPredicate = (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith("not_empty.txt");
-        var file = Files.find(dir, Integer.MAX_VALUE, fileBiPredicate).findFirst().orElseThrow().toFile();
+        BiPredicate<Path, BasicFileAttributes> fileBiPredicate = (path, attrs) -> attrs.isRegularFile() && path.toString()
+                .endsWith("not_empty.txt");
+        var file = Files.find(dir, Integer.MAX_VALUE, fileBiPredicate)
+                .findFirst()
+                .orElseThrow()
+                .toFile();
         $("#file-upload").uploadFile(file);
         $("#file-submit").submit();
         $(byText("File Uploaded!")).should(appear);

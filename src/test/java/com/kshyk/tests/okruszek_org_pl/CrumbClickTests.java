@@ -11,6 +11,7 @@ class CrumbClickTests extends TestCase {
     @Test
     public void clickShouldGiveBreadcrumb() {
         var homePage = open("http://www.okruszek.org.pl/", OkruszekHomePage.class);
-        assertTrue(homePage.clickOnBread().isThanksDisplayed());
+        assertTrue(homePage.clickOnBread()
+                .isThanksDisplayed());
     }
 }

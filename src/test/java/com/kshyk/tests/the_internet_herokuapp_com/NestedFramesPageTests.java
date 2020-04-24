@@ -45,6 +45,7 @@ class NestedFramesPageTests extends TestCase {
 
     @BeforeEach
     public void switchToDefaultContent() {
-        driver().switchTo().defaultContent();
+        driver().switchTo()
+                .defaultContent();
     }
 }

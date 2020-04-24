@@ -11,6 +11,7 @@ public class PajacykHomePage {
     }
 
     public boolean isThanksDisplayed() {
-        return $(byText("dziękujemy :)")).shouldBe(visible).isDisplayed();
+        return $(byText("dziękujemy :)")).shouldBe(visible)
+                .isDisplayed();
     }
 }

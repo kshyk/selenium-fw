@@ -11,6 +11,7 @@ public class PrivacyPolicyPage {
     }
 
     public boolean isOpen() {
-        return content().shouldBe(visible).isDisplayed();
+        return content().shouldBe(visible)
+                .isDisplayed();
     }
 }

@@ -11,6 +11,7 @@ public class OkruszekHomePage {
     }
 
     public boolean isThanksDisplayed() {
-        return $(byText("DZIĘKUJEMY!")).shouldBe(visible).isDisplayed();
+        return $(byText("DZIĘKUJEMY!")).shouldBe(visible)
+                .isDisplayed();
     }
 }

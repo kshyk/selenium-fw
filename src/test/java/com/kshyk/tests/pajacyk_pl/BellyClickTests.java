@@ -11,6 +11,7 @@ class BellyClickTests extends TestCase {
     @Test
     public void puppetShouldBeHappy() {
         var homePage = open("https://www.pajacyk.pl/#index", PajacykHomePage.class);
-        assertTrue(homePage.clickOnBelly().isThanksDisplayed());
+        assertTrue(homePage.clickOnBelly()
+                .isThanksDisplayed());
     }
 }

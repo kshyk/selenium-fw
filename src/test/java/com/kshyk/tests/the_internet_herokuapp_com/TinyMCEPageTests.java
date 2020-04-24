@@ -14,6 +14,7 @@ class TinyMCEPageTests extends TestCase {
         open("http://the-internet.herokuapp.com/tinymce");
         var jsCode = "tinymce.activeEditor.setContent(arguments[0]);";
         executeJavaScript(jsCode, "");
-        executeJavaScript(jsCode, LocalDateTime.now().toString());
+        executeJavaScript(jsCode, LocalDateTime.now()
+                .toString());
     }
 }
