@@ -18,9 +18,7 @@ public class BasicAuthTests extends TestCase {
         var url = "http://the-internet.herokuapp.com/basic_auth";
         var credentials = new Credentials("admin", "admin");
         open(url, AuthenticationType.BASIC, credentials);
-        assertAll(() -> assertThat(page.getContentText())
-                        .contains("Congratulations!"),
-                () -> assertThat(page.getTitleText())
-                        .contains("Basic Auth"));
+        assertAll(() -> assertThat(page.getTitleText()).isEqualTo("Basic Auth"),
+                () -> assertThat(page.getContentText()).contains("Congratulations!"));
     }
 }

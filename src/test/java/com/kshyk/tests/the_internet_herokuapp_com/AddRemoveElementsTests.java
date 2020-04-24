@@ -19,12 +19,12 @@ public class AddRemoveElementsTests extends TestCase {
     private AddRemoveElementsPage page;
 
     @BeforeAll
-    void openAddRemoveElementsPage() {
+    public void openAddRemoveElementsPage() {
         page = open("http://the-internet.herokuapp.com/add_remove_elements/", AddRemoveElementsPage.class);
     }
 
     @TestFactory
-    Collection<DynamicTest> addAndRemoveElementTest() {
+    public Iterable<DynamicTest> addAndRemoveElementTest() {
         Collection<DynamicTest> tests = new ArrayList<>(LOOPS * 2);
         IntStream.rangeClosed(1, LOOPS)
                 .forEach(n -> {
