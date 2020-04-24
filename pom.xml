@@ -21,7 +21,7 @@
         <assertj.version>3.15.0</assertj.version>
         <webdrivermanager.version>3.8.1</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
-        <log4j.version>2.13.1</log4j.version>
+        <log4j.version>2.13.2</log4j.version>
         <selenium.version>3.141.59</selenium.version>
         <apache.poi.version>4.1.2</apache.poi.version>
         <versions.maven.version>2.7</versions.maven.version>
@@ -29,7 +29,7 @@
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
         <mockito.core.version>3.3.3</mockito.core.version>
         <ow2.asm.version>8.0.1</ow2.asm.version>
-        <selenide.version>5.10.0</selenide.version>
+        <selenide.version>5.11.1</selenide.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
     </properties>
 
