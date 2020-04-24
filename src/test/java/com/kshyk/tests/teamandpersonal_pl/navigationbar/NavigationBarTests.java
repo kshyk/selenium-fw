@@ -14,7 +14,9 @@ import org.junit.jupiter.params.provider.EnumSource;
 
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.WebDriverRunner.url;
-import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class NavigationBarTests extends TestCase {
@@ -29,23 +31,23 @@ class NavigationBarTests extends TestCase {
     @Order(0)
     @Test
     public void checkTelephone() {
-        navigationBar.telephoneShouldHaveText("+48 660 22 77 22");
+        assertEquals("+48 660 22 77 22", navigationBar.getTelephoneText());
     }
 
     @Order(0)
     @Test
     public void checkMail() {
-        navigationBar.mailShouldHaveHrefValue("mailto:biuro@teamandpersonal.pl")
-                .mailShouldHaveText("biuro [at] teamandpersonal.pl");
+        assertAll(() -> assertEquals("mailto:biuro@teamandpersonal.pl", navigationBar.getMailHrefValue()),
+                () -> assertEquals("biuro [at] teamandpersonal.pl", navigationBar.getMailText()));
     }
 
     @Order(1)
     @ParameterizedTest(name = "checkRedirectionOf{0}")
     @EnumSource(SocialMedia.class)
-    public void checkRedirectionOfSocialMedia(SocialMedia $) {
+    public void checkRedirectionOfSocialMedia(SocialMedia media) {
         if (!url().equals(HOME_PAGE_URL))
             Selenide.back();
-        navigationBar.clickOnSocialMediaButton($);
-        then(url()).startsWith($.getUrl());
+        navigationBar.clickOnSocialMediaButton(media);
+        assertThat(url()).startsWith(media.getUrl());
     }
 }

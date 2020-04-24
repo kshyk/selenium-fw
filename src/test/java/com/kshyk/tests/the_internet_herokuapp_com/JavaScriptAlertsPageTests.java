@@ -6,7 +6,11 @@ import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.confirm;
+import static com.codeborne.selenide.Selenide.dismiss;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.prompt;
 
 class JavaScriptAlertsPageTests extends TestCase {
     @BeforeAll

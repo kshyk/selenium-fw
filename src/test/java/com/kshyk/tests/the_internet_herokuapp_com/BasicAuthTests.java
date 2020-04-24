@@ -14,7 +14,7 @@ public class BasicAuthTests extends TestCase {
     private final BasicAuthPage page = new BasicAuthPage();
 
     @Test
-    void userShouldGrantAccessWithBasicAuth() {
+    public void userShouldGrantAccessWithBasicAuth() {
         var url = "http://the-internet.herokuapp.com/basic_auth";
         var credentials = new Credentials("admin", "admin");
         open(url, AuthenticationType.BASIC, credentials);

@@ -5,12 +5,12 @@ import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ABTestingPageTests extends TestCase {
     @Test
     public void isABTestPageLoaded() {
         var page = open("http://the-internet.herokuapp.com/abtest", ABTestingPage.class);
-        assertEquals("A/B Test", page.getTitleText());
+        assertThat(page.getTitleText()).contains("A/B Test");
     }
 }
