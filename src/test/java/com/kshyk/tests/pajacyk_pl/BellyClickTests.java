@@ -5,12 +5,12 @@ import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.assertj.core.api.BDDAssertions.then;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BellyClickTests extends TestCase {
     @Test
     public void puppetShouldBeHappy() {
         var homePage = open("https://www.pajacyk.pl/#index", PajacykHomePage.class);
-        then(homePage.clickOnBelly().isThanksDisplayed()).isTrue();
+        assertTrue(homePage.clickOnBelly().isThanksDisplayed());
     }
 }
