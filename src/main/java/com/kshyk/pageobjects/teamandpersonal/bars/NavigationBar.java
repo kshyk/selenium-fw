@@ -18,7 +18,7 @@ public class NavigationBar {
     }
 
     public String getMailText() {
-        return topkaMail.getText();
+        return topkaMail.getText().trim();
     }
 
     public void clickOnSocialMediaButton(SocialMedia socialMedia) {
