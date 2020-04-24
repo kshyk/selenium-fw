@@ -7,6 +7,8 @@ import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 public class BasicAuthTests extends TestCase {
     private final BasicAuthPage page = new BasicAuthPage();
@@ -16,7 +18,9 @@ public class BasicAuthTests extends TestCase {
         var url = "http://the-internet.herokuapp.com/basic_auth";
         var credentials = new Credentials("admin", "admin");
         open(url, AuthenticationType.BASIC, credentials);
-        page.titleShouldHaveText("Basic Auth")
-                .pageShouldHaveText("Congratulations!");
+        assertAll(() -> assertThat(page.getContentText())
+                        .contains("Congratulations!"),
+                () -> assertThat(page.getTitleText())
+                        .contains("Basic Auth"));
     }
 }
