@@ -1,43 +1,45 @@
 package com.kshyk.tests.the_internet_herokuapp_com;
 
+import com.kshyk.pageobjects.theinternetherokuapp.JavaScriptAlertsPage;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.appear;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.confirm;
 import static com.codeborne.selenide.Selenide.dismiss;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.prompt;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JavaScriptAlertsPageTests extends TestCase {
+    private JavaScriptAlertsPage page;
+
     @BeforeAll
     public void openJavascriptAlertsPage() {
-        open("http://the-internet.herokuapp.com/javascript_alerts");
+        page = open("http://the-internet.herokuapp.com/javascript_alerts", JavaScriptAlertsPage.class);
     }
 
     @Test
     public void isSimpleAlertAppeared() {
-        $("[onclick='jsAlert()']").click();
+        page.clickOnJsAlertButton();
         confirm();
-        $(byText("You successfuly clicked an alert")).should(appear);
+        assertTrue($(byText("You successfuly clicked an alert")).isDisplayed());
     }
 
     @Test
     public void isConfirmAlertCancelled() {
-        $("[onclick='jsConfirm()']").click();
+        page.clickOnJsConfirmButton();
         dismiss();
-        $(byText("You clicked: Cancel")).should(appear);
+        assertTrue($(byText("You clicked: Cancel")).isDisplayed());
     }
 
     @Test
     public void isPromptAlertSaveText() {
-        $("[onclick='jsPrompt()']").click();
+        page.clickOnJsPromptButton();
         var value = "I'm typing in here!";
         prompt(value);
-        var expected = "You entered: " + value;
-        $(byText(expected)).should(appear);
+        assertTrue($(byText("You entered: " + value)).isDisplayed());
     }
 }

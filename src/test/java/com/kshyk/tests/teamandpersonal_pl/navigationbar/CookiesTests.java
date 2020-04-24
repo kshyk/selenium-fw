@@ -39,8 +39,7 @@ class CookiesTests extends TestCase {
     @Test
     @Order(2)
     public void clickGDPRLinkShouldOpenPolicyPage() {
-        assertTrue(cookiesBar.openPrivacyPolicyPage()
-                .isOpen());
+        assertTrue(cookiesBar.openPrivacyPolicyPage().isOpen());
     }
 
     @Test
@@ -54,7 +53,6 @@ class CookiesTests extends TestCase {
     public void checkCookieBarInvisibilityAfterButtonClick() {
         closeWindow();
         switchTo().window(0);
-        assertTrue(cookiesBar.acceptCookies()
-                .isClosed());
+        assertTrue(cookiesBar.acceptCookies().isClosed());
     }
 }
