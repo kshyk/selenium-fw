@@ -4,6 +4,13 @@ sudo: false
 jdk:
   - openjdk14
 
+notifications:
+  email:
+    recipients:
+      - jj.turkiewicz@gmail.com
+    on_success: never
+    on_failure: always
+
 script: "mvn cobertura:cobertura"
 
 after_success:
