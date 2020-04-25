@@ -10,8 +10,3 @@ notifications:
       - jj.turkiewicz@gmail.com
     on_success: never
     on_failure: always
-
-script: "mvn cobertura:cobertura"
-
-after_success:
-  - bash <(curl -s https://codecov.io/bash)
