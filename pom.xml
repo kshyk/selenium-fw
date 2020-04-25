@@ -24,7 +24,7 @@
         <log4j.version>2.13.2</log4j.version>
         <selenium.version>3.141.59</selenium.version>
         <apache.poi.version>4.1.2</apache.poi.version>
-        <versions.maven.version>2.7</versions.maven.version>
+        <codehaus.mojo.maven.version>2.7</codehaus.mojo.maven.version>
         <javassist.version>3.27.0-GA</javassist.version>
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
         <mockito.core.version>3.3.3</mockito.core.version>
@@ -144,9 +144,22 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions.maven.version}</version>
+                <version>${codehaus.mojo.maven.version}</version>
                 <configuration>
                     <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>${codehaus.mojo.maven.version}</version>
+                <configuration>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                    <check/>
                 </configuration>
             </plugin>
         </plugins>
