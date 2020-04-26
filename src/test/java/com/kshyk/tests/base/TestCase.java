@@ -10,7 +10,12 @@ public abstract class TestCase {
     protected void setup() {
         Configuration.timeout = 5000;
         var key = System.getProperty("TESTINGBOT_KEY");
+        System.out.println("key=" + key);
         var secret = System.getProperty("TESTINGBOT_SECRET");
+        System.out.println("secret=" + secret);
+        System.getenv().forEach((k, v) -> {
+            System.out.println(k + ":" + v);
+        });
         Configuration.remote = "https://" + key + ":" + secret + "@hub.testingbot.com/wd/hub";
         Configuration.headless = false;
         Configuration.startMaximized = true;
