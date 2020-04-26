@@ -8,7 +8,7 @@ import static org.openqa.selenium.By.className;
 
 public enum SocialMedia {
     FACEBOOK("topka-facebook", "https://www.facebook.com/TeamAndPersonal/?ref=bookmarks"),
-    GOOGLE_PLUS("topka-google", "https://plus.google.com/+TeamandpersonalPl"),
+//    GOOGLE_PLUS("topka-google", "https://plus.google.com/+TeamandpersonalPl"),
     YOUTUBE("topka-youtube", "https://www.youtube.com/channel/UCealDsXd2QtuW_on0wjSqtw"),
     LINKED_IN("topka-linkedin", "https://www.linkedin.com/company/teamandpersonal/"),
     PINTEREST("topka-pinterest", "https://www.pinterest.com/teampersonal/"),
