@@ -18,10 +18,10 @@
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
         <maven.surefire.version>3.0.0-M3</maven.surefire.version>
-        <assertj.version>3.16.0</assertj.version>
-        <webdrivermanager.version>3.8.1</webdrivermanager.version>
+        <assertj.version>3.16.1</assertj.version>
+        <webdrivermanager.version>4.0.0</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
-        <log4j.version>2.13.2</log4j.version>
+        <log4j.version>2.13.3</log4j.version>
         <selenium.version>3.141.59</selenium.version>
         <apache.poi.version>4.1.2</apache.poi.version>
         <codehaus.mojo.maven.version>2.7</codehaus.mojo.maven.version>
@@ -31,6 +31,7 @@
         <ow2.asm.version>8.0.1</ow2.asm.version>
         <selenide.version>5.11.1</selenide.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
+        <testingbot.rest.version>1.0.6</testingbot.rest.version>
     </properties>
 
     <dependencies>
@@ -99,6 +100,11 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.testingbot</groupId>
+            <artifactId>testingbotrest</artifactId>
+            <version>${testingbot.rest.version}</version>
         </dependency>
     </dependencies>
 
