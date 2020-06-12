@@ -8,6 +8,13 @@ notifications:
       - jj.turkiewicz@gmail.com
     on_success: never
     on_failure: always
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
 env:
   global:
     - secure: Qc3XiWk1tbZVJuLnZlCsnOBJBdxwB58YHZc/kBIMQQzTOoB+RTCTykSBKFjgo1tuKvxobFICaRCB3AY3tgXUqufCjB5jYou+SOiOuy51Z1DdZ+5Va/zKWh+mg3w+kC2pvDT4JHJbJ2hKVTcqGHUN/K/3jNPC/xQYJw4HbXBQWUnu43LD+XbJf5F5onw9q8kWxbPTY1IOIN1q3DW040F/M8Fn0tOn6a6yI3K1sivSH5vn6YbQi2rHVoU7gKGAE07LvOn6MJl2hqefI1OmTOp91t8knbLATS8cxxod/pUiAhpibD0GnMIxGK3ISI1zdyLCnDouetsrJy3b5Sa+QjcjJxqM1pQ/0BYvLJa0xKx9MMmdhJ5LIK6lfoF2wLBJQRUuYJw5dg/MwJyuobmVbYpTye5U7keTTuZH0G0mKoYUgXzqp0uVU1Ew9WWUEefxEAxYefEtG9SKp7gFI5eMajgUP4GDMB/izE64L74AGJGCOttc3BPRKpm4MLYoFdeni565ICci7rAETqBSqd3ffKINpYRsteSenEQuA4ma9CKvegwI0SOdOnhVZ2aTMRXFczsOtYNyXXKRp77yy0gjBFgBxRGTGoNxQ82u5UTCMAUnTtftq2Hg7n3GAOsnN/uYG7mlYX/JJGLz7rZWLtvcBsw19CQEZ20ltlzZvGuvtafM7ec=
