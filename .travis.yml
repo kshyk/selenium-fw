@@ -1,5 +1,7 @@
 language: java
-sudo: false
+os: linux
+arch: arm64
+dist: bionic
 jdk:
   - openjdk14
 notifications:
