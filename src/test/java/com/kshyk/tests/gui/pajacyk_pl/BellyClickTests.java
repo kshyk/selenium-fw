@@ -1,4 +1,4 @@
-package com.kshyk.tests.pajacyk_pl;
+package com.kshyk.tests.gui.pajacyk_pl;
 
 import com.kshyk.pageobjects.pajacyk.PajacykHomePage;
 import com.kshyk.tests.base.TestCase;

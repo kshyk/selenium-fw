@@ -1,4 +1,4 @@
-package com.kshyk.tests.the_internet_herokuapp_com;
+package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
 import com.codeborne.selenide.AuthenticationType;
 import com.codeborne.selenide.Credentials;

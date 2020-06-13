@@ -1,4 +1,4 @@
-package com.kshyk.tests.teamandpersonal_pl.navigationbar;
+package com.kshyk.tests.gui.teamandpersonal_pl.navigationbar;
 
 import com.kshyk.pageobjects.teamandpersonal.bars.CookiesBar;
 import com.kshyk.tests.base.TestCase;

@@ -1,4 +1,4 @@
-package com.kshyk.tests.teamandpersonal_pl.navigationbar;
+package com.kshyk.tests.gui.teamandpersonal_pl.navigationbar;
 
 import com.codeborne.selenide.Selenide;
 import com.kshyk.enums.teamandpersonal.SocialMedia;

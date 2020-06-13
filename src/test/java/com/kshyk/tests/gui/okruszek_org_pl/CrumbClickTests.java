@@ -1,4 +1,4 @@
-package com.kshyk.tests.okruszek_org_pl;
+package com.kshyk.tests.gui.okruszek_org_pl;
 
 import com.kshyk.pageobjects.okruszek.OkruszekHomePage;
 import com.kshyk.tests.base.TestCase;

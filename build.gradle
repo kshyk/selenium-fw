@@ -1,3 +1,10 @@
+ext {
+    restAssuredVersion = '4.3.0'
+    wdmVersion = '4.0.0'
+    poiApacheVersion = '4.1.2'
+    logbackVersion = '1.2.3'
+}
+
 apply plugin: 'java'
 apply plugin: 'maven'
 
@@ -23,17 +30,20 @@ repositories {
 dependencies {
     implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
     implementation('org.apache.logging.log4j:log4j-api:2.13.3')
-    implementation('ch.qos.logback:logback-classic:1.2.3')
-    implementation('ch.qos.logback:logback-core:1.2.3')
-    implementation('io.github.bonigarcia:webdrivermanager:4.0.0')
-    implementation('org.assertj:assertj-core:3.16.1')
-    implementation('org.apache.poi:poi:4.1.2')
-    implementation('org.apache.poi:poi-ooxml:4.1.2')
+    implementation("ch.qos.logback:logback-classic:${logbackVersion}")
+    implementation("ch.qos.logback:logback-core:${logbackVersion}")
+    implementation("io.github.bonigarcia:webdrivermanager:${wdmVersion}")
+    implementation("org.apache.poi:poi:${poiApacheVersion}")
+    implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
     implementation('org.javassist:javassist:3.27.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
     implementation('com.codeborne:selenide:5.12.2')
-    implementation('org.junit.jupiter:junit-jupiter:5.6.2')
     implementation('com.testingbot:testingbotrest:1.0.6')
+    implementation("io.rest-assured:rest-assured:${restAssuredVersion}")
+    implementation("io.rest-assured:rest-assured-all:${restAssuredVersion}")
+    implementation("io.rest-assured:json-schema-validator:${restAssuredVersion}")
+    implementation('org.assertj:assertj-core:3.16.1')
+    implementation('org.junit.jupiter:junit-jupiter:5.6.2')
     testImplementation('org.mockito:mockito-core:3.3.3')
 }
 

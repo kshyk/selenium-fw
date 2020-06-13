@@ -1,4 +1,4 @@
-package com.kshyk.tests.the_internet_herokuapp_com;
+package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.Test;
