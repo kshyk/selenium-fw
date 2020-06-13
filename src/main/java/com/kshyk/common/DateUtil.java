@@ -11,7 +11,8 @@ public class DateUtil {
 
     public static LocalDate getLastWorkingDayOfMonth(LocalDate date) {
         LocalDate lastWorkingDayOfMonth;
-        switch (DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK))) {
+        var dayOfWeek = DayOfWeek.of(date.get(ChronoField.DAY_OF_WEEK));
+        switch (dayOfWeek) {
             case SATURDAY -> lastWorkingDayOfMonth = date.minusDays(1);
             case SUNDAY -> lastWorkingDayOfMonth = date.minusDays(2);
             default -> lastWorkingDayOfMonth = date;

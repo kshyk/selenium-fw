@@ -19,24 +19,24 @@ class LatestRates extends RatesBaseCase {
     private Rate latestRate;
 
     @BeforeAll
-    void getLatestRates() {
+    public void getLatestRates() {
         response = RestAssured.get("/latest");
         latestRate = response.then().extract().as(Rate.class);
     }
 
     @Test
-    void statusCodeShouldBeOK() {
+    public void statusCodeShouldBeOK() {
         assertEquals(HttpStatus.SC_OK, response.getStatusCode());
     }
 
     @Test
-    void latestDateShouldBeLastWorkingDayOfMonth() {
+    public void latestDateShouldBeLastWorkingDayOfMonth() {
         assertEquals(DateUtil.getLastWorkingDayOfMonth(LocalDate.now()),
                 LocalDate.parse(latestRate.getDate(), DATE_FORMATTER));
     }
 
     @Test
-    void baseCurrencyShouldBeEuro() {
+    public void baseCurrencyShouldBeEuro() {
         assertEquals(Currency.EURO.getInitial(), latestRate.getBase());
     }
 }
