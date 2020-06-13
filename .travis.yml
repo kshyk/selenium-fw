@@ -1,6 +1,5 @@
 language: java
 os: linux
-arch: arm64
 dist: bionic
 jdk:
   - openjdk14
