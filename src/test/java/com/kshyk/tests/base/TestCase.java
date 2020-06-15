@@ -2,8 +2,11 @@ package com.kshyk.tests.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
+import com.testingbot.models.TestingbotTest;
 import com.testingbot.testingbotrest.TestingbotREST;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
@@ -16,6 +19,7 @@ public abstract class TestCase implements TestWatcher {
     private static final String KEY = System.getenv("TESTINGBOT_KEY");
     private static final String SECRET = System.getenv("TESTINGBOT_SECRET");
     private final TestingbotREST tbREST = new TestingbotREST(KEY, SECRET);
+    private TestingbotTest test;
 
     @BeforeAll
     protected void setup() {
@@ -25,14 +29,28 @@ public abstract class TestCase implements TestWatcher {
         Configuration.startMaximized = true;
     }
 
+    @BeforeEach
+    protected void setupTestingbotTest(){
+        test = new TestingbotTest();
+        test.setSessionId(getSessionId());
+    }
+
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        tbREST.updateTest(getSessionId(), Map.of("success", false));
+        test.setSuccess(false);
+        test.setStatusMessage(cause.getMessage());
+        test.setName(context.getRequiredTestMethod().getName());
     }
 
     @Override
     public void testSuccessful(ExtensionContext context) {
-        tbREST.updateTest(getSessionId(), Map.of("success", true));
+        test.setSuccess(true);
+        test.setName(context.getRequiredTestMethod().getName());
+    }
+
+    @AfterEach
+    public void sendBackTestStatus(){
+        tbREST.updateTest(test);
     }
 
     private String getSessionId() {
