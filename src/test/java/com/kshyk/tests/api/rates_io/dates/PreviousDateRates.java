@@ -1,4 +1,4 @@
-package com.kshyk.tests.api.rates_io.latest;
+package com.kshyk.tests.api.rates_io.dates;
 
 import com.kshyk.common.DateUtil;
 import com.kshyk.entities.rates.Rate;
@@ -13,10 +13,12 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class LatestRates extends RatesBaseCase {
+public class PreviousDateRates extends RatesBaseCase {
+    private final LocalDate previousDate = LocalDate.now().minusWeeks(3);
+
     @BeforeAll
-    public void getLatestRates() {
-        response = RestAssured.get("/latest");
+    public void getPreviousRates() {
+        response = RestAssured.get("/" + previousDate);
         rate = response.then().extract().as(Rate.class);
     }
 
@@ -26,9 +28,8 @@ class LatestRates extends RatesBaseCase {
     }
 
     @Test
-    public void latestDateShouldBeLastWorkingDayOfMonth() {
-        assertEquals(DateUtil.getLastWorkingDayOfMonth(LocalDate.now()),
-                LocalDate.parse(rate.getDate(), DATE_FORMATTER));
+    public void previousDateShouldBePastAndLastWorkingDayOfMonth() {
+        assertEquals(DateUtil.getLastWorkingDayOfMonth(previousDate), LocalDate.parse(rate.getDate(), DATE_FORMATTER));
     }
 
     @Test
