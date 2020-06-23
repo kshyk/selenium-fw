@@ -27,8 +27,6 @@ env:
     - secure: NiH8h4afzHXhIUc09k2xXYg7QDiTam2/ZPCciJObqEDK6Vb3fsJ0g4t4PI9XjtwqrfxxU1BoM+0qyZhKFqURgowbUVfOgSWTjOaeMONf/faYbhzKKGoy1gClzkDUrBM8CjtUxYT4wl0gGHz/M0P1tts+WYfdhNJgytgDpKeg96dm73gxxNpf3o5sOPMi5jvGsvwoV34gfqYrrUhD3Re1X5jWMdXX4FT4ALJF8PU0QvMfYnLl4CDfVABpGAHIsY2vqrRy2s/xcMAGcKwQ7hpqjpZeTZpHVsxvPOrV4fMVV3m50QHD2wp+eMsm2u60UZh7P14QU4tazbpQXOZAvjDa6gnM1IkgRYv0fYsUqKMJFLEOwyMHUo6BAUBTLUyRw5/ChMVDOuoSYiPMqgjukdiVHGi4a35InxUGcojH8Zl21H0AhQ9heB6U+ov9B+mxXMBOutiFKcqimm37pz8AcEzgMzh3MFuebuYvNpcmGm47UsdPqNSduC/B7JXvXDCoIfPRDC2tnU+p5PELSx7liPhHVydtTUuJ5J6WM78cFE9hA5xxzsqBH6OM1TGyDHuxnZogvYX7oLqS/JDUYNW1kDeeAQeirorF+8btATPd9siqtQQ0hFQfiwSCr6aaDO/eqZGb7haJZ11eXPM7CCy9OmH+VuPahjGv4Ai6jsRNOBS27vE=
 jobs:
   include:
-    - before_install:
-        - ./gradlew assemble
     - stage: "Tests"
       name: "API Tests"
       script: ./gradlew test --tests '*tests.api*'
