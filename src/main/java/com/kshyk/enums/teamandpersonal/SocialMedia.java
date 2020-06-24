@@ -1,6 +1,5 @@
 package com.kshyk.enums.teamandpersonal;
 
-import com.codeborne.selenide.SelenideElement;
 import com.kshyk.common.CommonUtil;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -23,8 +22,8 @@ public enum SocialMedia {
         this.url = url;
     }
 
-    public SelenideElement getSelenideElement() {
-        return $(className(className));
+    public void clickOnButton() {
+        $(className(className)).click();
     }
 
     public String getUrl() {
