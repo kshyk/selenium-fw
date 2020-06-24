@@ -1,16 +1,18 @@
-package com.kshyk.pageobjects.pajacyk;
+package com.kshyk.helpers.pajacyk;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class PajacykHomePage {
-    public PajacykHomePage clickOnBelly() {
-        $(".paj-click").click();
-        return this;
+public class HomePageHelper {
+    private HomePageHelper() {
     }
 
-    public boolean isThanksDisplayed() {
+    public static void clickOnBelly() {
+        $(".paj-click").click();
+    }
+
+    public static boolean isThanksDisplayed() {
         return $(byText("dziękujemy :)")).shouldBe(visible)
                 .isDisplayed();
     }

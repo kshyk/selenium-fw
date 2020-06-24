@@ -1,16 +1,18 @@
-package com.kshyk.pageobjects.okruszek;
+package com.kshyk.helpers.okruszek;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 
-public class OkruszekHomePage {
-    public OkruszekHomePage clickOnBread() {
-        $(".click-crumb").click();
-        return this;
+public class HomePageHelper {
+    private HomePageHelper() {
     }
 
-    public boolean isThanksDisplayed() {
+    public static void clickOnBread() {
+        $(".click-crumb").click();
+    }
+
+    public static boolean isThanksDisplayed() {
         return $(byText("DZIĘKUJEMY!")).shouldBe(visible)
                 .isDisplayed();
     }
