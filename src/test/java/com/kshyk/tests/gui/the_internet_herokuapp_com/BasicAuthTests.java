@@ -1,24 +1,30 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
-import com.codeborne.selenide.AuthenticationType;
 import com.codeborne.selenide.Credentials;
-import com.kshyk.pageobjects.theinternetherokuapp.BasicAuthPage;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import static com.codeborne.selenide.AuthenticationType.BASIC;
 import static com.codeborne.selenide.Selenide.open;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BasicAuthTests extends TestCase {
-    private final BasicAuthPage page = new BasicAuthPage();
+    @BeforeAll
+    public void setupBasicAuthentication() {
+        var credentials = new Credentials("admin", "admin");
+        open("http://the-internet.herokuapp.com/basic_auth", BASIC, credentials);
+    }
 
     @Test
-    public void userShouldGrantAccessWithBasicAuth() {
-        var url = "http://the-internet.herokuapp.com/basic_auth";
-        var credentials = new Credentials("admin", "admin");
-        open(url, AuthenticationType.BASIC, credentials);
-        assertAll(() -> assertThat(page.getTitleText()).isEqualTo("Basic Auth"),
-                () -> assertThat(page.getContentText()).contains("Congratulations!"));
+    public void titleShouldBeBasicAuth() {
+        assertEquals("Basic Auth", PageContent.getTitleText());
+    }
+
+    @Test
+    public void congratsShouldAppearIfSuccessfullyAuthenticated() {
+        assertTrue(PageContent.getContentText().contains("Congratulations!"));
     }
 }

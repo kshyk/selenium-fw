@@ -26,21 +26,18 @@ public class AddRemoveElementsTests extends TestCase {
     @TestFactory
     public Iterable<DynamicTest> addAndRemoveElementTest() {
         Collection<DynamicTest> tests = new ArrayList<>(LOOPS * 2);
-        IntStream.rangeClosed(1, LOOPS)
-                .forEach(n -> {
-                    Executable addTest = () -> {
-                        IntStream.range(0, n)
-                                .forEach($$ -> page.clickOnAddElementButton());
-                        page.deleteButtonShouldHaveSize(n);
-                    };
-                    tests.add(dynamicTest("addElementsAmountOf" + n, addTest));
-                    Executable removeTest = () -> {
-                        IntStream.range(0, n)
-                                .forEach($$ -> page.clickOnDeleteButton());
-                        page.deleteButtonShouldHaveSize(0);
-                    };
-                    tests.add(dynamicTest("removeElementsAmountOf" + n, removeTest));
-                });
+        IntStream.rangeClosed(1, LOOPS).forEach(n -> {
+            Executable addTest = () -> {
+                IntStream.range(0, n).forEach($$ -> page.clickOnAddElementButton());
+                page.deleteButtonShouldHaveSize(n);
+            };
+            tests.add(dynamicTest("addElementsAmountOf" + n, addTest));
+            Executable removeTest = () -> {
+                IntStream.range(0, n).forEach($$ -> page.clickOnDeleteButton());
+                page.deleteButtonShouldHaveSize(0);
+            };
+            tests.add(dynamicTest("removeElementsAmountOf" + n, removeTest));
+        });
         return tests;
     }
 }

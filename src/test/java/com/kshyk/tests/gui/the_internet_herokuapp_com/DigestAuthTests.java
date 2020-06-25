@@ -1,20 +1,27 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
-import com.kshyk.pageobjects.theinternetherokuapp.DigestAuthPage;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Selenide.open;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class DigestAuthTests extends TestCase {
-    private final DigestAuthPage page = new DigestAuthPage();
+    @BeforeAll
+    public void setupDigestAuthentication() {
+        open("http://admin:admin@the-internet.herokuapp.com/digest_auth");
+    }
 
     @Test
-    public void userShouldGrantAccessWithDigestAuth() {
-        open("http://admin:admin@the-internet.herokuapp.com/digest_auth");
-        assertAll(() -> assertThat(page.getTitleText()).isEqualTo("Digest Auth"),
-                () -> assertThat(page.getContentText()).contains("Congratulations!"));
+    public void titleShouldBeDigestAuth() {
+        assertEquals("Digest Auth", PageContent.getTitleText());
+    }
+
+    @Test
+    public void congratsShouldAppearIfSuccessfullyAuthenticated() {
+        assertTrue(PageContent.getContentText().contains("Congratulations!"));
     }
 }

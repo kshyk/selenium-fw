@@ -3,9 +3,15 @@ package com.kshyk.tests.gui.teamandpersonal_pl.navigationbar;
 import com.kshyk.helpers.teamandpersonal.bars.CookiesBarHelper;
 import com.kshyk.helpers.teamandpersonal.common.PrivacyPolicyPageHelper;
 import com.kshyk.tests.base.TestCase;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-import static com.codeborne.selenide.Selenide.*;
+import static com.codeborne.selenide.Selenide.closeWindow;
+import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.switchTo;
 import static com.codeborne.selenide.WebDriverRunner.url;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

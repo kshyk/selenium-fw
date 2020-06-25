@@ -4,7 +4,11 @@ import com.codeborne.selenide.Selenide;
 import com.kshyk.enums.teamandpersonal.SocialMedia;
 import com.kshyk.helpers.teamandpersonal.bars.NavigationBarHelper;
 import com.kshyk.tests.base.TestCase;
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
 
