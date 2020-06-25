@@ -6,10 +6,10 @@ import static org.openqa.selenium.By.tagName;
 
 public interface PageContent {
     static String getTitleText() {
-        return $(tagName("h3")).getText().trim();
+        return $(tagName("h3")).text().trim();
     }
 
     static String getContentText() {
-        return $(id("content")).getText().trim();
+        return $(id("content")).text().trim();
     }
 }

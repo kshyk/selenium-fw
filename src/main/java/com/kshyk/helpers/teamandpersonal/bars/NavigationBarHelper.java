@@ -12,7 +12,7 @@ public class NavigationBarHelper {
     }
 
     public static String getTelephoneText() {
-        return $(className("topka-tel")).getText();
+        return $(className("topka-tel")).text();
     }
 
     public static String getMailHrefValue() {
@@ -20,6 +20,6 @@ public class NavigationBarHelper {
     }
 
     public static String getMailText() {
-        return topkaMail.getText().trim();
+        return topkaMail.text().trim();
     }
 }

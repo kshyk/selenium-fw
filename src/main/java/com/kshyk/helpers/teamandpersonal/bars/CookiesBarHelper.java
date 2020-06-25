@@ -19,7 +19,7 @@ public class CookiesBarHelper {
     }
 
     public static String getText() {
-        return cookieBar.$(".ctcc-left-side").getText();
+        return cookieBar.$(".ctcc-left-side").text();
     }
 
     public static void acceptCookies() {
