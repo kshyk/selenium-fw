@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.switchTo;
-import static com.codeborne.selenide.WebDriverRunner.driver;
 
 class NestedFramesPageTests extends TestCase {
     @BeforeAll
@@ -47,7 +46,6 @@ class NestedFramesPageTests extends TestCase {
 
     @BeforeEach
     public void switchToDefaultContent() {
-        driver().switchTo()
-                .defaultContent();
+        switchTo().defaultContent();
     }
 }
