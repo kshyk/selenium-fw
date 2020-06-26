@@ -1,12 +1,11 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
-import com.kshyk.pageobjects.theinternetherokuapp.JavaScriptAlertsPage;
+import com.kshyk.helpers.theinternetherokuapp.JavaScriptAlertsPageHelper;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.confirm;
 import static com.codeborne.selenide.Selenide.dismiss;
 import static com.codeborne.selenide.Selenide.open;
@@ -14,32 +13,30 @@ import static com.codeborne.selenide.Selenide.prompt;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JavaScriptAlertsPageTests extends TestCase {
-    private JavaScriptAlertsPage page;
-
     @BeforeAll
     public void openJavascriptAlertsPage() {
-        page = open("http://the-internet.herokuapp.com/javascript_alerts", JavaScriptAlertsPage.class);
+        open("http://the-internet.herokuapp.com/javascript_alerts");
     }
 
     @Test
     public void isSimpleAlertAppeared() {
-        page.clickOnJsAlertButton();
+        JavaScriptAlertsPageHelper.clickOnJsAlertButton();
         confirm();
-        assertTrue($(byText("You successfuly clicked an alert")).isDisplayed());
+        assertTrue(PageContent.getContentText().contains("You successfuly clicked an alert"));
     }
 
     @Test
     public void isConfirmAlertCancelled() {
-        page.clickOnJsConfirmButton();
+        JavaScriptAlertsPageHelper.clickOnJsConfirmButton();
         dismiss();
-        assertTrue($(byText("You clicked: Cancel")).isDisplayed());
+        assertTrue(PageContent.getContentText().contains("You clicked: Cancel"));
     }
 
     @Test
     public void isPromptAlertSaveText() {
-        page.clickOnJsPromptButton();
+        JavaScriptAlertsPageHelper.clickOnJsPromptButton();
         var value = "I'm typing in here!";
         prompt(value);
-        assertTrue($(byText("You entered: " + value)).isDisplayed());
+        assertTrue(PageContent.getContentText().contains("You entered: " + value));
     }
 }

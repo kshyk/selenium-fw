@@ -1,24 +1,28 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
-import com.kshyk.pageobjects.theinternetherokuapp.HoversPage;
+import com.kshyk.helpers.theinternetherokuapp.HoversPageHelper;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.util.Map;
+import java.util.List;
 
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HoversPageTests extends TestCase {
+    @BeforeAll
+    public void openHoversPage() {
+        open("http://the-internet.herokuapp.com/hovers");
+    }
+
     @Test
     public void additionalInfoShouldAppearOnImageHover() {
-        var page = open("http://the-internet.herokuapp.com/hovers", HoversPage.class);
-        Map.of(0, "user1", 1, "user2", 2, "user3")
-                .forEach((index, name) -> {
-                    page.mouseOverImageByIndex(index);
-                    assertTrue($(byText("name: " + name)).isDisplayed());
-                });
+        var users = List.of("user1", "user2", "user3");
+        users.forEach(user -> {
+            HoversPageHelper.mouseOverImageByIndex(users.indexOf(user));
+            assertTrue(PageContent.getContentText().contains("name: " + user));
+        });
     }
 }
