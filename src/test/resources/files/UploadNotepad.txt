@@ -1,0 +1,6 @@
+Microsoft introduced Multi-Tool Notepad, a mouse-based text editor written by Richard Brodie, with the $195 Microsoft Mouse in May 1983 at the Spring COMDEX computer expo in Atlanta. Also introduced at that COMDEX was Multi-Tool Word, 
+designed by Charles Simonyi to work with the mouse.[1][2][3] Most watching Simonyi's demonstration had never heard of a mouse.[4] Microsoft released the Microsoft Mouse in June 1983, and the boxed mouse and Multi-Tool Notepad began 
+shipping in July.[5] Initial sales were modest, as there was little one could do with it except run the three demonstration programs included in the box (a tutorial, practice application and Notepad) or program interfaces to it.[6] 
+The Multi-Tool product line began with expert systems for the Multiplan spreadsheet.[7][8] On the suggestion of Rowland Hanson, who also convinced Bill Gates to change the name "Interface Manager" to "Windows" before the release of 
+Windows 1.0, the Multi-Tool name was killed by the time Word shipped in November 1983. Hanson's rationale was that "the brand is the hero". People didn't associate the stand-alone name Multi-Tool with Microsoft, and Hanson wanted to 
+make Microsoft the hero, so the Microsoft name replaced "Multi-Tool".[4][6]
