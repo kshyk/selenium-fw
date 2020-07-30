@@ -29,7 +29,7 @@
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
         <mockito.core.version>3.3.3</mockito.core.version>
         <ow2.asm.version>8.0.1</ow2.asm.version>
-        <selenide.version>5.12.2</selenide.version>
+        <selenide.version>5.13.0</selenide.version>
         <junit.jupiter.version>5.6.2</junit.jupiter.version>
         <testingbot.rest.version>1.0.6</testingbot.rest.version>
     </properties>
