@@ -1,15 +1,19 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
+import com.kshyk.enums.theinternetherokuapp.Frame;
+import com.kshyk.helpers.theinternetherokuapp.NestedFramesPageHelper;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.switchTo;
+import static com.kshyk.enums.theinternetherokuapp.Frame.BOTTOM;
+import static com.kshyk.enums.theinternetherokuapp.Frame.TOP;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NestedFramesPageTests extends TestCase {
     @BeforeAll
@@ -17,31 +21,13 @@ class NestedFramesPageTests extends TestCase {
         open("http://the-internet.herokuapp.com/nested_frames");
     }
 
-    @Test
-    public void isBottomFrameLocatedProperly() {
-        switchTo().frame("frame-bottom");
-        $(By.tagName("body")).shouldHave(text("BOTTOM"));
-    }
-
-    @Test
-    public void isLeftFrameLocatedProperly() {
-        switchTo().innerFrame("frame-top");
-        switchTo().frame("frame-left");
-        $(By.tagName("body")).shouldHave(text("LEFT"));
-    }
-
-    @Test
-    public void isMiddleFrameLocatedProperly() {
-        switchTo().innerFrame("frame-top");
-        switchTo().frame("frame-middle");
-        $(By.tagName("body")).shouldHave(text("MIDDLE"));
-    }
-
-    @Test
-    public void isRightFrameLocatedProperly() {
-        switchTo().innerFrame("frame-top");
-        switchTo().frame("frame-right");
-        $(By.tagName("body")).shouldHave(text("RIGHT"));
+    @ParameterizedTest(name = "is{0}FrameLocatedProperly")
+    @EnumSource(value = Frame.class, names = {"BOTTOM", "LEFT", "MIDDLE", "RIGHT"})
+    public void isFrameLocatedProperly(Frame frame) {
+        if (!frame.equals(BOTTOM))
+            NestedFramesPageHelper.switchToInnerFrame(TOP);
+        NestedFramesPageHelper.switchToFrame(frame);
+        assertEquals(frame.name(), PageContent.getBodyText());
     }
 
     @BeforeEach
