@@ -1,7 +1,7 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
-import com.kshyk.interfaces.PageContent;
 import com.kshyk.helpers.theinternetherokuapp.ForgotPasswordPageHelper;
+import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
