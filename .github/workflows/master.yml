@@ -1,0 +1,21 @@
+name: Selenium Workflow
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository from $GITHUB_REPOSITORY
+        uses: actions/checkout@v2
+      - name: Setup AdoptOpenJDK
+        uses: joschi/setup-jdk@v2
+        with:
+          java-version: '15'
+          architecture: x64
+      - name: Compile project
+        run: mvn clean compile -DskipTests=true -B
