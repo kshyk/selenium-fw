@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository from ${{ github.repository }}
+      - name: Checkout ${{ github.repository }} repository
         uses: actions/checkout@v2
       - name: Setup AdoptOpenJDK
         uses: joschi/setup-jdk@v2
