@@ -15,7 +15,6 @@ jobs:
       - name: Setup AdoptOpenJDK
         uses: joschi/setup-jdk@v2
         with:
-          java-version: '15'
-          architecture: x64
-      - name: Compile project
-        run: mvn clean compile -DskipTests=true -B
+          java-version: 15
+      - name: Build project
+        run: ./gradlew build
