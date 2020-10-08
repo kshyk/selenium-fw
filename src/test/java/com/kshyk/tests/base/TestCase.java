@@ -2,10 +2,8 @@ package com.kshyk.tests.base;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
-import com.codeborne.selenide.logevents.SelenideLogger;
 import com.testingbot.models.TestingbotTest;
 import com.testingbot.testingbotrest.TestingbotREST;
-import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,8 +25,6 @@ public abstract class TestCase implements TestWatcher {
         Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
         Configuration.headless = false;
         Configuration.startMaximized = true;
-        SelenideLogger.addListener("AllureSelenide",
-                new AllureSelenide().screenshots(true).savePageSource(false).includeSelenideSteps(true));
     }
 
     @BeforeEach

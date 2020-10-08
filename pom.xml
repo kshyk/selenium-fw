@@ -9,7 +9,7 @@
     <name>selenium-kshyk</name>
 
     <properties>
-        <java.version>14</java.version>
+        <java.version>15</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.version>3.5.4</maven.version>
         <maven.compile.optimize>true</maven.compile.optimize>
@@ -29,9 +29,12 @@
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
         <mockito.core.version>3.5.13</mockito.core.version>
         <ow2.asm.version>9.0</ow2.asm.version>
-        <selenide.version>5.15.0</selenide.version>
+        <selenide.version>5.15.1</selenide.version>
         <junit.jupiter.version>5.7.0</junit.jupiter.version>
         <testingbot.rest.version>1.0.6</testingbot.rest.version>
+        <jacoco.version>0.8.6</jacoco.version>
+        <jackson.databind.version>2.11.3</jackson.databind.version>
+        <rest.assured.version>4.3.1</rest.assured.version>
     </properties>
 
     <dependencies>
@@ -54,6 +57,21 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-core</artifactId>
             <version>${logback.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.databind.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest.assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured-all</artifactId>
+            <version>${rest.assured.version}</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
@@ -155,6 +173,26 @@
                     <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
@@ -165,5 +203,22 @@
             <layout>default</layout>
         </repository>
     </repositories>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <!-- select non-aggregate reports -->
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>
