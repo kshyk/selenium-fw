@@ -34,7 +34,7 @@
         <testingbot.rest.version>1.0.6</testingbot.rest.version>
         <jacoco.version>0.8.6</jacoco.version>
         <jackson.databind.version>2.12.0</jackson.databind.version>
-        <rest.assured.version>4.3.2</rest.assured.version>
+        <rest.assured.version>4.3.3</rest.assured.version>
     </properties>
 
     <dependencies>
