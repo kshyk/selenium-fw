@@ -21,6 +21,7 @@ public class FileDownloadTests extends FileDownloadTestCase {
     @ParameterizedTest(name = "checkDownloadedFile{0}Name")
     @MethodSource("com.kshyk.tests.gui.the_internet_herokuapp_com.filedownload.FileDownloadTestCase#checkDownloadedFileName")
     public void checkDownloadedFileName(String fileName) {
-        assertEquals(fileName, Objects.requireNonNull(downloadFile(fileName)).getName());
+        var expected = fileName.replaceAll(" ", "+");
+        assertEquals(expected, Objects.requireNonNull(downloadFile(fileName)).getName());
     }
 }
