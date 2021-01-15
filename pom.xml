@@ -19,7 +19,7 @@
         <maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
         <maven.surefire.version>3.0.0-M3</maven.surefire.version>
         <assertj.version>3.18.1</assertj.version>
-        <webdrivermanager.version>4.2.2</webdrivermanager.version>
+        <webdrivermanager.version>4.3.0</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
         <log4j.version>2.14.0</log4j.version>
         <selenium.version>3.141.59</selenium.version>
