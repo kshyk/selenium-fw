@@ -1,7 +1,7 @@
 ext {
     restAssuredVersion = '4.3.3'
-    wdmVersion = '4.2.2'
-    poiApacheVersion = '4.1.2'
+    wdmVersion = '4.3.1'
+    poiApacheVersion = '5.0.0'
     logbackVersion = '1.2.3'
 }
 
@@ -38,14 +38,14 @@ dependencies {
     implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
     implementation('org.javassist:javassist:3.27.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:5.17.3')
+    implementation('com.codeborne:selenide:5.17.4')
     implementation('com.testingbot:testingbotrest:1.0.6')
     implementation("io.rest-assured:rest-assured:${restAssuredVersion}")
     implementation("io.rest-assured:rest-assured-all:${restAssuredVersion}")
     implementation("io.rest-assured:json-schema-validator:${restAssuredVersion}")
     implementation('org.assertj:assertj-core:3.18.1')
     implementation('org.junit.jupiter:junit-jupiter:5.7.0')
-    testImplementation('org.mockito:mockito-core:3.7.0')
+    testImplementation('org.mockito:mockito-core:3.7.7')
 }
 
 test {
