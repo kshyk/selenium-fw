@@ -18,7 +18,7 @@
         <maven.compiler.version>3.8.0</maven.compiler.version>
         <maven.enforcer.version>3.0.0-M2</maven.enforcer.version>
         <maven.surefire.version>3.0.0-M3</maven.surefire.version>
-        <assertj.version>3.18.1</assertj.version>
+        <assertj.version>3.19.0</assertj.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
         <log4j.version>2.14.0</log4j.version>
@@ -28,9 +28,9 @@
         <javassist.version>3.27.0-GA</javassist.version>
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
         <mockito.core.version>3.7.7</mockito.core.version>
-        <ow2.asm.version>9.0</ow2.asm.version>
-        <selenide.version>5.17.4</selenide.version>
-        <junit.jupiter.version>5.7.0</junit.jupiter.version>
+        <ow2.asm.version>9.1</ow2.asm.version>
+        <selenide.version>5.18.0</selenide.version>
+        <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <testingbot.rest.version>1.0.6</testingbot.rest.version>
         <jacoco.version>0.8.6</jacoco.version>
         <jackson.databind.version>2.12.1</jackson.databind.version>
