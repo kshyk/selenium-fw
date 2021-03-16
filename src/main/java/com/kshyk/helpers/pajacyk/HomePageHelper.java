@@ -9,7 +9,7 @@ public class HomePageHelper {
     }
 
     public static void clickOnBelly() {
-        $(".paj-click").click();
+        $(".pajacyk__clickbox").click();
     }
 
     public static boolean isThanksDisplayed() {
