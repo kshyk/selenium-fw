@@ -1,0 +1,25 @@
+name: E2E Tests
+
+on: [ push, pull_request ]
+
+jobs:
+  ui-tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout ${{ github.repository }} repository
+        uses: actions/checkout@v2
+      - name: Setup OpenJDK 15
+        uses: joschi/setup-jdk@v2
+        with:
+          java-version: 15
+      - name: Cache Gradle packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
+          restore-keys: ${{ runner.os }}-gradle
+      - name: Gradle build project
+        env:
+          TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
+          TESTINGBOT_SECRET: ${{ secrets.TESTINGBOT_SECRET }}
+        run: ./gradlew build
