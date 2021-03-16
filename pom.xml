@@ -21,19 +21,19 @@
         <assertj.version>3.19.0</assertj.version>
         <webdrivermanager.version>4.3.1</webdrivermanager.version>
         <logback.version>1.2.3</logback.version>
-        <log4j.version>2.14.0</log4j.version>
+        <log4j.version>2.14.1</log4j.version>
         <selenium.version>3.141.59</selenium.version>
         <apache.poi.version>5.0.0</apache.poi.version>
         <codehaus.mojo.maven.version>2.7</codehaus.mojo.maven.version>
         <javassist.version>3.27.0-GA</javassist.version>
         <cglib.nodep.version>3.3.0</cglib.nodep.version>
-        <mockito.core.version>3.7.7</mockito.core.version>
+        <mockito.core.version>3.8.0</mockito.core.version>
         <ow2.asm.version>9.1</ow2.asm.version>
-        <selenide.version>5.18.1</selenide.version>
+        <selenide.version>5.19.0</selenide.version>
         <junit.jupiter.version>5.7.1</junit.jupiter.version>
         <testingbot.rest.version>1.0.6</testingbot.rest.version>
         <jacoco.version>0.8.6</jacoco.version>
-        <jackson.databind.version>2.12.1</jackson.databind.version>
+        <jackson.databind.version>2.12.2</jackson.databind.version>
         <rest.assured.version>4.3.3</rest.assured.version>
     </properties>
 

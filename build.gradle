@@ -30,7 +30,7 @@ repositories {
 
 dependencies {
     implementation('org.seleniumhq.selenium:selenium-java:3.141.59')
-    implementation('org.apache.logging.log4j:log4j-api:2.14.0')
+    implementation('org.apache.logging.log4j:log4j-api:2.14.1')
     implementation("ch.qos.logback:logback-classic:${logbackVersion}")
     implementation("ch.qos.logback:logback-core:${logbackVersion}")
     implementation("io.github.bonigarcia:webdrivermanager:${wdmVersion}")
@@ -38,14 +38,14 @@ dependencies {
     implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
     implementation('org.javassist:javassist:3.27.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:5.18.0')
+    implementation('com.codeborne:selenide:5.19.0')
     implementation('com.testingbot:testingbotrest:1.0.6')
     implementation("io.rest-assured:rest-assured:${restAssuredVersion}")
     implementation("io.rest-assured:rest-assured-all:${restAssuredVersion}")
     implementation("io.rest-assured:json-schema-validator:${restAssuredVersion}")
     implementation('org.assertj:assertj-core:3.19.0')
     implementation('org.junit.jupiter:junit-jupiter:5.7.1')
-    testImplementation('org.mockito:mockito-core:3.7.7')
+    testImplementation('org.mockito:mockito-core:3.8.0')
 }
 
 test {
