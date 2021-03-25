@@ -10,8 +10,20 @@ apply plugin: 'maven'
 apply plugin: 'idea'
 
 group = 'com.kshyk'
-version = '0.4.0'
+version = '0.4.1'
 description = """selenium-kshyk"""
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.github.ben-manes:gradle-versions-plugin:0.38.0"
+    }
+}
+apply plugin: 'com.github.ben-manes.versions'
 
 compileTestJava {
     sourceCompatibility = JavaVersion.VERSION_15
@@ -38,7 +50,7 @@ dependencies {
     implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
     implementation('org.javassist:javassist:3.27.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:5.19.0')
+    implementation('com.codeborne:selenide:5.20.1')
     implementation('com.testingbot:testingbotrest:1.0.6')
     implementation("io.rest-assured:rest-assured:${restAssuredVersion}")
     implementation("io.rest-assured:rest-assured-all:${restAssuredVersion}")
