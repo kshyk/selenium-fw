@@ -33,6 +33,11 @@ jobs:
           TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
           TESTINGBOT_SECRET: ${{ secrets.TESTINGBOT_SECRET }}
         run: ./gradlew test --tests '*tests.api*'
+      - name: Publish API test report
+        uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   ui-tests:
     runs-on: ubuntu-20.04
@@ -58,3 +63,8 @@ jobs:
           TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
           TESTINGBOT_SECRET: ${{ secrets.TESTINGBOT_SECRET }}
         run: ./gradlew test --tests '*tests.gui*'
+      - name: Publish UI test report
+        uses: mikepenz/action-junit-report@v2
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
