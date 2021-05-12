@@ -2,6 +2,7 @@ package com.kshyk.pageobjects.theinternetherokuapp;
 
 import com.codeborne.selenide.ElementsCollection;
 
+import static com.codeborne.selenide.CollectionCondition.size;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
@@ -13,11 +14,10 @@ public class AddRemoveElementsPage {
     }
 
     public void clickOnDeleteButton() {
-        deleteButtons.get(0)
-                .click();
+        deleteButtons.get(0).click();
     }
 
     public void deleteButtonShouldHaveSize(int size) {
-        deleteButtons.shouldHaveSize(size);
+        deleteButtons.shouldHave(size(size));
     }
 }
