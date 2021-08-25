@@ -1,8 +1,8 @@
 ext {
-    restAssuredVersion = '4.3.3'
-    wdmVersion = '4.4.0'
+    restAssuredVersion = '4.4.0'
+    wdmVersion = '4.4.3'
     poiApacheVersion = '5.0.0'
-    logbackVersion = '1.2.3'
+    logbackVersion = '1.2.5'
 }
 
 apply plugin: 'java'
@@ -10,7 +10,7 @@ apply plugin: 'maven'
 apply plugin: 'idea'
 
 group = 'com.kshyk'
-version = '0.5.0'
+version = '0.5.1'
 description = """selenium-kshyk"""
 
 buildscript {
@@ -48,16 +48,17 @@ dependencies {
     implementation("io.github.bonigarcia:webdrivermanager:${wdmVersion}")
     implementation("org.apache.poi:poi:${poiApacheVersion}")
     implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
-    implementation('org.javassist:javassist:3.27.0-GA')
+    implementation('org.javassist:javassist:3.28.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:5.20.1')
+    implementation('com.codeborne:selenide:5.23.3')
     implementation('com.testingbot:testingbotrest:1.0.6')
     implementation("io.rest-assured:rest-assured:${restAssuredVersion}")
     implementation("io.rest-assured:rest-assured-all:${restAssuredVersion}")
     implementation("io.rest-assured:json-schema-validator:${restAssuredVersion}")
-    implementation('org.assertj:assertj-core:3.19.0')
-    implementation('org.junit.jupiter:junit-jupiter:5.7.1')
-    testImplementation('org.mockito:mockito-core:3.9.0')
+    implementation('org.assertj:assertj-core:3.20.2')
+    implementation('org.junit.jupiter:junit-jupiter:5.7.2')
+    implementation('io.github.artsok:rerunner-jupiter:2.1.6')
+    testImplementation('org.mockito:mockito-core:3.12.1')
 }
 
 test {
