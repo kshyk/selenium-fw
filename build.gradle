@@ -31,10 +31,6 @@ compileTestJava {
     options.compilerArgs += '-parameters'
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
 repositories {
     maven { url "https://maven.java.net/content/repositories/staging/" }
     maven { url "https://repo.maven.apache.org/maven2" }
