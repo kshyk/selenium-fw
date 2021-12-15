@@ -1,4 +1,4 @@
-name: E2E Tests
+name: UI Tests
 
 on: [push, pull_request]
 
@@ -8,10 +8,14 @@ jobs:
     steps:
       - name: Checkout ${{ github.repository }} repository
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
       - name: Setup OpenJDK 15
         uses: joschi/setup-jdk@v2
         with:
           java-version: 15
+
       - name: Cache Gradle packages
         uses: actions/cache@v2
         with:
@@ -20,13 +24,16 @@ jobs:
             ~/.gradle/wrapper
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: ${{ runner.os }}-gradle-
+
       - name: Assemble project
         run: ./gradlew assemble
+
       - name: Execute tests
         env:
           TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
           TESTINGBOT_SECRET: ${{ secrets.TESTINGBOT_SECRET }}
         run: ./gradlew test --tests '*tests.gui*'
+
       - name: Publish UI test report
         uses: mikepenz/action-junit-report@v2
         with:

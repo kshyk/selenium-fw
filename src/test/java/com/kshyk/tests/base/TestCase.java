@@ -24,7 +24,6 @@ public abstract class TestCase implements TestWatcher {
         Configuration.timeout = 5000;
         Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
         Configuration.headless = false;
-        Configuration.startMaximized = true;
     }
 
     @BeforeEach
