@@ -26,8 +26,8 @@ buildscript {
 apply plugin: 'com.github.ben-manes.versions'
 
 compileTestJava {
-    sourceCompatibility = JavaVersion.VERSION_15
-    targetCompatibility = JavaVersion.VERSION_15
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
     options.compilerArgs += '-parameters'
 }
 
