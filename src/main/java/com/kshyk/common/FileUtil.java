@@ -1,5 +1,7 @@
 package com.kshyk.common;
 
+import lombok.experimental.UtilityClass;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,11 +12,8 @@ import java.util.function.BiPredicate;
 
 import static java.lang.Integer.MAX_VALUE;
 
+@UtilityClass
 public class FileUtil {
-    private FileUtil() {
-        // Util class
-    }
-
     public static File getFileByName(String filename) throws IOException {
         BiPredicate<Path, BasicFileAttributes> fileBiPredicate =
                 (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith(filename);
