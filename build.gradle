@@ -1,8 +1,7 @@
 ext {
     restAssuredVersion = '4.4.0'
-    wdmVersion = '5.0.3'
     poiApacheVersion = '5.1.0'
-    logbackVersion = '1.2.8'
+    logbackVersion = '1.2.10'
 }
 
 apply plugin: 'java'
@@ -21,9 +20,11 @@ buildscript {
     }
     dependencies {
         classpath "com.github.ben-manes:gradle-versions-plugin:0.39.0"
+        classpath "io.freefair.gradle:lombok-plugin:6.4.1"
     }
 }
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'io.freefair.lombok'
 
 compileTestJava {
     sourceCompatibility = JavaVersion.VERSION_17
@@ -37,21 +38,19 @@ repositories {
 }
 
 dependencies {
-    implementation('org.seleniumhq.selenium:selenium-java:4.1.0')
     implementation("ch.qos.logback:logback-classic:${logbackVersion}")
     implementation("ch.qos.logback:logback-core:${logbackVersion}")
-    implementation("io.github.bonigarcia:webdrivermanager:${wdmVersion}")
     implementation("org.apache.poi:poi:${poiApacheVersion}")
     implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
     implementation('org.javassist:javassist:3.28.0-GA')
     implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:6.1.1')
+    implementation('com.codeborne:selenide:6.3.0')
     implementation('com.testingbot:testingbotrest:1.0.6')
-    implementation('org.assertj:assertj-core:3.21.0')
+    implementation('org.assertj:assertj-core:3.22.0')
     implementation('org.junit.jupiter:junit-jupiter:5.8.2')
     implementation('io.github.artsok:rerunner-jupiter:2.1.6')
     implementation('org.apache.commons:commons-lang3:3.12.0')
-    testImplementation('org.mockito:mockito-core:4.1.0')
+    testImplementation('org.mockito:mockito-core:4.3.1')
 }
 
 test {

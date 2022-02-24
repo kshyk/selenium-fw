@@ -1,10 +1,13 @@
 package com.kshyk.enums.teamandpersonal;
 
 import com.kshyk.common.CommonUtil;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import static com.codeborne.selenide.Selenide.$;
 import static org.openqa.selenium.By.className;
 
+@AllArgsConstructor
 public enum SocialMedia {
     FACEBOOK("topka-facebook", "https://www.facebook.com/TeamAndPersonal/?ref=bookmarks"),
     GOOGLE_PLUS("topka-google", "https://plus.google.com/+TeamandpersonalPl"),
@@ -15,19 +18,11 @@ public enum SocialMedia {
     TWITTER("topka-twitter", "https://twitter.com/TeamAndPersonal");
 
     private final String className;
+    @Getter
     private final String url;
-
-    SocialMedia(String className, String url) {
-        this.className = className;
-        this.url = url;
-    }
 
     public void clickOnButton() {
         $(className(className)).click();
-    }
-
-    public String getUrl() {
-        return url;
     }
 
     @Override

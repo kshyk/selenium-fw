@@ -1,7 +1,10 @@
 package com.kshyk.enums.theinternetherokuapp;
 
 import com.kshyk.common.CommonUtil;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 
+@AllArgsConstructor
 public enum Frame {
     TOP("frame-top"),
     BOTTOM("frame-bottom"),
@@ -9,15 +12,8 @@ public enum Frame {
     RIGHT("frame-right"),
     MIDDLE("frame-middle");
 
+    @Getter
     private final String position;
-
-    Frame(String position) {
-        this.position = position;
-    }
-
-    public String getPosition() {
-        return position;
-    }
 
     @Override
     public String toString() {
