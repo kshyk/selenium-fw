@@ -1,4 +1,4 @@
-name: UI Tests
+name: Regression
 
 on: [push, pull_request]
 
