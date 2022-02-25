@@ -42,6 +42,7 @@ jobs:
 
       - name: Autobuild
         uses: github/codeql-action/autobuild@v1
+        run: ./gradlew --no-daemon clean
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v1
