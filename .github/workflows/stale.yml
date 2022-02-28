@@ -1,0 +1,26 @@
+name: Stale
+
+on:
+  schedule:
+  - cron: '45 21 * * *'
+
+jobs:
+  stale:
+    runs-on: ubuntu-20.04
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: Mark stale Issues & PRs
+        uses: actions/stale@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-issue-stale: 2
+          days-before-pr-stale: 3
+          days-before-issue-close: 3
+          days-before-pr-close: 2
+          stale-issue-message: 'Issue was marked as Stale'
+          stale-pr-message: 'Pull request was marked as Stale'
+          stale-issue-label: 'no-issue-activity'
+          stale-pr-label: 'no-pr-activity'
