@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class KeyPressesPageTests extends TestCase {
     @BeforeAll
-    public void openKeyPressesPage() {
+    void openKeyPressesPage() {
         open("http://the-internet.herokuapp.com/key_presses");
     }
 
     @Test
-    public void isKeyProperlyEntered() {
+    void isKeyProperlyEntered() {
         var tab = Keys.TAB;
         KeyPressesPageHelper.pressKey(tab);
         assertEquals("You entered: " + tab.name(), KeyPressesPageHelper.getResultText());

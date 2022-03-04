@@ -17,18 +17,18 @@ class UploadPageTests extends TestCase {
     private static final String FILE_NAME = DownloadableFile.NOT_EMPTY.getFileName();
 
     @BeforeAll
-    public void uploadFile() throws IOException {
+    void uploadFile() throws IOException {
         open("http://the-internet.herokuapp.com/upload");
         UploadPageHelper.uploadFile(FileUtil.getFileByName(FILE_NAME));
     }
 
     @Test
-    public void fileUploadedMessageShouldBePresent() {
+    void fileUploadedMessageShouldBePresent() {
         assertEquals("File Uploaded!", PageContent.getTitleText());
     }
 
     @Test
-    public void fileNameShouldBePresentInPanel() {
+    void fileNameShouldBePresentInPanel() {
         assertEquals(FILE_NAME, UploadPageHelper.getUploadedFilesText());
     }
 }

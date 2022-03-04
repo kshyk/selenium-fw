@@ -14,23 +14,23 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class CheckboxesTests extends TestCase {
+class CheckboxesTests extends TestCase {
     @BeforeAll
-    public void openCheckboxesPage() {
+    void openCheckboxesPage() {
         open("http://the-internet.herokuapp.com/checkboxes");
         CheckboxesPageHelper.allCheckboxSelection(false);
     }
 
     @Test
     @Order(1)
-    public void allCheckboxesShouldBeDeselected() {
+    void allCheckboxesShouldBeDeselected() {
         assertAll(() -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(0)),
                 () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
     }
 
     @Test
     @Order(2)
-    public void firstCheckboxShouldBeSelected() {
+    void firstCheckboxShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(0, true);
         assertAll(() -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(0)),
                 () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
@@ -38,7 +38,7 @@ public class CheckboxesTests extends TestCase {
 
     @Test
     @Order(3)
-    public void allCheckboxesShouldBeSelected() {
+    void allCheckboxesShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(1, true);
         assertAll(() -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(0)),
                 () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));
@@ -46,7 +46,7 @@ public class CheckboxesTests extends TestCase {
 
     @Test
     @Order(4)
-    public void secondCheckboxShouldBeSelected() {
+    void secondCheckboxShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(0, false);
         assertAll(() -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(0)),
                 () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));

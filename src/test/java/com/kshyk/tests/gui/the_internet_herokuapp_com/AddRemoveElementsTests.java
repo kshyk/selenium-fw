@@ -14,17 +14,17 @@ import java.util.stream.IntStream;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.DynamicTest.dynamicTest;
 
-public class AddRemoveElementsTests extends TestCase {
+class AddRemoveElementsTests extends TestCase {
     private static final int LOOPS = 3;
     private AddRemoveElementsPage page;
 
     @BeforeAll
-    public void openAddRemoveElementsPage() {
+    void openAddRemoveElementsPage() {
         page = open("http://the-internet.herokuapp.com/add_remove_elements/", AddRemoveElementsPage.class);
     }
 
     @TestFactory
-    public Iterable<DynamicTest> addAndRemoveElementTest() {
+    Iterable<DynamicTest> addAndRemoveElementTest() {
         Collection<DynamicTest> tests = new ArrayList<>(LOOPS * 2);
         IntStream.rangeClosed(1, LOOPS).forEach(n -> {
             Executable addTest = () -> {

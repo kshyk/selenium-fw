@@ -22,32 +22,32 @@ class NavigationBarTests extends TestCase {
     private static final String HOME_PAGE_URL = "https://teamandpersonal.pl/";
 
     @BeforeAll
-    public void openHomePage() {
+    void openHomePage() {
         open(HOME_PAGE_URL);
     }
 
     @Order(0)
     @Test
-    public void checkTelephone() {
+    void checkTelephone() {
         assertEquals("+48 660 22 77 22", NavigationBarHelper.getTelephoneText());
     }
 
     @Order(0)
     @Test
-    public void checkMailToHrefValue() {
+    void checkMailToHrefValue() {
         assertEquals("mailto:biuro@teamandpersonal.pl", NavigationBarHelper.getMailHrefValue());
     }
 
     @Order(0)
     @Test
-    public void checkMailText() {
+    void checkMailText() {
         assertEquals("biuro [at] teamandpersonal.pl", NavigationBarHelper.getMailText());
     }
 
     @Order(1)
     @ParameterizedTest(name = "checkRedirectionOf{0}")
     @EnumSource(SocialMedia.class)
-    public void checkRedirectionOfSocialMedia(SocialMedia socialMedia) {
+    void checkRedirectionOfSocialMedia(SocialMedia socialMedia) {
         if (!url().equals(HOME_PAGE_URL))
             Selenide.back();
         socialMedia.clickOnButton();

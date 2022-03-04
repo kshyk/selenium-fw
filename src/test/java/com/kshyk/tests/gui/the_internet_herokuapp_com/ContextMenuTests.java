@@ -11,23 +11,23 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selenide.switchTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ContextMenuTests extends TestCase {
+class ContextMenuTests extends TestCase {
     private Alert alert;
 
     @BeforeAll
-    public void openContextMenuPage() {
+    void openContextMenuPage() {
         open("http://the-internet.herokuapp.com/context_menu");
     }
 
     @Test
-    public void contextClickShouldTriggerAlert() {
+    void contextClickShouldTriggerAlert() {
         ContextMenuPageHelper.contextClickOnHotSpot();
         alert = switchTo().alert();
         assertEquals("You selected a context menu", alert.getText());
     }
 
     @AfterAll
-    public void closeAlertPrompt() {
+    void closeAlertPrompt() {
         if (alert != null)
             alert.accept();
     }

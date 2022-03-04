@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class NestedFramesPageTests extends TestCase {
     @BeforeAll
-    public void openNestedFramesPage() {
+    void openNestedFramesPage() {
         open("http://the-internet.herokuapp.com/nested_frames");
     }
 
     @ParameterizedTest(name = "is{0}FrameLocatedProperly")
     @EnumSource(value = Frame.class, names = {"BOTTOM", "LEFT", "MIDDLE", "RIGHT"})
-    public void isFrameLocatedProperly(Frame frame) {
+    void isFrameLocatedProperly(Frame frame) {
         if (!frame.equals(BOTTOM))
             NestedFramesPageHelper.switchToInnerFrame(TOP);
         NestedFramesPageHelper.switchToFrame(frame);
@@ -31,7 +31,7 @@ class NestedFramesPageTests extends TestCase {
     }
 
     @BeforeEach
-    public void switchToDefaultContent() {
+    void switchToDefaultContent() {
         switchTo().defaultContent();
     }
 }

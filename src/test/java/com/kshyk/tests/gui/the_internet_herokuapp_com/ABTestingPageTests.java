@@ -10,12 +10,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ABTestingPageTests extends TestCase {
     @BeforeAll
-    public void openABTestPage() {
+    void openABTestPage() {
         open("http://the-internet.herokuapp.com/abtest");
     }
 
     @Test
-    public void isABTestPageLoaded() {
+    void isABTestPageLoaded() {
         assertThat(PageContent.getTitleText()).contains("A/B Test");
     }
 }

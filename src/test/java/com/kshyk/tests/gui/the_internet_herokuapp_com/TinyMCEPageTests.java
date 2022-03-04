@@ -11,12 +11,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 class TinyMCEPageTests extends TestCase {
     @BeforeAll
-    public void openTinyMCEPage() {
+    void openTinyMCEPage() {
         open("http://the-internet.herokuapp.com/tinymce");
     }
 
     @Test
-    public void clearAndSetNewContent() {
+    void clearAndSetNewContent() {
         var jsCode = "tinymce.activeEditor.setContent(arguments[0]);";
         executeJavaScript(jsCode, "");
         executeJavaScript(jsCode, LocalDateTime.now().toString());

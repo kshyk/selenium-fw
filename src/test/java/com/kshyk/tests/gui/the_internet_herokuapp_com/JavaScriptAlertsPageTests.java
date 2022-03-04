@@ -14,26 +14,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class JavaScriptAlertsPageTests extends TestCase {
     @BeforeAll
-    public void openJavascriptAlertsPage() {
+    void openJavascriptAlertsPage() {
         open("http://the-internet.herokuapp.com/javascript_alerts");
     }
 
     @Test
-    public void isSimpleAlertAppeared() {
+    void isSimpleAlertAppeared() {
         JavaScriptAlertsPageHelper.clickOnJsAlertButton();
         confirm();
         assertTrue(PageContent.getContentText().contains("You successfuly clicked an alert"));
     }
 
     @Test
-    public void isConfirmAlertCancelled() {
+    void isConfirmAlertCancelled() {
         JavaScriptAlertsPageHelper.clickOnJsConfirmButton();
         dismiss();
         assertTrue(PageContent.getContentText().contains("You clicked: Cancel"));
     }
 
     @Test
-    public void isPromptAlertSaveText() {
+    void isPromptAlertSaveText() {
         JavaScriptAlertsPageHelper.clickOnJsPromptButton();
         var value = "I'm typing in here!";
         prompt(value);

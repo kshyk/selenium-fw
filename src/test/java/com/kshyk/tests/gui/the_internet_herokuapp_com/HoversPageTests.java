@@ -17,13 +17,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HoversPageTests extends TestCase {
     @BeforeAll
-    public void openHoversPage() {
+    void openHoversPage() {
         open("http://the-internet.herokuapp.com/hovers");
     }
 
     @ParameterizedTest(name = "{1}AdditionalInfoShouldAppearOnImageHover")
     @MethodSource("mapSource")
-    public void additionalInfoShouldAppearOnImageHover(int index, String user) {
+    void additionalInfoShouldAppearOnImageHover(int index, String user) {
         HoversPageHelper.mouseOverImageByIndex(index);
         assertTrue(PageContent.getContentText().contains("name: " + user));
     }

@@ -9,19 +9,19 @@ import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class DigestAuthTests extends TestCase {
+class DigestAuthTests extends TestCase {
     @BeforeAll
-    public void setupDigestAuthentication() {
+    void setupDigestAuthentication() {
         open("http://admin:admin@the-internet.herokuapp.com/digest_auth");
     }
 
     @Test
-    public void titleShouldBeDigestAuth() {
+    void titleShouldBeDigestAuth() {
         assertEquals("Digest Auth", PageContent.getTitleText());
     }
 
     @Test
-    public void congratsShouldAppearIfSuccessfullyAuthenticated() {
+    void congratsShouldAppearIfSuccessfullyAuthenticated() {
         assertTrue(PageContent.getContentText().contains("Congratulations!"));
     }
 }

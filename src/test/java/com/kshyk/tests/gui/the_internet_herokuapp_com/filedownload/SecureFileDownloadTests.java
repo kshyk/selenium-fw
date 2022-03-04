@@ -1,5 +1,6 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com.filedownload;
 
+import com.codeborne.selenide.BasicAuthCredentials;
 import com.codeborne.selenide.Credentials;
 import com.kshyk.helpers.theinternetherokuapp.FileDownloadPageHelper;
 import org.junit.jupiter.api.BeforeAll;
@@ -13,17 +14,17 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.kshyk.helpers.theinternetherokuapp.FileDownloadPageHelper.downloadFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SecureFileDownloadTests extends FileDownloadTestCase {
+class SecureFileDownloadTests extends FileDownloadTestCase {
     @BeforeAll
-    public void openSecureFileDownloadPage() {
-        var credentials = new Credentials("admin", "admin");
+    void openSecureFileDownloadPage() {
+        var credentials = new BasicAuthCredentials("admin", "admin");
         open("http://the-internet.herokuapp.com/download_secure", BASIC, credentials);
         fileNames = FileDownloadPageHelper.getFileNames();
     }
 
     @ParameterizedTest(name = "checkSecuredDownloadedFile{0}Name")
     @MethodSource("com.kshyk.tests.gui.the_internet_herokuapp_com.filedownload.FileDownloadTestCase#checkDownloadedFileName")
-    public void checkSecuredDownloadedFileName(String fileName) {
+    void checkSecuredDownloadedFileName(String fileName) {
         var expected = fileName.replaceAll(" ", "+");
         assertEquals(expected, Objects.requireNonNull(downloadFile(fileName)).getName());
     }

@@ -11,12 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ForgotPasswordPageTests extends TestCase {
     @BeforeAll
-    public void openForgotPasswordPage() {
+    void openForgotPasswordPage() {
         open("http://the-internet.herokuapp.com/forgot_password");
     }
 
     @Test
-    public void passwordShouldReset() {
+    void passwordShouldReset() {
         ForgotPasswordPageHelper.retrievePassword("test@example.com");
         assertEquals("Your e-mail's been sent!", PageContent.getContentText());
     }

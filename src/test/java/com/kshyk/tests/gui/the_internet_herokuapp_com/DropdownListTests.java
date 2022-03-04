@@ -9,29 +9,29 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DropdownListTests extends TestCase {
+class DropdownListTests extends TestCase {
     @BeforeAll
-    public void openDropdownPage() {
+    void openDropdownPage() {
         open("http://the-internet.herokuapp.com/dropdown");
     }
 
     @ParameterizedTest(name = "optionShouldBeSelectedByValue{0}")
     @ValueSource(ints = {1, 2})
-    public void optionSelectionByValue(int value) {
+    void optionSelectionByValue(int value) {
         DropdownPageHelper.selectByValue("" + value);
         assertEquals("Option " + value, DropdownPageHelper.getSelectedText());
     }
 
     @ParameterizedTest(name = "optionShouldBeSelectedByIndex{0}")
     @ValueSource(ints = {1, 2})
-    public void optionSelectionByIndex(int index) {
+    void optionSelectionByIndex(int index) {
         DropdownPageHelper.selectByIndex(index);
         assertEquals("Option " + index, DropdownPageHelper.getSelectedText());
     }
 
     @ParameterizedTest(name = "optionShouldBeSelectedByVisibleText{0}")
     @ValueSource(strings = {"Option 1", "Option 2"})
-    public void optionSelectionByVisibleText(String text) {
+    void optionSelectionByVisibleText(String text) {
         DropdownPageHelper.selectByVisibleText(text);
         assertEquals(text, DropdownPageHelper.getSelectedText());
     }

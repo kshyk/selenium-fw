@@ -11,16 +11,16 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.kshyk.helpers.theinternetherokuapp.FileDownloadPageHelper.downloadFile;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FileDownloadTests extends FileDownloadTestCase {
+class FileDownloadTests extends FileDownloadTestCase {
     @BeforeAll
-    public void openFileDownloadPage() {
+    void openFileDownloadPage() {
         open("http://the-internet.herokuapp.com/download");
         fileNames = FileDownloadPageHelper.getFileNames();
     }
 
     @ParameterizedTest(name = "checkDownloadedFile{0}Name")
     @MethodSource("com.kshyk.tests.gui.the_internet_herokuapp_com.filedownload.FileDownloadTestCase#checkDownloadedFileName")
-    public void checkDownloadedFileName(String fileName) {
+    void checkDownloadedFileName(String fileName) {
         var expected = fileName.replaceAll(" ", "+");
         assertEquals(expected, Objects.requireNonNull(downloadFile(fileName)).getName());
     }

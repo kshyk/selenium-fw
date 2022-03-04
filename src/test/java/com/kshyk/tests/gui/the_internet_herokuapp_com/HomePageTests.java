@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HomePageTests extends TestCase {
     @BeforeAll
-    public void openHomePage() {
+    void openHomePage() {
         open("http://the-internet.herokuapp.com/");
     }
 
     @Test
-    public void isHomePageLoaded() {
+    void isHomePageLoaded() {
         assertTrue(PageContent.getContentText().contains("Welcome to the-internet"));
     }
 }

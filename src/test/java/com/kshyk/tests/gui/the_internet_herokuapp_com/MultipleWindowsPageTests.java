@@ -15,20 +15,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class MultipleWindowsPageTests extends TestCase {
     @BeforeAll
-    public void openMultipleWindowsPage() {
+    void openMultipleWindowsPage() {
         open("http://the-internet.herokuapp.com/windows");
     }
 
     @Test
     @Order(1)
-    public void isNewWindowOpened() {
+    void isNewWindowOpened() {
         MultipleWindowsPageHelper.openNewWindow();
         assertEquals("New Window", PageContent.getTitleText());
     }
 
     @Test
     @Order(2)
-    public void isDefaultContentPresentAfterNewWindowClose() {
+    void isDefaultContentPresentAfterNewWindowClose() {
         MultipleWindowsPageHelper.closeNewWindow();
         assertEquals("Opening a new window", PageContent.getTitleText());
     }
