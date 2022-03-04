@@ -16,7 +16,7 @@ import static java.lang.Integer.MAX_VALUE;
 public class FileUtil {
     public static File getFileByName(String filename) throws IOException {
         BiPredicate<Path, BasicFileAttributes> fileBiPredicate =
-                (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith(filename);
+            (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith(filename);
         var dir = Paths.get(System.getProperty("user.dir"));
         return Files.find(dir, MAX_VALUE, fileBiPredicate).findFirst().orElseThrow().toFile();
     }

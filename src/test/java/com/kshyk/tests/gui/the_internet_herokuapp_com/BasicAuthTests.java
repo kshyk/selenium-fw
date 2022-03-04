@@ -1,7 +1,6 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com;
 
 import com.codeborne.selenide.BasicAuthCredentials;
-import com.codeborne.selenide.Credentials;
 import com.kshyk.interfaces.PageContent;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;

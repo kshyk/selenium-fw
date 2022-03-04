@@ -24,7 +24,7 @@ public abstract class TestCase implements TestWatcher {
     @BeforeAll
     protected void setup() {
         Configuration.timeout = 5000;
-//        Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
+        Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
         Configuration.headless = false;
     }
 
@@ -49,7 +49,7 @@ public abstract class TestCase implements TestWatcher {
 
     @AfterEach
     public void sendBackTestStatus() {
-//        tbREST.updateTest(tbTest);
+        tbREST.updateTest(tbTest);
     }
 
     private String getSessionId() {

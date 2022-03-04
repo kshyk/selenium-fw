@@ -11,7 +11,7 @@ import static org.apache.commons.lang3.StringUtils.capitalize;
 public class CommonUtil {
     public static String capitalizeEnumName(String input) {
         return Arrays.stream(input.split("_"))
-                .map(s -> capitalize(s.toLowerCase()))
-                .collect(joining());
+            .map(s -> capitalize(s.toLowerCase()))
+            .collect(joining());
     }
 }

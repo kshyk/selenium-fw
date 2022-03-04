@@ -2,7 +2,7 @@ name: Stale
 
 on:
   schedule:
-  - cron: '45 21 * * *'
+    - cron: '45 21 * * *'
 
 jobs:
   stale:

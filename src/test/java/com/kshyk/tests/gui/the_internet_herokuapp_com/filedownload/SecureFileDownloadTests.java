@@ -1,7 +1,6 @@
 package com.kshyk.tests.gui.the_internet_herokuapp_com.filedownload;
 
 import com.codeborne.selenide.BasicAuthCredentials;
-import com.codeborne.selenide.Credentials;
 import com.kshyk.helpers.theinternetherokuapp.FileDownloadPageHelper;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;

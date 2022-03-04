@@ -31,6 +31,6 @@ class HoversPageTests extends TestCase {
     private Stream<Arguments> mapSource() {
         var users = List.of("user1", "user2", "user3");
         return IntStream.range(0, users.size())
-                .mapToObj(index -> Arguments.arguments(index, users.get(index)));
+            .mapToObj(index -> Arguments.arguments(index, users.get(index)));
     }
 }

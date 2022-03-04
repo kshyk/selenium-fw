@@ -25,7 +25,7 @@ class CheckboxesTests extends TestCase {
     @Order(1)
     void allCheckboxesShouldBeDeselected() {
         assertAll(() -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(0)),
-                () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
+            () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
     }
 
     @Test
@@ -33,7 +33,7 @@ class CheckboxesTests extends TestCase {
     void firstCheckboxShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(0, true);
         assertAll(() -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(0)),
-                () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
+            () -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(1)));
     }
 
     @Test
@@ -41,7 +41,7 @@ class CheckboxesTests extends TestCase {
     void allCheckboxesShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(1, true);
         assertAll(() -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(0)),
-                () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));
+            () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));
     }
 
     @Test
@@ -49,6 +49,6 @@ class CheckboxesTests extends TestCase {
     void secondCheckboxShouldBeSelected() {
         CheckboxesPageHelper.tickCheckbox(0, false);
         assertAll(() -> assertFalse(CheckboxesPageHelper.isCheckboxSelected(0)),
-                () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));
+            () -> assertTrue(CheckboxesPageHelper.isCheckboxSelected(1)));
     }
 }
