@@ -3,17 +3,14 @@ package com.kshyk.tests.gui.the_internet_herokuapp_com;
 import com.kshyk.helpers.theinternetherokuapp.CheckboxesPageHelper;
 import com.kshyk.tests.base.TestCase;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CheckboxesTests extends TestCase {
     @BeforeAll
     void openCheckboxesPage() {
