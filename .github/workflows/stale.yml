@@ -1,4 +1,4 @@
-name: Stale
+name: 'Close stale issues and PRs'
 
 on:
   schedule:
@@ -6,21 +6,23 @@ on:
 
 jobs:
   stale:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     permissions:
       issues: write
       pull-requests: write
 
     steps:
-      - name: Mark stale Issues & PRs
-        uses: actions/stale@v3
+      - name: 'Mark stale issues and PRs'
+        uses: actions/stale@v5
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-          days-before-issue-stale: 2
-          days-before-pr-stale: 3
+          days-before-issue-stale: 5
+          days-before-pr-stale: 4
           days-before-issue-close: 3
           days-before-pr-close: 2
-          stale-issue-message: 'Issue was marked as Stale'
-          stale-pr-message: 'Pull request was marked as Stale'
           stale-issue-label: 'no-issue-activity'
+          stale-issue-message: 'This issue is stale because it has been open 5 days with no activity. Remove stale label or comment or this will be closed in 3 days.'
+          close-issue-message: 'This issue was closed because it has been stalled for 3 days with no activity.'
           stale-pr-label: 'no-pr-activity'
+          stale-pr-message: 'This PR is stale because it has been open 4 days with no activity. Remove stale label or comment or this will be closed in 2 days.'
+          close-pr-message: 'This PR was closed because it has been stalled for 2 days with no activity.'
