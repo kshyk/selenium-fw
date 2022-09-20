@@ -1,55 +1,38 @@
-ext {
-    restAssuredVersion = '4.4.0'
-    poiApacheVersion = '5.2.2'
-    logbackVersion = '1.2.11'
+plugins {
+    id 'java'
+    id 'io.freefair.lombok' version '6.5.1'
+    id 'org.owasp.dependencycheck' version '7.2.1'
 }
-
-apply plugin: 'java'
-apply plugin: 'maven-publish'
-apply plugin: 'idea'
 
 group = 'com.kshyk'
-version = '0.5.2'
+version = '1.0.0'
 description = """selenium-kshyk"""
-
-buildscript {
-    repositories {
-        maven {
-            url "https://plugins.gradle.org/m2/"
-        }
-    }
-    dependencies {
-        classpath "com.github.ben-manes:gradle-versions-plugin:0.42.0"
-        classpath "io.freefair.gradle:lombok-plugin:6.4.3"
-    }
-}
-apply plugin: 'com.github.ben-manes.versions'
-apply plugin: 'io.freefair.lombok'
 
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(18)
+        vendor = JvmVendorSpec.ADOPTIUM
     }
 }
 
 repositories {
-    maven { url "https://maven.java.net/content/repositories/staging/" }
-    maven { url "https://repo.maven.apache.org/maven2" }
+    mavenCentral()
 }
 
 dependencies {
-    implementation("ch.qos.logback:logback-classic:${logbackVersion}")
-    implementation("ch.qos.logback:logback-core:${logbackVersion}")
-    implementation("org.apache.poi:poi:${poiApacheVersion}")
-    implementation("org.apache.poi:poi-ooxml:${poiApacheVersion}")
-    implementation('org.javassist:javassist:3.29.0-GA')
-    implementation('cglib:cglib-nodep:3.3.0')
-    implementation('com.codeborne:selenide:6.6.3')
-    implementation('com.testingbot:testingbotrest:1.0.8')
-    implementation('org.assertj:assertj-core:3.23.1')
-    implementation('org.junit.jupiter:junit-jupiter:5.8.2')
-    implementation('org.apache.commons:commons-lang3:3.12.0')
-    testImplementation('org.mockito:mockito-core:4.6.1')
+    implementation "ch.qos.logback:logback-classic:$logbackVersion"
+    implementation "ch.qos.logback:logback-core:$logbackVersion"
+    implementation "org.apache.poi:poi:$poiApacheVersion"
+    implementation "org.apache.poi:poi-ooxml:$poiApacheVersion"
+    implementation 'org.javassist:javassist:3.29.1-GA'
+    implementation 'cglib:cglib-nodep:3.3.0'
+    implementation "com.codeborne:selenide:$selenideVersion"
+    implementation 'com.testingbot:testingbotrest:1.0.8'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'org.assertj:assertj-core:3.23.1'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.0'
+    testImplementation 'org.mockito:mockito-core:4.8.0'
 }
 
 test {
