@@ -2,11 +2,11 @@ name: 'Close stale issues and PRs'
 
 on:
   schedule:
-    - cron: '45 21 * * *'
+    - cron: '0 7 * * 1-5'
 
 jobs:
   stale:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     permissions:
       issues: write
       pull-requests: write
