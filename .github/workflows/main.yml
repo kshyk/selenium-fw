@@ -36,7 +36,7 @@ jobs:
         run: ./gradlew test --tests '*tests.gui*'
 
       - name: Publish UI test report
-        uses: mikepenz/action-junit-report@v2
+        uses: mikepenz/action-junit-report@v3
         with:
           report_paths: '**/build/test-results/test/TEST-*.xml'
           github_token: ${{ secrets.GITHUB_TOKEN }}
