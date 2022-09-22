@@ -29,6 +29,9 @@ jobs:
       - name: Assemble project
         run: ./gradlew assemble
 
+      - name: Code Coverage
+        uses: codecov/codecov-action@v3
+
       - name: Execute tests
         env:
           TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
