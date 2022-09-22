@@ -6,7 +6,7 @@ Sandbox repository and Selenium based framework for training purposes.
 [![CodeQL](https://github.com/kshyk/selenium-fw/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kshyk/selenium-fw/actions/workflows/codeql-analysis.yml)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/a1b3714a14684344b443f7c39d33b866)](https://www.codacy.com/gh/kshyk/selenium-fw/dashboard?utm_source=github.com&utm_medium=referral&utm_content=kshyk/selenium-fw&utm_campaign=Badge_Grade)
 
-### Tech stack:
+### Tech stack
 
 - JDK 18
 - Gradle 7.x
