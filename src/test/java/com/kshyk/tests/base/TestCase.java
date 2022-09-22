@@ -5,10 +5,14 @@ import com.codeborne.selenide.Selenide;
 import com.testingbot.models.TestingbotTest;
 import com.testingbot.testingbotrest.TestingbotREST;
 import lombok.extern.slf4j.Slf4j;
+import org.assertj.core.api.BDDSoftAssertions;
+import org.assertj.core.api.junit.jupiter.InjectSoftAssertions;
+import org.assertj.core.api.junit.jupiter.SoftAssertionsExtension;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 
@@ -19,8 +23,11 @@ import static com.kshyk.common.EnvHolder.KEY;
 import static com.kshyk.common.EnvHolder.SECRET;
 
 @Slf4j
+@ExtendWith(SoftAssertionsExtension.class)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public abstract class TestCase implements TestWatcher {
+    @InjectSoftAssertions
+    protected BDDSoftAssertions softly;
     private TestingbotREST tbREST;
     private TestingbotTest tbTest;
 
@@ -28,9 +35,6 @@ public abstract class TestCase implements TestWatcher {
     protected void setup() {
         Configuration.timeout = 5000;
         Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
-//        var dependencies = new DesiredCapabilities();
-//        dependencies.setCapability("extended-debugging", true);
-//        Configuration.browserCapabilities = dependencies;
         tbREST = new TestingbotREST(KEY, SECRET);
     }
 
