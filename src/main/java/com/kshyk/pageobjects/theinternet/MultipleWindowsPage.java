@@ -14,8 +14,8 @@ public class MultipleWindowsPage implements PageContent {
     }
 
     public void openNewWindow() {
-        $(byLinkText("Click Here")).click();
-        switchTo().window(1);
+        $(byLinkText("Click Here")).hover().click();
+        switchTo().window("New Window");
     }
 
     public void closeNewWindow() {
