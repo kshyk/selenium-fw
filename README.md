@@ -8,11 +8,11 @@ Sandbox repository and Selenium based framework for training purposes.
 
 ### Tech stack
 
--  JDK 18
--  Gradle 7.x
--  Selenide 6.x
--  JUnit 5
--  TestingBot
+-   JDK 18
+-   Gradle 7.x
+-   Selenide 6.x
+-   JUnit 5
+-   TestingBot
 
 ----
 [![ForTheBadge uses-badges](http://ForTheBadge.com/images/badges/uses-badges.svg)](http://ForTheBadge.com)
