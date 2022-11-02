@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'io.freefair.lombok' version '6.5.1'
-    id 'org.owasp.dependencycheck' version '7.2.1'
+    id 'org.owasp.dependencycheck' version '7.3.0'
 }
 
 group = 'com.kshyk'
@@ -24,15 +24,15 @@ dependencies {
     implementation "ch.qos.logback:logback-core:$logbackVersion"
     implementation "org.apache.poi:poi:$poiApacheVersion"
     implementation "org.apache.poi:poi-ooxml:$poiApacheVersion"
-    implementation 'org.javassist:javassist:3.29.1-GA'
+    implementation 'org.javassist:javassist:3.29.2-GA'
     implementation 'cglib:cglib-nodep:3.3.0'
     implementation "com.codeborne:selenide:$selenideVersion"
     implementation 'com.testingbot:testingbotrest:1.0.8'
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.1'
     testImplementation 'org.assertj:assertj-core:3.23.1'
-    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.0'
-    testImplementation 'org.mockito:mockito-core:4.8.0'
+    testImplementation 'org.junit.platform:junit-platform-launcher:1.9.1'
+    testImplementation 'org.mockito:mockito-core:4.8.1'
 }
 
 test {
