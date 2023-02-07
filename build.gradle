@@ -6,11 +6,11 @@ plugins {
 
 group = 'com.kshyk'
 version = '1.0.0'
-description = """selenium-kshyk"""
+description = """selenium-fw"""
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(18)
+        languageVersion = JavaLanguageVersion.of(19)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
