@@ -18,7 +18,7 @@ class DropdownListTests extends TheInternetTestCase {
     void checkAllOptionSelectionCombinations() {
         IntStream.rangeClosed(1, 2).forEach(index -> {
             var expected = "Option " + index;
-            page.selectByValue("" + index);
+            page.selectByValue(String.valueOf(index));
             softly.then(page.getSelectedText())
                 .as("Wrong value selection for %d option", index).isEqualTo(expected);
             page.selectByIndex(index);

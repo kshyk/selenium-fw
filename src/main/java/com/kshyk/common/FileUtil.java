@@ -18,6 +18,8 @@ public class FileUtil {
         BiPredicate<Path, BasicFileAttributes> fileBiPredicate =
             (path, attrs) -> attrs.isRegularFile() && path.toString().endsWith(filename);
         var dir = Paths.get(System.getProperty("user.dir"));
-        return Files.find(dir, MAX_VALUE, fileBiPredicate).findFirst().orElseThrow().toFile();
+        try (var path = Files.find(dir, MAX_VALUE, fileBiPredicate)) {
+            return path.findFirst().orElseThrow().toFile();
+        }
     }
 }
