@@ -4,10 +4,8 @@ import com.codeborne.selenide.BasicAuthCredentials;
 import com.codeborne.selenide.Selenide;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 
 import java.io.File;
-import java.util.List;
 
 import static com.codeborne.selenide.AuthenticationType.BASIC;
 import static com.codeborne.selenide.Selenide.$;
@@ -22,10 +20,6 @@ public class DownloadPage implements PageContent {
         var credentials = new BasicAuthCredentials("admin", "admin");
         Selenide.open("/download_secure", BASIC, credentials);
         return new DownloadPage();
-    }
-
-    public List<String> getFileNames() {
-        return getLinks().stream().map(WebElement::getText).toList();
     }
 
     @SneakyThrows

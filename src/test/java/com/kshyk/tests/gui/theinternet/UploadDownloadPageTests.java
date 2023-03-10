@@ -3,12 +3,7 @@ package com.kshyk.tests.gui.theinternet;
 import com.kshyk.common.FileUtil;
 import com.kshyk.pageobjects.theinternet.DownloadPage;
 import com.kshyk.pageobjects.theinternet.UploadPage;
-import lombok.SneakyThrows;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 
 import static com.kshyk.enums.theinternetherokuapp.DownloadableFile.NOT_EMPTY;
 
@@ -24,7 +19,6 @@ class UploadDownloadPageTests extends TheInternetTestCase {
     }
 
     @Test
-    @SneakyThrows
     @Order(1)
     void fileUploadedMessageShouldBePresent() {
         uploadPage.uploadFile(FileUtil.getFileByName(fileName));
