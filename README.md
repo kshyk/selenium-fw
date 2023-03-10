@@ -9,7 +9,7 @@ Sandbox repository and Selenium based framework for training purposes.
 ### Tech stack
 
 - JDK 19
-- Gradle 7.x
+- Gradle 8.x
 - Selenide 6.x
 - JUnit 5
 - TestingBot

@@ -1,10 +1,10 @@
 plugins {
-    id 'java'
+    id 'java-library'
     id 'org.owasp.dependencycheck' version '8.1.2'
 }
 
 group = 'com.kshyk'
-version = '1.0.0'
+version = '2.0.0'
 description = """selenium-fw"""
 
 java {
@@ -42,8 +42,5 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
-    }
-    reports {
-        junitXml.enabled(true)
     }
 }
