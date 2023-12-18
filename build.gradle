@@ -1,6 +1,7 @@
 plugins {
     id 'java'
-    id 'org.owasp.dependencycheck' version '8.4.0'
+    id 'jacoco'
+    id 'org.owasp.dependencycheck' version '9.0.7'
 }
 
 group = 'com.kshyk'
@@ -9,7 +10,7 @@ description = """selenium-fw"""
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(19)
+        languageVersion = JavaLanguageVersion.of(21)
         vendor = JvmVendorSpec.ADOPTIUM
     }
 }
@@ -43,7 +44,16 @@ test {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
+    finalizedBy jacocoTestReport
+}
+
+jacocoTestReport {
+    dependsOn test
     reports {
-        junitXml.enabled(true)
+        xml.required = true
     }
+}
+
+jacoco {
+    toolVersion = '0.8.11'
 }

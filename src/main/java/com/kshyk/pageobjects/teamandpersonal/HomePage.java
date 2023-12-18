@@ -2,9 +2,12 @@ package com.kshyk.pageobjects.teamandpersonal;
 
 import com.codeborne.selenide.Selenide;
 
+import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
+
 public class HomePage {
-    public static HomePage open() {
+    public HomePage() {
         Selenide.open("/");
-        return new HomePage();
+        $(".home").shouldBe(visible);
     }
 }
