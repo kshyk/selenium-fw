@@ -13,7 +13,7 @@ public class CookiesBar {
     }
 
     public String getText() {
-        return cookieBar.$(".moove-gdpr-cookie-notice").innerText().replace("\n", "");
+        return cookieBar.$(".moove-gdpr-cookie-notice").innerText().trim().replace("\n", "");
     }
 
     public CookiesBar acceptCookies() {
