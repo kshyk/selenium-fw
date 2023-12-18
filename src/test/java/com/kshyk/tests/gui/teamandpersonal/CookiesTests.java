@@ -3,7 +3,7 @@ package com.kshyk.tests.gui.teamandpersonal;
 import com.kshyk.pageobjects.teamandpersonal.CookiesBar;
 import org.junit.jupiter.api.Test;
 
-import static com.kshyk.common.Constants.Strings.COOKIES_TEXT;
+import static com.kshyk.common.Constants.COOKIES_TEXT;
 
 class CookiesTests extends TNPTestCase {
     @Test
