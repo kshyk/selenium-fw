@@ -4,6 +4,7 @@ import com.kshyk.common.CommonUtil;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@Getter
 @AllArgsConstructor
 public enum Frame {
     TOP("frame-top"),
@@ -12,7 +13,6 @@ public enum Frame {
     RIGHT("frame-right"),
     MIDDLE("frame-middle");
 
-    @Getter
     private final String position;
 
     @Override
