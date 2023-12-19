@@ -14,8 +14,7 @@ public class CheckboxesPage {
     }
 
     public void allCheckboxSelection(boolean shouldBeSelected) {
-        checkboxes.asDynamicIterable().forEach(checkbox ->
-            tickCheckbox(checkboxes.indexOf(checkbox), shouldBeSelected));
+        checkboxes.asDynamicIterable().forEach(checkbox -> checkbox.setSelected(shouldBeSelected));
     }
 
     public boolean isCheckboxSelected(int index) {
