@@ -29,7 +29,7 @@ dependencies {
     implementation 'org.javassist:javassist:3.30.2-GA'
     implementation 'cglib:cglib-nodep:3.3.0'
     implementation "com.codeborne:selenide:$selenideVersion"
-    implementation 'com.testingbot:testingbotrest:1.0.8'
+    implementation 'com.testingbot:testingbotrest:1.0.10'
     implementation 'org.apache.commons:commons-lang3:3.14.0'
     testCompileOnly "org.projectlombok:lombok:$lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
