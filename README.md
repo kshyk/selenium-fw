@@ -4,7 +4,8 @@ Sandbox repository and Selenium based framework for training purposes.
 
 [![Regression](https://github.com/kshyk/selenium-fw/actions/workflows/main.yml/badge.svg)](https://github.com/kshyk/selenium-fw/actions/workflows/main.yml)
 [![CodeQL](https://github.com/kshyk/selenium-fw/actions/workflows/codeql.yml/badge.svg)](https://github.com/kshyk/selenium-fw/actions/workflows/codeql.yml)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/a1b3714a14684344b443f7c39d33b866)](https://www.codacy.com/gh/kshyk/selenium-fw/dashboard?utm_source=github.com&utm_medium=referral&utm_content=kshyk/selenium-fw&utm_campaign=Badge_Grade)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=kshyk_selenium-fw&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=kshyk_selenium-fw)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=kshyk_selenium-fw&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=kshyk_selenium-fw)
 
 ### Tech stack
 
