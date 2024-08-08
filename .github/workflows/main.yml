@@ -27,6 +27,7 @@ jobs:
 
       - name: Execute tests
         env:
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           TESTINGBOT_KEY: ${{ secrets.TESTINGBOT_KEY }}
           TESTINGBOT_SECRET: ${{ secrets.TESTINGBOT_SECRET }}
         run: ./gradlew clean test --tests '*tests.gui*'
