@@ -9,6 +9,7 @@ import java.io.File;
 
 import static com.codeborne.selenide.AuthenticationType.BASIC;
 import static com.codeborne.selenide.Selenide.$;
+import static com.kshyk.common.EnvHolder.ADMIN_PASSWORD;
 
 public class DownloadPage implements PageContent {
     public static DownloadPage openDownload() {
@@ -17,7 +18,7 @@ public class DownloadPage implements PageContent {
     }
 
     public static DownloadPage openSecureDownload() {
-        var credentials = new BasicAuthCredentials("admin", "admin");
+        var credentials = new BasicAuthCredentials("admin", ADMIN_PASSWORD);
         Selenide.open("/download_secure", BASIC, credentials);
         return new DownloadPage();
     }
