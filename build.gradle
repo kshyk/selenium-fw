@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'jacoco'
-    id 'org.owasp.dependencycheck' version '12.1.2'
+    id 'org.owasp.dependencycheck' version '12.1.3'
 }
 
 group = 'com.kshyk'
