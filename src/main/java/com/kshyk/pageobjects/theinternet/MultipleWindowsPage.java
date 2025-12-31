@@ -5,16 +5,13 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.Platform;
 
 import static com.codeborne.selenide.Selectors.byLinkText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.actions;
-import static com.codeborne.selenide.Selenide.switchTo;
+import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.Keys.COMMAND;
 import static org.openqa.selenium.Keys.CONTROL;
 
 public class MultipleWindowsPage implements PageContent {
     public static MultipleWindowsPage open() {
-        Selenide.open("/windows");
-        return new MultipleWindowsPage();
+        return Selenide.open("/windows", MultipleWindowsPage.class);
     }
 
     public void openNewWindow() {

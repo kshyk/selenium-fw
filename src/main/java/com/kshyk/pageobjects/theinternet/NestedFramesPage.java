@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Selenide.switchTo;
 
 public class NestedFramesPage implements PageContent {
     public static NestedFramesPage open() {
-        Selenide.open("/nested_frames");
-        return new NestedFramesPage();
+        return Selenide.open("/nested_frames", NestedFramesPage.class);
     }
 
     public void switchToFrame(Frame frame) {

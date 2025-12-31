@@ -4,9 +4,7 @@ import com.kshyk.pageobjects.theinternet.JavaScriptAlertsPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.confirm;
-import static com.codeborne.selenide.Selenide.dismiss;
-import static com.codeborne.selenide.Selenide.prompt;
+import static com.codeborne.selenide.Selenide.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class JavaScriptAlertsPageTests extends TheInternetTestCase {

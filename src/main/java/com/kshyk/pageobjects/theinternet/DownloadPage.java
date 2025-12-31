@@ -1,7 +1,10 @@
 package com.kshyk.pageobjects.theinternet;
 
 import com.codeborne.selenide.BasicAuthCredentials;
+import com.codeborne.selenide.DownloadOptions;
+import com.codeborne.selenide.FileDownloadMode;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.ex.FileNotDownloadedError;
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;
 
@@ -13,8 +16,7 @@ import static com.kshyk.common.EnvHolder.ADMIN_PASSWORD;
 
 public class DownloadPage implements PageContent {
     public static DownloadPage openDownload() {
-        Selenide.open("/download");
-        return new DownloadPage();
+        return Selenide.open("/download", DownloadPage.class);
     }
 
     public static DownloadPage openSecureDownload() {
@@ -25,6 +27,11 @@ public class DownloadPage implements PageContent {
 
     @SneakyThrows
     public File downloadFile(String fileName) {
-        return $(By.partialLinkText(fileName)).download();
+        var link = $(By.partialLinkText(fileName));
+        try {
+            return link.download();
+        } catch (FileNotDownloadedError e) {
+            return link.download(DownloadOptions.using(FileDownloadMode.CDP));
+        }
     }
 }

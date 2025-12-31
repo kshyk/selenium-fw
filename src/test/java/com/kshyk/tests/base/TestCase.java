@@ -15,6 +15,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,11 @@ public abstract class TestCase implements TestWatcher {
 
     @BeforeAll
     protected void setup() {
-        Configuration.timeout = 5000;
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPlatformName("TAHOE");
+        chromeOptions.setBrowserVersion("latest");
+        Configuration.browserCapabilities = chromeOptions;
+        Configuration.timeout = 8000;
         Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
         tbREST = new TestingbotREST(KEY, SECRET);
     }

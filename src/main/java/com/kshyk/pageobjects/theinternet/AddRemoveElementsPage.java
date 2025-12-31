@@ -13,8 +13,7 @@ public class AddRemoveElementsPage {
     private final ElementsCollection deleteButtons = $$("button[onclick='deleteElement()']");
 
     public static AddRemoveElementsPage open() {
-        Selenide.open("/add_remove_elements/");
-        return new AddRemoveElementsPage();
+        return Selenide.open("/add_remove_elements/", AddRemoveElementsPage.class);
     }
 
     public AddRemoveElementsPage addElements(int elementsToAdd) {

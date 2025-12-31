@@ -7,8 +7,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class KeyPressesPage {
     public static KeyPressesPage open() {
-        Selenide.open("/key_presses");
-        return new KeyPressesPage();
+        return Selenide.open("/key_presses", KeyPressesPage.class);
     }
 
     public KeyPressesPage pressKey(Keys key) {

@@ -10,8 +10,7 @@ public class DropdownPage {
     private final SelenideElement dropdown = $("#dropdown");
 
     public static DropdownPage open() {
-        Selenide.open("/dropdown");
-        return new DropdownPage();
+        return Selenide.open("/dropdown", DropdownPage.class);
     }
 
     public void selectByValue(String value) {

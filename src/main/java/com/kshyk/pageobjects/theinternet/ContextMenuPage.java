@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ContextMenuPage {
     public static ContextMenuPage open() {
-        Selenide.open("/context_menu");
-        return new ContextMenuPage();
+        return Selenide.open("/context_menu", ContextMenuPage.class);
     }
 
     public void contextClickOnHotSpot() {
