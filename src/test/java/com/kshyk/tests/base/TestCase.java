@@ -35,7 +35,7 @@ public abstract class TestCase implements TestWatcher {
     @BeforeAll
     protected void setup() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setPlatformName("Linux");
+        chromeOptions.setPlatformName("TAHOE");
         chromeOptions.setBrowserVersion("latest");
         Configuration.browserCapabilities = chromeOptions;
         Configuration.timeout = 8000;
