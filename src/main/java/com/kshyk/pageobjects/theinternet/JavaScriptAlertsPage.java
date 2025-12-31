@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class JavaScriptAlertsPage implements PageContent {
     public static JavaScriptAlertsPage open() {
-        Selenide.open("/javascript_alerts");
-        return new JavaScriptAlertsPage();
+        return Selenide.open("/javascript_alerts", JavaScriptAlertsPage.class);
     }
 
     public void clickOnJsAlertButton() {

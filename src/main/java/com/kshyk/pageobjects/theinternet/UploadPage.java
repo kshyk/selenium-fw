@@ -8,8 +8,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class UploadPage implements PageContent {
     public static UploadPage open() {
-        Selenide.open("/upload");
-        return new UploadPage();
+        return Selenide.open("/upload", UploadPage.class);
     }
 
     public void uploadFile(File file) {

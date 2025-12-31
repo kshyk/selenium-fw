@@ -12,8 +12,7 @@ public class HomePage {
     private final SelenideElement thanks = $(".pajacyk__thankyou");
 
     public static HomePage open() {
-        Selenide.open("https://www.pajacyk.pl/#index");
-        return new HomePage();
+        return Selenide.open("https://www.pajacyk.pl/#index", HomePage.class);
     }
 
     public void donate() {

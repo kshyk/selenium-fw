@@ -9,8 +9,7 @@ public class CheckboxesPage {
     private final ElementsCollection checkboxes = $$("#checkboxes input");
 
     public static CheckboxesPage open() {
-        Selenide.open("/checkboxes");
-        return new CheckboxesPage();
+        return Selenide.open("/checkboxes", CheckboxesPage.class);
     }
 
     public void allCheckboxSelection(boolean shouldBeSelected) {

@@ -7,6 +7,6 @@ import org.junit.jupiter.api.BeforeAll;
 public abstract class TheInternetTestCase extends TestCase {
     @BeforeAll
     protected void configuration() {
-        Configuration.baseUrl = "http://the-internet.herokuapp.com";
+        Configuration.baseUrl = "https://the-internet.herokuapp.com";
     }
 }

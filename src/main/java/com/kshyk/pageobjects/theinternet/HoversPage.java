@@ -6,8 +6,7 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class HoversPage implements PageContent {
     public static HoversPage open() {
-        Selenide.open("/hovers");
-        return new HoversPage();
+        return Selenide.open("/hovers", HoversPage.class);
     }
 
     public HoversPage mouseOverImageByIndex(int index) {
