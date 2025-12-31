@@ -15,6 +15,7 @@ import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,12 @@ public abstract class TestCase implements TestWatcher {
 
     @BeforeAll
     protected void setup() {
-        Configuration.timeout = 5000;
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("platform", "TAHOE");
+        caps.setCapability("version", "143");
+        caps.setCapability("browserName", "chrome");
+        Configuration.browserCapabilities = caps;
+        Configuration.timeout = 8000;
         Configuration.remote = "https://" + KEY + ":" + SECRET + "@hub.testingbot.com/wd/hub";
         tbREST = new TestingbotREST(KEY, SECRET);
     }
