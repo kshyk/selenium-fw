@@ -34,7 +34,7 @@ dependencies {
     testCompileOnly "org.projectlombok:lombok:$lombokVersion"
     testAnnotationProcessor "org.projectlombok:lombok:$lombokVersion"
     testImplementation 'org.junit.jupiter:junit-jupiter:6.0.2'
-    testImplementation 'org.assertj:assertj-core:3.27.6'
+    testImplementation 'org.assertj:assertj-core:3.27.7'
     testImplementation 'org.junit.platform:junit-platform-launcher:6.0.2'
 }
 
